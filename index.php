@@ -57,7 +57,8 @@
                         <?php }
                       ?>
                     </a>
-                    <?php echo the_category(' ', 'single') ?>
+                    <script>$('.home main .content article .bottom .post-part ul li .left a.cover img').attr('crossorigin','anonymous');</script>
+                    <?php echo the_category(' ', 'single'); ?>
                   </div>
                   <div class="right">
                     <div class="text">
@@ -69,7 +70,7 @@
                     <div class="post-info">
                       <div class="time">
                         <i class="iconfont icon-clock"></i>
-                        <span><?php echo  get_the_date(); ?></span>
+                        <span><?php echo get_the_date(); ?></span>
                       </div>
                       <div class="read-more">
                         <a href="<?php the_permalink(); ?>">
@@ -84,6 +85,7 @@
               <?php endif; ?>
               </ul>
             </div>
+            <?php require_once('inc/ajax-home.php'); ?>
           </div>
         </article>
         <?php get_aside(); ?>

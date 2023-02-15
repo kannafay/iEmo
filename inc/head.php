@@ -11,6 +11,6 @@
   <title><?php if(function_exists('show_wp_title')){show_wp_title();} ?></title>
   <link rel="shortcut icon" href="<?php echo fileUri(); ?>/assets/images/apps.png" type="image/x-icon">
   <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/css/style.css">
-  <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3878216_igf2p1d4tzk.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3878216_83dkoz4q7mu.css">
   <script src="<?php echo fileUri(); ?>/assets/js/jquery.min.js"></script>
 </head>
