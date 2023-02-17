@@ -51,12 +51,14 @@
   titleColor();
 </script>
 
-
-<div id="pagination-home" class="pagination-post">
-  <?php next_posts_link(__('<i class="iconfont icon-activity"></i> 加载更多文章')); ?>
-</div>
-<?php if(!get_next_posts_link()) {
-  echo '<div class="no-more-post"><a><i class="iconfont icon-anchor"></i> 好像就这么多</a></div>';} 
+<?php 
+  if(get_next_posts_link()) { ?>
+    <div id="pagination-home" class="pagination-post">
+      <?php next_posts_link(__('<i class="iconfont icon-activity"></i> 加载更多文章')); ?>
+    </div>
+  <?php } else {
+    echo '<div class="no-more-post"><a><i class="iconfont icon-anchor"></i> 好像就这么多</a></div>';
+  }
 ?>
 
 <script language=javascript>

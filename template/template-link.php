@@ -5,6 +5,13 @@
 ?>
 
 <?php get_head(); ?>
+<link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/css/single.css">
+<link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/fancybox/fancybox.css">
+<style>
+  .single .post-content > *:last-child {
+    margin-bottom: 20px;
+  }
+</style>
   <div class="container link">
     <?php get_header(); ?>
     <main>
@@ -12,6 +19,12 @@
       <div class="content">
         <article>
           <h2>友人帐 <span>Friends.</span></h2>
+          <div class="single">
+          <div class="post-content">
+            <?php the_content(); ?>
+          </div>
+          </div>
+          
           <div class="link-box">
             <ul>
               <?php
@@ -42,3 +55,17 @@
     </main>
   </div>
 <?php get_foot(); ?>
+
+<script>
+  let postImg = document.querySelectorAll('.post-content .wp-block-image img');
+  if(postImg) {
+    let postImgUrl = [];
+    $(postImg).each(function(i) {
+      postImgUrl[i] = $('<a data-fancybox="gallery"></a>').attr('href',$(postImg[i]).attr('src'));
+      postImg[i].parentNode.replaceChild($(postImgUrl[i])[0], postImg[i]);
+      $(postImg[i]).appendTo($(postImgUrl[i])[0]);
+    })
+  }
+</script>
+
+<script src="<?php echo fileUri(); ?>/assets/static/fancybox/fancybox.umd.js"></script>

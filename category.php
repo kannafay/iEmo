@@ -2,7 +2,7 @@
   <div class="container category">
     <?php get_header(); ?>
     <script>
-      $('header .menu ul li.category').addClass('current-menu-item');
+      $('header .menu ul li.cate').addClass('current-menu-item');
     </script>
     <main>
       <?php get_nav(); ?>

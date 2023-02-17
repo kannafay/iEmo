@@ -1,20 +1,18 @@
-<div id="pagination-aside">
-  <?php next_posts_link(__('<i class="iconfont icon-activity"></i> 加载更多说说')); ?>
-</div>
-<?php if(!get_next_posts_link()) {
-  echo '<div class="no-more-say"><a><i class="iconfont icon-anchor"></i> 好像就这么多</a></div>';} 
+<?php 
+  if(get_next_posts_link()) { ?>
+    <div id="pagination-aside" class="pagination-post">
+      <?php next_posts_link(__('<i class="iconfont icon-activity"></i> 加载更多说说')); ?>
+    </div>
+    <script>
+      const noteNextUri = '<?php bloginfo('url'); ?>' + '/note/' + /page\/\d+/.exec($('#pagination-aside a').attr('href'));
+      $('#pagination-aside a').attr('href', noteNextUri);
+    </script>
+  <?php } else {
+    echo '<div class="no-more-note"><a><i class="iconfont icon-anchor"></i> 好像就这么多</a></div>';
+  }
 ?>
 
 <script language=javascript>
-  const asideUriLast = thePath => thePath.substring(thePath.lastIndexOf('/') + 1);
-  $('#pagination-aside a').attr('href', '<?php bloginfo('url'); ?>' + '/say/page/' + asideUriLast($('#pagination-aside a').attr('href')));
-
-  let nextUrl = $('#pagination-aside a').attr('href');
-  if(nextUrl.indexOf('?') !== -1) {
-    nextUrl = nextUrl.replace(/(\?|#)[^'"]*/, '');
-    $('#pagination-aside a').attr('href', nextUrl);
-  }
-
 jQuery(document).ready(function($) {
     //点击下一页的链接(即那个a标签)
     $('#pagination-aside a').click(function() {

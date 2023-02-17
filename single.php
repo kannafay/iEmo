@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/css/single.css">
+<link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/fancybox/fancybox.css">
 
 <?php get_head(); ?>
   <div class="container single">
@@ -19,16 +20,17 @@
               <script>$('.single main .content article .post-cover .cover img').attr('crossorigin','anonymous');</script>
             </div>
             <div class="post-info">
-            <div class="title"><?php the_title(); ?></div>
-            <div class="more">
-              <div class="time">
-                <i class="iconfont icon-clock"></i>
-                <span><?php echo get_the_date(); ?> <?php the_time(); ?></span>
+              <div class="title" title="<?php the_title(); ?>"><?php the_title(); ?></div>
+              <div class="more">
+                <div class="time">
+                  <i class="iconfont icon-clock"></i>
+                  <span><?php echo get_the_date(); ?> <?php the_time(); ?></span>
+                </div>
+                <div class="cate">
+                  <?php echo the_category(' ', 'single') ?>
+                </div>
+                <?php if(get_the_tag_list()){ ?><div class="tag"><?php echo get_the_tag_list('',' ',''); ?></div><?php } ?>
               </div>
-              <div class="cate">
-                <?php echo the_category(' ', 'single') ?>
-              </div>
-              <?php if(get_the_tag_list()){ ?><div class="tag"><?php echo get_the_tag_list('',' ',''); ?></div><?php } ?>
             </div>
           </div>
           <div class="post-content">
@@ -46,7 +48,7 @@
   const img = document.querySelector('.single main .content article .post-cover .cover img');
   const getColorFun=()=>{
     let colors = colorThief.getColor(img);
-    console.log(`rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`);
+    // console.log(`rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`);
     function changeColor() {
       $(`
         <style>
@@ -57,17 +59,19 @@
             --scroll: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .5);
             --menu-hover: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .1);
             --social-hover: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .1);
-            --note-new: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
+            --theme-bak: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
+            --code-bgc: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .1);
           }
         </style>
       `).appendTo('head');
     }
-    if(colors[0] > 200 && colors[1] > 200 && colors[2] > 200) {
+    if(colors[0] > 150 && colors[1] > 150 && colors[2] > 150) {
       changeColor();
       $(`
         <style>
           :root {
-            --note-new: #333;
+            --theme-bak: #333;
+            --code-bgc: rgba(0 0 0 / .05);
           }
         </style>
       `).appendTo('head');
@@ -84,3 +88,16 @@
     });
   }
 </script>
+<script>
+  let postImg = document.querySelectorAll('.post-content .wp-block-image img');
+  if(postImg) {
+    let postImgUrl = [];
+    $(postImg).each(function(i) {
+      postImgUrl[i] = $('<a data-fancybox="gallery"></a>').attr('href',$(postImg[i]).attr('src'));
+      postImg[i].parentNode.replaceChild($(postImgUrl[i])[0], postImg[i]);
+      $(postImg[i]).appendTo($(postImgUrl[i])[0]);
+    })
+  }
+</script>
+
+<script src="<?php echo fileUri(); ?>/assets/static/fancybox/fancybox.umd.js"></script>

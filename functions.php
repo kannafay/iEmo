@@ -5,6 +5,23 @@
  * Email: me@onll.cn
  */
 
+// 后台设置
+add_action('admin_menu', 'add_theme_options_menu');
+function add_theme_options_menu() {
+  add_theme_page(
+    'iEmo主题设置',
+    'iEmo主题设置',
+    'edit_theme_options',
+    'iemo_option',
+    'iemo_option_admin'
+  );
+}
+function iemo_option_admin() {
+  require get_template_directory()."/admin/option.php";
+}
+
+
+
 // head标签
 function get_head() {
   require_once('inc/head.php');
@@ -71,7 +88,7 @@ if(function_exists('add_theme_support')) {
 
 // 文章默认封面
 function default_post_cover() {
-  return fileUri().'/assets/images/cover.jpg';
+  return fileUri().'/assets/images/cover-post.jpg';
 }
 
 
@@ -100,6 +117,24 @@ function get_user_role($id) {
 
 // 头像
 require_once('plugins/simple-local-avatars/simple-local-avatars.php');
+if ( ! function_exists( 'dr_filter_get_avatar' ) ) {
+  function dr_filter_get_avatar( $avatar ) {
+      // 新 Gravatar 头像源，可自行修改
+      $new_gravatar_sever = 'cravatar.cn';
+
+      $sources = array(
+          'www.gravatar.com/avatar/',
+          '0.gravatar.com/avatar/',
+          '1.gravatar.com/avatar/',
+          '2.gravatar.com/avatar/',
+          'secure.gravatar.com/avatar/',
+          'cn.gravatar.com/avatar/'
+      );
+
+      return str_replace( $sources, $new_gravatar_sever.'/avatar/', $avatar );
+  }
+  add_filter( 'get_avatar', 'dr_filter_get_avatar' );
+}
 
 
 
@@ -127,7 +162,7 @@ register_nav_menus( array(
 
 
 // 说说
-function say_init() { 
+function note_init() { 
   $labels = [ 
     'name' => '说说',
     'singular_name' => '说说', 
@@ -157,9 +192,9 @@ function say_init() {
     'menu_position' => null, 
     'supports' => array('title','editor','author','comments'),
   ]; 
-  register_post_type('say', $args); 
+  register_post_type('note', $args); 
 }
-add_action('init', 'say_init');
+add_action('init', 'note_init');
 
 
 
@@ -234,7 +269,7 @@ function ashu_add_page($title,$slug,$page_template=''){
 }
 
 function ashu_add_pages() {   
-	global $pagenow;   
+	global $pagenow;
 	if ( 'themes.php' == $pagenow && isset( $_GET['activated'] ) ){
 		ashu_add_page('分类','category','template/template-cate.php');
 		ashu_add_page('标签','tag','template/template-tag.php');
@@ -244,3 +279,16 @@ function ashu_add_pages() {
 }   
 
 add_action( 'load-themes.php', 'ashu_add_pages' ); 
+
+
+
+
+// 搜索排除页面
+function exclude_page() {
+	global $post;
+	if ($post->post_type == 'page') {
+		return true;
+	} else {
+		return false;
+	}
+}
