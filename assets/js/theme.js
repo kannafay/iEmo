@@ -8,10 +8,13 @@ $('#menu-btn').click(function() {
   } else if($('header').attr('class') != 'active' && $('aside').attr('class') == 'active') {
     $('header').addClass('active');
   }
+
+  $('.search-m').removeClass('active');
 })
 
 $('#aside-btn').click(function() {
   $('aside').toggleClass('active');
+  $('.search-m').removeClass('active');
 })
 
 
@@ -34,8 +37,9 @@ function remove_set_menu(e) {
 if(user_set_btn) {
   user_set_btn.addEventListener("click",(e)=>{
     e.stopPropagation();
+    $('.search-m').removeClass('active');
     if(user_set_menu.classList.toggle('active')) {
-        document.addEventListener("click",remove_set_menu);
+      document.addEventListener("click",remove_set_menu);
     }
   })
   user_set_menu.addEventListener("click",(e)=>e.stopPropagation());

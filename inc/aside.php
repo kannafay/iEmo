@@ -58,14 +58,14 @@
             
             <div class="notes-info">
               <div class="time">
-                <i class="iconfont icon-clock"></i><span><?php echo get_the_date(); ?></span>
+                <span><?php echo get_the_date(); ?></span>
               </div>
               <?php 
                 $note_time = time() - (get_post_datetime()->getTimestamp());
                 if($note_time < 86400*3) { 
               ?>
                 <div class="new">
-                  <i class="iconfont icon-bookmark"></i><span>New</span>
+                  <span>New</span>
                 </div>
               <?php } ?>
             </div>

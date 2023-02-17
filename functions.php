@@ -223,7 +223,7 @@ function iemo_archives_list() {
       $mon = $mon_tmp;
       $output .= '<h3>'. $year .'年'.$mon.'月</h3>';
     }
-    $output .= '<li><a href="'.get_permalink().'">'.get_the_title().'</a></li>';
+    $output .= '<li><span>〔'.get_the_time('d日〕').'</span><a href="'.get_permalink().'">'.get_the_title().'</a></li>';
     endwhile;
     wp_reset_postdata();
     update_option('iemo_archives_list', $output);
@@ -284,11 +284,9 @@ add_action( 'load-themes.php', 'ashu_add_pages' );
 
 
 // 搜索排除页面
-function exclude_page() {
-	global $post;
-	if ($post->post_type == 'page') {
-		return true;
-	} else {
-		return false;
-	}
-}
+add_filter('pre_get_posts', function($wp_query){
+  if($wp_query->is_search){
+    $wp_query->set('post_type', 'post');
+  }
+  return $wp_query;
+});

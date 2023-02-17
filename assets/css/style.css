@@ -13,6 +13,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: sans-serif;
 }
 html {
   background-color: #fff;
@@ -352,7 +353,7 @@ main .nav .user-menu .user-menu-box ul li .logout {
   color: #dd2424;
 }
 main .nav .user-menu .user-menu-box ul li .logout:hover {
-  background-color: #dd242412;
+  background-color: #dd24240d;
 }
 
 
@@ -718,7 +719,7 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
 
 
 
-/* main aside */
+/* aside */
 main .content aside {
   width: 300px;
   height: 100%;
@@ -813,7 +814,7 @@ main .content aside .author .post-info span {
 
 
 
-/* social */
+/* aside social */
 main .content aside .social {
   padding: 0 25px;
   margin-bottom: 25px;
@@ -874,7 +875,7 @@ main .content aside .social .social-content ul li a > * {
 
 
 
-/* notes */
+/* aside notes */
 main .content aside .notes-box {
   padding: 0 25px;
   margin-bottom: 25px;
@@ -898,6 +899,20 @@ main .content aside .notes-box ul li {
 }
 main .content aside .notes-box ul li .notes-content {
   margin-bottom: 10px;
+  max-height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+main .content aside .notes-box ul li .notes-content::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  top: 270px;
+  left: 0;
+  background: linear-gradient(to top, #f5f5f5, rgba(0 0 0 / 0));
+  z-index: 1;
 }
 
 main .content aside .notes-box ul li .view-detail {
@@ -921,12 +936,14 @@ main .content aside .notes-box ul li .view-detail a:hover {
 main .content aside .notes-box ul li .notes-info {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-main .content aside .notes-box ul li .notes-info .time {
-  margin-right: 20px;
+main .content aside .notes-box ul li .notes-info .time,
+main .content aside .notes-box ul li .notes-info .new {
+  display: flex;
 }
-main .content aside .notes-box ul li .notes-info .time i,
-main .content aside .notes-box ul li .notes-info .new i {
+main .content aside .notes-box ul li .notes-info .time span::before,
+main .content aside .notes-box ul li .notes-info .new span::before {
   font-size: 12px;
   color: #999;
   margin-right: 2px;
@@ -936,12 +953,19 @@ main .content aside .notes-box ul li .notes-info .new span {
   font-size: 12px;
   color: #999;
 }
+main .content aside .notes-box ul li .notes-info .time span::before {
+  content: '\e6ab';
+  font-family: 'iconfont';
+}
+main .content aside .notes-box ul li .notes-info .new span::before {
+  content: '\e6a1';
+  font-family: 'iconfont';
+}
 
-main .content aside .notes-box ul li .notes-info .new i,
+main .content aside .notes-box ul li .notes-info .new span::before,
 main .content aside .notes-box ul li .notes-info .new span {
   color: var(--theme-bak);
 }
-
 
 
 
@@ -960,6 +984,9 @@ main .content aside .notes-box ul li .notes-content * {
   font-size: 13px;
   color: #333;
   line-height: 1.5;
+}
+main .content aside .notes-box ul li .notes-content *:last-child {
+  margin-bottom: 0;
 }
 main .content aside .notes-box ul li .notes-content a {
   color: var(--theme-bak);
@@ -1058,24 +1085,96 @@ main .content aside .notes-box ul li .notes-content ol li {
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: #333;
+  color: #999;
   border-radius: 8px;
   padding: 8px 0;
 }
 #pagination-aside a i,
 .no-more-note a i {
   font-size: 12px;
-  color: #333;
+  color: #999;
   margin-right: 3px;
 }
 #pagination-aside a:hover {
   background-color: #f5f5f5;
+  color: #333;
 }
 
-.no-more-note a,
-.no-more-note a i {
+
+
+
+
+
+
+
+
+
+
+/* note page */
+.note main .content article .note-page li {
+  display: flex;
+  align-items: start;
+  margin-bottom: 25px;
+}
+.note main .content article .note-page li:last-child {
+  margin-bottom: 0;
+}
+.note main .content article .note-page li .left {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.note main .content article .note-page li .left img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.note main .content article .note-page li .right {
+  width: calc(100% - 60px);
+  height: auto;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 15px;
+}
+.note main .content article .note-page li .right .top {
+  display: flex;
+  align-items: start  ;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.note main .content article .note-page li .right .top .author-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #333;
+}
+.note main .content article .note-page li .right .top .view-all a {
+  background-color: rgba(0 0 0 / .05);
+  border-radius: 5px;
+  padding: 5px 12px;
+  display: flex;
+  align-items: center;
+}
+.note main .content article .note-page li .right .top .view-all a,
+.note main .content article .note-page li .right .top .view-all a i {
+  font-size: 13px;
   color: #999;
 }
+.note main .content article .note-page li .right .top .view-all a i {
+  margin-right: 3px;
+}
+.note main .content article .note-page li .right .top .view-all a:hover,
+.note main .content article .note-page li .right .top .view-all a:hover i::before {
+  color: #333;
+  
+}
+
+.note main .content article .note-page li .right .bottom p {
+  color: #999;
+  font-size: 14px;
+}
+
 
 
 
@@ -1463,17 +1562,24 @@ footer .copyright p {
   margin-top: 0;
 }
 .archive main .content article .archive-box li {
-  padding: 5px 0 5px 15px;
+  padding: 10px 0;
   /* border-left: 1px solid #e2e2e2; */
+  display: flex;
+  align-items: start;
 }
 .archive main .content article .archive-box li:last-child {
   padding-bottom: 25px;
 }
 
+.archive main .content article .archive-box li span {
+  font-size: 15px;
+  color: #333;
+  white-space: nowrap;
+}
 .archive main .content article .archive-box li a::before {
   content: '\e6b4';
   font-family: 'iconfont';
-  margin-right: 3px;
+  padding-right: 3px;
 }
 .archive main .content article .archive-box li a,
 .archive main .content article .archive-box li a::before {
@@ -1483,7 +1589,8 @@ footer .copyright p {
 .archive main .content article .archive-box li a:hover,
 .archive main .content article .archive-box li a:hover::before {
   color: #333;
-  font-size: 16px;
+  font-size: 15px;
+  text-decoration: underline;
 }
 
 .search main .content article h3 {
@@ -1961,6 +2068,9 @@ footer .copyright p {
     color: #999;
     font-size: 14px;
   }
+  .archive main .content article .archive-box li span {
+    font-size: 14px;
+  }
   .archive main .content article .archive-box li a:hover,
   .archive main .content article .archive-box li a:hover::before {
     color: #333;
@@ -2011,6 +2121,13 @@ footer .copyright p {
   .single main .content article .post-cover .post-info .more .cate a::before,
   .single main .content article .post-cover .post-info .more .tag a::before {
     font-size: 14px;
+  }
+
+  .note main .content article .note-page li {
+    margin-bottom: 20px;
+  }
+  .note main .content article .note-page li .right {
+    padding: 10px;
   }
 }
 
@@ -2065,6 +2182,20 @@ footer .copyright p {
 }
 
 
+
+
+
+
+@media screen and (max-width: 400px) and (max-height: 600px) {
+  header .logo {
+    display: none;
+  }
+}
+@media screen and (min-width: 400px) and (max-height: 700px) {
+  header .logo {
+    display: none;
+  }
+}
 
 
 
