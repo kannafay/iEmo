@@ -93,7 +93,6 @@ function default_post_cover() {
   } else {
     return fileUri().'/assets/images/cover-post.jpg';
   }
-  
 }
 
 
@@ -297,3 +296,12 @@ add_filter('pre_get_posts', function($wp_query){
   }
   return $wp_query;
 });
+
+
+
+// 登出账户后重定向
+add_action('wp_logout','redirect_after_logout');
+function redirect_after_logout(){
+  wp_safe_redirect(home_url());
+  exit();
+}

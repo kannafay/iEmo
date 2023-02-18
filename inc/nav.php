@@ -20,7 +20,7 @@
                 <li><a href="<?php echo wp_logout_url(); ?>" class="logout"><i class="iconfont icon-power"></i> 登出账户</a></li>
               <?php } ?>
             <?php } else { ?>
-              <li><a href="<?php echo wp_login_url(get_permalink()); ?>"><i class="iconfont icon-log-in"></i> 登录账户</a></li>
+              <li><a href="<?php echo wp_login_url(home_url(add_query_arg(array()))); ?>"><i class="iconfont icon-log-in"></i> 登录账户</a></li>
             <?php }
           ?>
         </ul>
