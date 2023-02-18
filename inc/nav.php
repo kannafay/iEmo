@@ -15,9 +15,12 @@
                 <li><a href="<?php bloginfo('url') ?>/wp-admin/post-new.php?post_type=note"><i class="iconfont icon-edit-"></i> 发布新说说</a></li>
                 <li><a href="<?php bloginfo('url') ?>/wp-admin"><i class="iconfont icon-settings"></i> 后台设置</a></li>
                 <li><a href="<?php echo wp_logout_url(); ?>" class="logout"><i class="iconfont icon-power"></i> 登出账户</a></li>
+              <?php } else { ?>
+                <li><a href="<?php bloginfo('url') ?>/wp-admin"><i class="iconfont icon-settings"></i> 个人资料</a></li>
+                <li><a href="<?php echo wp_logout_url(); ?>" class="logout"><i class="iconfont icon-power"></i> 登出账户</a></li>
               <?php } ?>
             <?php } else { ?>
-              <li><a href="<?php bloginfo('url') ?>/wp-admin"><i class="iconfont icon-log-in"></i> 登录账户</a></li>
+              <li><a href="<?php echo wp_login_url(get_permalink()); ?>"><i class="iconfont icon-log-in"></i> 登录账户</a></li>
             <?php }
           ?>
         </ul>

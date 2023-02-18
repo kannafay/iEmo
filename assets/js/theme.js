@@ -90,3 +90,27 @@ if(menuItemA) {
     }
   })
 }
+
+
+
+
+
+// Home new or sticky
+$('.home .recommend-bar ul .slider').width($('.home .recommend-bar ul li a').outerWidth());
+
+$('.home .recommend-bar ul li a').each(function(i) {
+  $(this).attr('index',i);
+  $(this).click(function() {
+    $('.home .recommend-bar ul li a').removeClass('active');
+    $(this).addClass('active');
+    let width = $(this).outerWidth();
+    let position = $(this).position();
+    $(".home .recommend-bar ul .slider").css({
+      width: width,
+      left: position.left,
+    });
+    console.log(position.left);
+    $('.home .post-part').removeClass('active');
+    $($('.home .post-part')[$(this).attr('index')]).addClass('active');
+  })
+})

@@ -6,7 +6,7 @@
       </div>
       <div class="author-info">
         <div class="avatar">
-        <?php echo get_avatar(1, '400'); ?>
+          <?php echo get_avatar(1, '400'); ?>
         </div>
         <div class="name"><?php echo get_user_role(1)->display_name; ?></div>
         <?php  ?>
@@ -54,7 +54,9 @@
           if (have_posts()) : while (have_posts()) : the_post(); 
         ?>
           <li>
-            <div class="notes-content"><?php the_content(); ?></div>
+            <div class="notes-content">
+              <?php the_content(); ?>
+            </div>
             
             <div class="notes-info">
               <div class="time">

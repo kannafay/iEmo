@@ -14,6 +14,7 @@
   padding: 0;
   box-sizing: border-box;
   font-size: sans-serif;
+  -webkit-tap-highlight-color: rgba(0 0 0 / 0);
 }
 html {
   background-color: #fff;
@@ -67,7 +68,6 @@ a {
 *::after {
   transition: all var(--tr3) !important;
 }
-
 
 
 
@@ -130,7 +130,7 @@ header .menu ul li a > * {
   font-size: 24px;
 }
 header .menu ul li {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 header .menu ul li:last-child {
   margin-bottom: 0;
@@ -380,6 +380,9 @@ main .content article {
   padding: 25px;
   position: relative;
 }
+main .content article .bottom {
+  position: relative;
+}
 
 
 
@@ -399,11 +402,8 @@ main .content article {
 /* scroll bar ( articel / aside ) */
 main .content article,
 main .content aside .aside-content {
+  overflow: auto;
   overflow: overlay;
-}
-main .content article,
-main .content aside {
-    
 }
 main .content article::-webkit-scrollbar,
 main .content aside .aside-content::-webkit-scrollbar {
@@ -505,11 +505,20 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
 }
 .home main .content article .bottom .recommend-bar ul {
   display: flex;
-  
+  position: relative;
+}
+.home main .content article .bottom .recommend-bar ul .slider {
+  height: 100%;
+  border-radius: 6px;
+  background-color: #333;
+  position: absolute;
+  left: 0;
+  z-index: 1;
 }
 .home main .content article .bottom .recommend-bar ul li {
   margin-right: 20px;
-  white-space:nowrap
+  white-space: nowrap;
+  z-index: 2;
 }
 .home main .content article .bottom .recommend-bar ul li:last-child {
   margin-right: 0;
@@ -520,16 +529,24 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   padding: 6px 15px;
   border-radius: 6px;
   font-size: 14px;
-    
+  cursor: pointer;
 }
 .home main .content article .bottom .recommend-bar ul li a:hover {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
 }
 
-.home main .content article .bottom .recommend-bar ul li a.current {
-  background-color: #333;
+.home main .content article .bottom .recommend-bar ul li a.active {
+  /* background-color: #333; */
   color: #fff;
 }
+
+.home main .content article .bottom .post-part {
+  display: none;
+}
+.home main .content article .bottom .post-part.active {
+  display: block;
+}
+
 
 .home main .content article .bottom .post-part ul li {
   display: flex;
@@ -880,12 +897,12 @@ main .content aside .notes-box {
   padding: 0 25px;
   margin-bottom: 25px;
 }
-main .content aside .notes-box h2 {
+main .content aside .notes-box > h2 {
   font-size: 17px;
   color: #333;
   margin-bottom: 15px;
 }
-main .content aside .notes-box h2 span {
+main .content aside .notes-box > h2 span {
   font-weight: 400;
   font-size: 12px;
   color: #999;
@@ -924,7 +941,7 @@ main .content aside .notes-box ul li .view-detail a {
   color: #999;
   background-color: rgba(0 0 0 / .05);
   padding: 5px 0;
-  border-radius: 5px;
+  border-radius: 6px;
   margin-top: 10px;
 }
 main .content aside .notes-box ul li .view-detail a:hover {
@@ -979,90 +996,90 @@ main .content aside .notes-box ul li .notes-info .new span {
 
 
 /* note text style */
-main .content aside .notes-box ul li .notes-content * {
+main .content .notes-content * {
   margin-bottom: 5px;
   font-size: 13px;
   color: #333;
   line-height: 1.5;
 }
-main .content aside .notes-box ul li .notes-content *:last-child {
+main .content .notes-content *:last-child {
   margin-bottom: 0;
 }
-main .content aside .notes-box ul li .notes-content a {
+main .content .notes-content a {
   color: var(--theme-bak);
   text-decoration: underline;
 }
-main .content aside .notes-box ul li .notes-content h1 {
+main .content .notes-content h1 {
   font-size: 17px;
   color: #333;
   position: relative;
 }
-main .content aside .notes-box ul li .notes-content h2 {
+main .content .notes-content h2 {
   font-size: 16px;
   color: #333;
   position: relative;
 }
-main .content aside .notes-box ul li .notes-content h3 {
+main .content .notes-content h3 {
   font-size: 15px;
   color: #333;
   position: relative;
 }
-main .content aside .notes-box ul li .notes-content h4 {
+main .content .notes-content h4 {
   font-size: 14px;
   color: #333;
   position: relative;
 }
-main .content aside .notes-box ul li .notes-content h5 {
+main .content .notes-content h5 {
   font-size: 13px;
   color: #333;
   position: relative;
 }
-main .content aside .notes-box ul li .notes-content h6 {
+main .content .notes-content h6 {
   font-size: 12px;
   color: #333;
   position: relative;
 }
-main .content aside .notes-box ul li .notes-content pre {
+main .content .notes-content pre {
   display: inline-block;
   /* width: 100%; */
   white-space: pre-wrap;
   word-wrap: break-word;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: var(--code-bgc);
   color: var(--theme-bak);
   font-size: 12px;
-  padding: 2px 6px;
+  padding: 2px 8px;
   font-family: 'PingFang SC','Consolas','Courier New';
 }
-main .content aside .notes-box ul li .notes-content img,
-main .content aside .notes-box ul li .notes-content video {
-  width: 100%;
+main .content .notes-content img,
+main .content .notes-content video {
+  max-width: 100%;
   height: auto;
   border-radius: 8px;
   margin-bottom: 0;
   vertical-align: middle;
 }
-main .content aside .notes-box ul li .notes-content .wp-video {
+main .content .notes-content .wp-video {
   width: 100% !important;
 }
 
-main .content aside .notes-box ul li .notes-content ul, 
-main .content aside .notes-box ul li .notes-content ol {
+main .content .notes-content ul, 
+main .content .notes-content ol {
   margin-left: 30px;
 }
 
-main .content aside .notes-box ul li .notes-content ul li, 
-main .content aside .notes-box ul li .notes-content ol li {
+main .content .notes-content ul li, 
+main .content .notes-content ol li {
   /* margin-left: 10px; */
   width: calc(100% - 30px);
   word-break: break-all;
   word-wrap: break-word;
   padding: 0;
 }
-main .content aside .notes-box ul li .notes-content ul li {
+main .content .notes-content ul li {
   list-style: disc;
 }
-main .content aside .notes-box ul li .notes-content ol li {
+main .content .notes-content ol li {
   list-style: auto;
 }
 
@@ -1112,72 +1129,74 @@ main .content aside .notes-box ul li .notes-content ol li {
 
 /* note page */
 .note main .content article .note-page li {
-  display: flex;
-  align-items: start;
+  border-radius: 8px;
+  background-color: #f5f5f5;
   margin-bottom: 25px;
+  padding: 15px;
+  overflow: hidden;
 }
 .note main .content article .note-page li:last-child {
   margin-bottom: 0;
 }
-.note main .content article .note-page li .left {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-}
-.note main .content article .note-page li .left img {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.note main .content article .note-page li .right {
-  width: calc(100% - 60px);
-  height: auto;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  padding: 15px;
-}
-.note main .content article .note-page li .right .top {
-  display: flex;
-  align-items: start  ;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-.note main .content article .note-page li .right .top .author-name {
-  font-weight: 700;
-  font-size: 15px;
-  color: #333;
-}
-.note main .content article .note-page li .right .top .view-all a {
-  background-color: rgba(0 0 0 / .05);
-  border-radius: 5px;
-  padding: 5px 12px;
+.note main .content article .note-page li .top {
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 }
-.note main .content article .note-page li .right .top .view-all a,
-.note main .content article .note-page li .right .top .view-all a i {
+.note main .content article .note-page li .top .left {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+.note main .content article .note-page li .top .left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  vertical-align: middle;
+}
+.note main .content article .note-page li .top .right {
+  width: calc(100% - 65px);
+}
+.note main .content article .note-page li .top .right .note-author {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 3px;
+}
+.note main .content article .note-page li .top .right .note-date {
+  font-size: 13px;
+  font-weight: 400px;
+  color: #999;
+}
+.note main .content article .note-page li .center {
+  margin-bottom: 15px;
+}
+
+.note main .content article .note-page li .bottom {
+  display: flex;
+  justify-content: right;
+}
+.note main .content article .note-page li .bottom a {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+.note main .content article .note-page li .bottom a i {
+  margin-right: 3px;
+}
+.note main .content article .note-page li .bottom a,
+.note main .content article .note-page li .bottom a i::before {
+  font-weight: 400;
   font-size: 13px;
   color: #999;
 }
-.note main .content article .note-page li .right .top .view-all a i {
-  margin-right: 3px;
-}
-.note main .content article .note-page li .right .top .view-all a:hover,
-.note main .content article .note-page li .right .top .view-all a:hover i::before {
+
+.note main .content article .note-page li .bottom a:hover,
+.note main .content article .note-page li .bottom a:hover i::before {
   color: #333;
-  
+  background-color: rgba(0 0 0 / .05);
 }
-
-.note main .content article .note-page li .right .bottom p {
-  color: #999;
-  font-size: 14px;
-}
-
-
-
-
 
 
 
@@ -1386,23 +1405,25 @@ footer .copyright p {
 
 
 
-/* category / tag / search */
+/* page h2 */
+.home main .content article > h2,
 .category main .content article h2,
 .tag main .content article h2,
 .archive main .content article h2,
 .search main .content article h2,
-.note main .content article h2,
+.note main .content article > h2,
 .link main .content article > h2 {
   font-size: 32px;
   color: #333;
   margin-bottom: 25px;
 }
 
+.home main .content article > h2 span,
 .category main .content article h2 span,
 .tag main .content article h2 span,
 .archive main .content article h2 span,
 .search main .content article h2 span,
-.note main .content article h2 span,
+.note main .content article > h2 span,
 .link main .content article > h2 span {
   font-weight: 400;
   font-size: 14px;
@@ -1968,9 +1989,6 @@ footer .copyright p {
     height: 100px;
   }
   
-  .home main .content article .bottom .recommend-bar ul li a {
-    padding: 5px 12px;
-  }
   .home main .content article .bottom .post-part ul li {
     margin-bottom: 20px;
   }
@@ -2015,23 +2033,26 @@ footer .copyright p {
     transform: translateX(5px);
   }
 
-  /* category / tag / search */
+  /* page h2 */
+  .home main .content article > h2,
   .category main .content article h2,
   .tag main .content article h2,
   .archive main .content article h2,
   .search main .content article h2,
-  .note main .content article h2,
+  .note main .content article > h2,
   .link main .content article > h2 {
     font-size: 26px;
   }
+  .home main .content article > h2 span,
   .category main .content article h2 span,
   .tag main .content article h2 span,
   .archive main .content article h2 span,
   .search main .content article h2 span,
-  .note main .content article h2 span,
+  .note main .content article > h2 span,
   .link main .content article > h2 span {
     font-size: 13px;
   }
+
   .category main .content article .cate-box ul, 
   .tag main .content article .tag-box ul, 
   .search main .content article .search-box ul {
@@ -2126,8 +2147,45 @@ footer .copyright p {
   .note main .content article .note-page li {
     margin-bottom: 20px;
   }
-  .note main .content article .note-page li .right {
-    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 大于500 */
+@media screen and (min-width: 500px) {
+  main article .note-page .notes-content * {
+    font-size: 15px;
+  }
+  main article .note-page .notes-content h1 {
+    font-size: 19px;
+  }
+  main article .note-page .notes-content h2 {
+    font-size: 18px;
+  }
+  main article .note-page .notes-content h3 {
+    font-size: 17px;
+  }
+  main article .note-page .notes-content h4 {
+    font-size: 16px;
+  }
+  main article .note-page .notes-content h5 {
+    font-size: 15px;
+  }
+  main article .note-page .notes-content h6 {
+    font-size: 15px;
+    font-weight: 400;
+  }
+  main article .note-page .notes-content pre {
+    font-size: 14px;
   }
 }
 
@@ -2160,7 +2218,7 @@ footer .copyright p {
   }
 
   header .menu ul li {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   header .menu ul li a {
     width: 40px;
@@ -2177,6 +2235,10 @@ footer .copyright p {
   }
   main .content aside {
     width: calc(100% - 79px);
+  }
+
+  footer {
+    padding: 10px 25px;
   }
 
 }

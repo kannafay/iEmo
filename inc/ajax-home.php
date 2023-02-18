@@ -1,56 +1,3 @@
-<script src="<?php echo fileUri(); ?>/assets/js/color-thief.min.js"></script>
-<script>
-  function titleColor() {
-    const colorThief = new ColorThief();
-    const postItem = document.querySelectorAll('.home main .content article .bottom .post-part ul li');
-    let colorBox = [];
-    let imgs = [];
-    let title = [];
-    let more = [];
-    $(postItem).each(function(i) {
-      imgs[i] = postItem[i].querySelector('.left a.cover img');
-      title[i] =  postItem[i].querySelector('.right .text .title a');
-      more[i] = postItem[i].querySelector('.right .post-info .read-more a');
-      if(imgs[i].complete) {
-        colorBox[i] = colorThief.getColor(imgs[i]);
-        // title
-        $(title[i]).mouseenter(function() {
-          $(this).css('box-shadow',`inset 0 -0.55em rgba(${colorBox[i][0]}, ${colorBox[i][1]}, ${colorBox[i][2]}, .3)`);
-        })
-        $(title[i]).mouseleave(function() {
-          $(this).css('box-shadow',`none`);
-        })
-        // more
-        $(more[i]).mouseenter(function() {
-            $(this).css('background-color',`rgba(${colorBox[i][0]}, ${colorBox[i][1]}, ${colorBox[i][2]}, .1)`);
-          })
-          $(more[i]).mouseleave(function() {
-            $(this).css('background-color',`transparent`);
-          })
-      } else {
-        imgs[i].addEventListener('load', function () {
-          colorBox[i] = colorThief.getColor(imgs[i]);
-          // title
-          $(title[i]).mouseenter(function() {
-            $(this).css('box-shadow',`inset 0 -0.55em rgba(${colorBox[i][0]}, ${colorBox[i][1]}, ${colorBox[i][2]}, .3)`);
-          })
-          $(title[i]).mouseleave(function() {
-            $(this).css('box-shadow',`none`);
-          })
-          // more
-          $(more[i]).mouseenter(function() {
-            $(this).css('background-color',`rgba(${colorBox[i][0]}, ${colorBox[i][1]}, ${colorBox[i][2]}, .1)`);
-          })
-          $(more[i]).mouseleave(function() {
-            $(this).css('background-color',`transparent`);
-          })
-        })
-      }
-    })
-  }
-  titleColor();
-</script>
-
 <?php 
   if(get_next_posts_link()) { ?>
     <div id="pagination-home" class="pagination-post">
@@ -77,8 +24,8 @@
           },
           success: function(data) { //请求成功
             $this.removeClass('loading').html('<i class="iconfont icon-activity"></i> 加载更多文章'); //移除loading属性
-            var $res = $(data).find("article .bottom .post-part ul li"); //从数据中挑出文章数据，请根据实际情况更改
-            $('article .bottom .post-part ul').append($res.fadeOut(0).fadeIn(300)); //将数据加载加进posts-loop的标签中。
+            var $res = $(data).find("article .bottom .new ul li"); //从数据中挑出文章数据，请根据实际情况更改
+            $('article .bottom .new ul').append($res.fadeOut(0).fadeIn(300)); //将数据加载加进posts-loop的标签中。
             var newhref = $(data).find("#pagination-home a").attr("href"); //找出新的下一页链接
             if (newhref != undefined) {
               $("#pagination-home a").attr("href", newhref);
