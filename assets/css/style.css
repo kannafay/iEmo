@@ -545,6 +545,7 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
 }
 .home main .content article .bottom .post-part.active {
   display: block;
+  animation: FadeIn-left .5s forwards;
 }
 
 
@@ -2259,6 +2260,27 @@ footer .copyright p {
   }
 }
 
+
+
+
+
+
+
+
+article {
+  animation: FadeIn-left .5s forwards;
+}
+
+@keyframes FadeIn-left {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
 
 

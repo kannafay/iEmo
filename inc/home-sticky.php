@@ -1,10 +1,11 @@
-<div class="post-part">
+<div class="post-part sticky">
   <ul>
     <?php 
       $sticky = get_option( 'sticky_posts' );
       $args = array(
       	'ignore_sticky_posts' => 1,
       	'post__in' => $sticky,
+        'showposts' => -1,
       );
       query_posts(array_merge($args, $wp_query->query)); 
       if ( have_posts() ) : while ( have_posts() ) : the_post(); 
