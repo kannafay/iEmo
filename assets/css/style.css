@@ -532,6 +532,7 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
+  user-select: none;
 }
 .home main .content article .bottom .recommend-bar ul li a:hover {
   border: 1px solid #333;
