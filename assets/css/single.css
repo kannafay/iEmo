@@ -148,13 +148,29 @@
   font-family: 'Consolas','Courier New','monospace';
   border-radius: 8px;
   overflow: auto;
+  padding: 15px;
+  background-color: #1e1e1e;
 }
+
 .single .post-content pre code {
   font-size: 14px;
   line-height: 1.5;
-  color: #333;
+  color: #fff;
   background-color: transparent;
 }
+
+
+.single .post-content pre::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.single .post-content pre:hover::-webkit-scrollbar-thumb {
+  background: var(--scroll);
+  border-radius: 6px;
+}
+
+
+
 
 
 
@@ -325,6 +341,22 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 500px) {
+  .single .post-content pre {
+    max-height: 256px;
+  }
+}
 
 
 

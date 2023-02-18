@@ -137,7 +137,7 @@ class Simple_Local_Avatars {
 
 		if ( 'profile.php' === $pagenow ) {
 			add_filter( 'media_view_strings', function ( $strings ) {
-				$strings['skipCropping'] = esc_html__( 'Default Crop', 'simple-local-avatars' );
+				$strings['skipCropping'] = esc_html__( '默认裁剪', 'simple-local-avatars' );
 
 				return $strings;
 			}, 10, 1 );
@@ -782,7 +782,7 @@ class Simple_Local_Avatars {
 				'ajaxurl'                         => admin_url( 'admin-ajax.php' ),
 				'user_id'                         => $user_id,
 				'insertIntoPost'                  => __( 'Set as avatar', 'simple-local-avatars' ),
-				'selectCrop'                      => __( 'Select avatar and Crop', 'simple-local-avatars' ),
+				'selectCrop'                      => __( '选择头像并裁剪', 'simple-local-avatars' ),
 				'deleteNonce'                     => $this->remove_nonce,
 				'cacheNonce'                      => wp_create_nonce( 'sla_clear_cache_nonce' ),
 				'mediaNonce'                      => wp_create_nonce( 'assign_simple_local_avatar_nonce' ),
@@ -921,10 +921,10 @@ class Simple_Local_Avatars {
 							<?php } ?>
 							<p>
 								<?php if ( current_user_can( 'upload_files' ) && did_action( 'wp_enqueue_media' ) ) : ?>
-									<a href="#" class="button hide-if-no-js" id="simple-local-avatar-media"><?php esc_html_e( 'Choose from Media Library', 'simple-local-avatars' ); ?></a> &nbsp;
+									<a href="#" class="button hide-if-no-js" id="simple-local-avatar-media"><?php esc_html_e( '从媒体库中选择', 'simple-local-avatars' ); ?></a> &nbsp;
 								<?php endif; ?>
 								<a href="<?php echo esc_url( $remove_url ); ?>" class="button item-delete submitdelete deletion" id="simple-local-avatar-remove" <?php echo empty( $profileuser->simple_local_avatar ) ? ' style="display:none;"' : ''; ?>>
-									<?php esc_html_e( 'Delete local avatar', 'simple-local-avatars' ); ?>
+									<?php esc_html_e( '删除本地头像', 'simple-local-avatars' ); ?>
 								</a>
 							</p>
 							<?php
@@ -952,7 +952,7 @@ class Simple_Local_Avatars {
 								echo "\n\t<label><input type='radio' name='simple_local_avatar_rating' value='" . esc_attr( $key ) . "' " . checked( $profileuser->simple_local_avatar_rating, $key, false ) . '/>' . esc_html( $rating ) . '</label><br />';
 							endforeach;
 							?>
-							<p class="description"><?php esc_html_e( 'If the local avatar is inappropriate for this site, Gravatar will be attempted.', 'simple-local-avatars' ); ?></p>
+							<p class="description"><?php esc_html_e( '如果本地头像不适合本网站，则会尝试Gravatar。', 'simple-local-avatars' ); ?></p>
 						</fieldset>
 					</td>
 				</tr>

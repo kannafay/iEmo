@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/css/single.css">
 <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/fancybox/fancybox.css">
+<link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/highlight/styles/vs2015.min.css">
 
 <?php get_head(); ?>
   <div class="container single">
@@ -65,7 +66,7 @@
         </style>
       `).appendTo('head');
     }
-    if(colors[0] > 150 && colors[1] > 150 && colors[2] > 150) {
+    if(colors[0] > 180 && colors[1] > 180 && colors[2] > 180) {
       changeColor();
       $(`
         <style>
@@ -101,3 +102,4 @@
 </script>
 
 <script src="<?php echo fileUri(); ?>/assets/static/fancybox/fancybox.umd.js"></script>
+<script src="<?php echo fileUri(); ?>/assets/static/highlight/highlight.min.js"></script>

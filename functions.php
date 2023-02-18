@@ -88,7 +88,12 @@ if(function_exists('add_theme_support')) {
 
 // 文章默认封面
 function default_post_cover() {
-  return fileUri().'/assets/images/cover-post.jpg';
+  if(get_option("iemo_cover_post")) {
+    return get_option("iemo_cover_post");
+  } else {
+    return fileUri().'/assets/images/cover-post.jpg';
+  }
+  
 }
 
 
@@ -117,6 +122,7 @@ function get_user_role($id) {
 
 // 头像
 require_once('plugins/simple-local-avatars/simple-local-avatars.php');
+
 if ( ! function_exists( 'dr_filter_get_avatar' ) ) {
   function dr_filter_get_avatar( $avatar ) {
       // 新 Gravatar 头像源，可自行修改
@@ -144,11 +150,11 @@ require_once('plugins/external-media-without-import/external-media-without-impor
 
 
 // 个人背景图片
-function user_profile( $userProfile ) {
-  $userProfile['bgi'] = '背景图片'; //增加
-  return $userProfile;
-}
-add_filter('user_contactmethods','user_profile');
+// function user_profile( $userProfile ) {
+//   $userProfile['bgi'] = '背景图片';
+//   return $userProfile;
+// }
+// add_filter('user_contactmethods','user_profile');
 
 
 
@@ -274,6 +280,7 @@ function ashu_add_pages() {
 		ashu_add_page('分类','category','template/template-cate.php');
 		ashu_add_page('标签','tag','template/template-tag.php');
 		ashu_add_page('归档','archive','template/template-archive.php');
+    ashu_add_page('说说','note','archive-note.php');
     ashu_add_page('链接','link','template/template-link.php');
 	}   
 }   
