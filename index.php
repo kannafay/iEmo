@@ -25,7 +25,7 @@
                           if (has_post_thumbnail()) {
                             the_post_thumbnail('large');
                           } else { ?>
-                            <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?recommend=<?php $i++; echo $i; ?>" alt="<?php the_title_attribute(); ?>" >
+                            <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?recommend=<?php $i++; echo $i; ?>" alt="" >
                           <?php }
                         ?>
                         <h2><?php the_title(); ?></h2>

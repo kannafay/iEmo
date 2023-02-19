@@ -1,7 +1,7 @@
 :root {
   --theme: #333;
-  --theme-op-2: rgba(255 255 255 / .2);
-  --post-cover: #808080;
+  --theme-op-3: rgba(255 255 255 / .3);
+  --post-cover: #00000000;
   --scroll: rgba(0 0 0 / .2);
   --menu-hover: #f5f5f5;
   --social-hover: #fff;
@@ -576,22 +576,19 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   border-radius: 8px;
   overflow: hidden;
 }
-.home main .content article .bottom .post-part ul li .left a.cover:hover ~ a[rel="category tag"],
-.home main .content article .bottom .post-part ul li .left a[rel="category tag"]:hover {
-  transform: translateX(10px);
-}
 .home main .content article .bottom .post-part ul li .left a.cover img {
   width: 100%;
   height: 100%;
   vertical-align: middle;
   object-fit: cover;
 }
-.home main .content article .bottom .post-part ul li .left a[rel="category tag"] {
+
+
+.home main .content article .bottom .post-part ul li .left .cate-view {
+  max-width: calc(100% - 20px);
   position: absolute;
   top: 10px;
   left: 0;
-  font-size: 14px;
-  color: #333;
   padding: 3px 10px;
   background-color: rgba(255 255 255 / .7);
   -webkit-backdrop-filter: blur(20px);
@@ -599,11 +596,23 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   border-radius: 4px;
   box-shadow: 0 0 10px rgb(0 0 0 / 5%);
   transform: translateX(-100%);
+  opacity: 0;
+  color: #999;
+  font-size: 14px;
 }
-.home main .content article .bottom .post-part ul li .left a[rel="category tag"]:hover {
-  background-color: #fff;
+.home main .content article .bottom .post-part ul li .left .cate-view a {
+  color: #333;
+  font-size: 14px;
 }
 
+.home main .content article .bottom .post-part ul li .left a.cover:hover ~ .cate-view,
+.home main .content article .bottom .post-part ul li .left .cate-view:hover {
+  transform: translateX(10px);
+  opacity: 1;
+}
+.home main .content article .bottom .post-part ul li .left .cate-view:hover {
+  background-color: #fff;
+}
 .home main .content article .bottom .post-part ul li .right {
   width: calc(100% - 280px);
   display: flex;
@@ -1364,7 +1373,7 @@ footer .copyright p {
   margin-right: 0;
 }
 .single main .content article .post-cover .post-info .more .cate a:hover {
-  background-color: var(--theme-op-2);
+  background-color: var(--theme-op-3);
   color: #fff;
 }
 .single main .content article .post-cover .post-info .more .cate a::before {
@@ -1388,7 +1397,7 @@ footer .copyright p {
   margin-right: 0;
 }
 .single main .content article .post-cover .post-info .more .tag a:hover {
-  background-color: var(--theme-op-2);
+  background-color: var(--theme-op-3);
   color: #fff;
 }
 .single main .content article .post-cover .post-info .more .tag a::before {
@@ -1845,10 +1854,9 @@ footer .copyright p {
     height: calc(100% - 70px);
     margin-top: 70px;
   }
-  .home main .content article .bottom .post-part ul li .left a[rel="category tag"],
-  .home main .content article .bottom .post-part ul li .left a.cover:hover ~ a[rel="category tag"],
-  .home main .content article .bottom .post-part ul li .left a[rel="category tag"]:hover {
+  .home main .content article .bottom .post-part ul li .left .cate-view {
     transform: translateX(10px);
+    opacity: 1;
   }
   main .content aside {
     height: calc(100% - 70px);
@@ -1915,7 +1923,8 @@ footer .copyright p {
   .no-more-post a i {
     font-size: 13px;
   }
-  .home main .content article .bottom .post-part ul li .left a[rel="category tag"] {
+  .home main .content article .bottom .post-part ul li .left .cate-view,
+  .home main .content article .bottom .post-part ul li .left .cate-view a {
     font-size: 13px;
   }
 
@@ -2028,15 +2037,19 @@ footer .copyright p {
   .home main .content article .bottom .post-part ul li .right .post-info .read-more {
     display: none;
   }
-  .home main .content article .bottom .post-part ul li .left a[rel="category tag"] {
+  .home main .content article .bottom .post-part ul li .left .cate-view {
     font-size: 12px;
     top: 5px;
-    padding: 2px 8px;
+    padding: 2px 6px;
   }
-  .home main .content article .bottom .post-part ul li .left a[rel="category tag"],
-  .home main .content article .bottom .post-part ul li .left a.cover:hover ~ a[rel="category tag"],
-  .home main .content article .bottom .post-part ul li .left a[rel="category tag"]:hover {
+  .home main .content article .bottom .post-part ul li .left .cate-view a {
+    font-size: 12px;
+  }
+  .home main .content article .bottom .post-part ul li .left .cate-view,
+  .home main .content article .bottom .post-part ul li .left .cate-view:hover,
+  .home main .content article .bottom .post-part ul li .left a.cover:hover ~ .cate-view {
     transform: translateX(5px);
+    max-width: calc(100% - 10px);
   }
 
   /* page h2 */
@@ -2337,6 +2350,25 @@ footer .copyright p {
   }
 }
 
+
+
+
+
+/* .nav,
+header,
+aside {
+  animation: FadeIn 1s forwards;
+}
+
+@keyframes FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+ */
 
 
 

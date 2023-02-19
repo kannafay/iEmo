@@ -15,12 +15,14 @@
               if (has_post_thumbnail()) {
                 the_post_thumbnail();
               } else { ?>
-                <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?post-new=<?php $new_i++; echo $new_i; ?>" alt="<?php the_title_attribute(); ?>" >
+                <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?post-new=<?php $new_i++; echo $new_i; ?>" alt="" >
               <?php }
             ?>
             <img id="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
           </a>
-          <?php echo the_category(' ', 'single'); ?>
+          <div class="cate-view">
+            <?php echo the_category(' <span>/</span> '); ?>
+          </div>
         </div>
         <div class="right">
           <div class="text">

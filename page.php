@@ -28,10 +28,6 @@
                   <i class="iconfont icon-clock"></i>
                   <span><?php echo get_the_date(); ?> <?php the_time(); ?></span>
                 </div>
-                <div class="cate">
-                  <?php echo the_category(' ', 'single') ?>
-                </div>
-                <?php if(get_the_tag_list()){ ?><div class="tag"><?php echo get_the_tag_list('',' ',''); ?></div><?php } ?>
               </div>
             </div>
           </div>
