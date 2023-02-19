@@ -2,20 +2,20 @@
 @$iemo_recommend_post = stripslashes($_POST["iemo_recommend_post"]);
 @$iemo_cover_author = stripslashes($_POST["iemo_cover_author"]);
 @$iemo_cover_post = stripslashes($_POST["iemo_cover_post"]);
-@$iemo_page_toggle = stripslashes($_POST["iemo_page_toggle"]);
 @$iemo_copyright = stripslashes($_POST["iemo_copyright"]);
 @$iemo_icp = stripslashes($_POST["iemo_icp"]);
 @$iemo_icp_gov = stripslashes($_POST["iemo_icp_gov"]);
+@$iemo_page_toggle = stripslashes($_POST["iemo_page_toggle"]);
 @$iemo_upyun = stripslashes($_POST["iemo_upyun"]);
 
 if(@stripslashes($_POST["iemo_option"])){
   update_option("iemo_recommend_post", $iemo_recommend_post);
   update_option("iemo_cover_author", $iemo_cover_author);
   update_option("iemo_cover_post", $iemo_cover_post);
-  update_option("iemo_page_toggle", $iemo_page_toggle);
   update_option("iemo_copyright", $iemo_copyright);
   update_option("iemo_icp", $iemo_icp);
   update_option("iemo_icp_gov", $iemo_icp_gov);
+  update_option("iemo_page_toggle", $iemo_page_toggle);
   update_option("iemo_upyun", $iemo_upyun);
 }
 ?>
@@ -68,20 +68,6 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="iemo_page_toggle">页面切换效果</label></th>
-          <td>
-            <select name="iemo_page_toggle" id="iemo_page_toggle">
-              <option value="" <?php echo get_option("iemo_page_toggle") == '' ? 'selected' : ''; ?>>禁用</option>
-              <option value="Left" <?php echo get_option("iemo_page_toggle") == 'Left' ? 'selected' : ""; ?>>从左往右</option>
-              <option value="Right" <?php echo get_option("iemo_page_toggle") == 'Right' ? 'selected' : ""; ?>>从右往左</option>
-              <option value="Top" <?php echo get_option("iemo_page_toggle") == 'Top' ? 'selected' : ""; ?>>从上往下</option>
-              <option value="Bottom" <?php echo get_option("iemo_page_toggle") == 'Bottom' ? 'selected' : ""; ?>>从下往上</option>
-              <option value="Enlarge" <?php echo get_option("iemo_page_toggle") == 'Enlarge' ? 'selected' : ""; ?>>放大效果</option>
-              <option value="Narrow" <?php echo get_option("iemo_page_toggle") == 'Narrow' ? 'selected' : ""; ?>>缩小效果</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
           <th scope="row"><label for="iemo_copyright">版权号</label></th>
           <td>
             <input name="iemo_copyright" type="number" value="<?php echo get_option("iemo_copyright"); ?>" class="regular-text">
@@ -104,10 +90,24 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="iemo_upyun">又拍云联盟</label></th>
+          <th scope="row"><label for="iemo_page_toggle">页面切换效果</label></th>
           <td>
-            <input name="iemo_upyun" type="radio" value="true" <?php echo get_option("iemo_upyun") == 'true' ? 'checked' : ""; ?> class="regular-text" > 开启
-            <input name="iemo_upyun" type="radio" value="" <?php echo get_option("iemo_upyun") == '' ? 'checked' : ""; ?> class="regular-text" <?php echo get_option("iemo_upyun"); ?>> 关闭
+            <select name="iemo_page_toggle" id="iemo_page_toggle">
+              <option value="" <?php echo get_option("iemo_page_toggle") == '' ? 'selected' : ''; ?>>禁用</option>
+              <option value="Left" <?php echo get_option("iemo_page_toggle") == 'Left' ? 'selected' : ""; ?>>从左往右</option>
+              <option value="Right" <?php echo get_option("iemo_page_toggle") == 'Right' ? 'selected' : ""; ?>>从右往左</option>
+              <option value="Top" <?php echo get_option("iemo_page_toggle") == 'Top' ? 'selected' : ""; ?>>从上往下</option>
+              <option value="Bottom" <?php echo get_option("iemo_page_toggle") == 'Bottom' ? 'selected' : ""; ?>>从下往上</option>
+              <option value="Enlarge" <?php echo get_option("iemo_page_toggle") == 'Enlarge' ? 'selected' : ""; ?>>放大效果</option>
+              <option value="Narrow" <?php echo get_option("iemo_page_toggle") == 'Narrow' ? 'selected' : ""; ?>>缩小效果</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">又拍云联盟:<?php echo get_option("iemo_upyun"); ?></th>
+          <td>
+            <fieldset><legend class="screen-reader-text"><span>又拍云联盟</span></legend>
+            <label><input type='checkbox' name='iemo_upyun' value='true' <?php echo get_option("iemo_upyun") == 'true' ? 'checked' : ""; ?>/> <span class="date-time-text format-i18n">开启</span></label>
           </td>
         </tr>
       </tbody>

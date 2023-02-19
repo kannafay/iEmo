@@ -18,8 +18,9 @@
                   <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>" alt="<?php the_title_attribute(); ?>">
                 <?php }
               ?>
-              <script>$('.single main .content article .post-cover .cover img').attr('crossorigin','anonymous');</script>
+              <img id="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
             </div>
+            <script>$('.single .post-cover .cover #color-thief').attr('src',$('.single .post-cover .cover img:first').attr('src'));</script>
             <div class="post-info">
               <div class="title" title="<?php the_title(); ?>"><?php the_title(); ?></div>
               <div class="more">
@@ -46,7 +47,7 @@
 <script src="<?php echo fileUri(); ?>/assets/js/color-thief.min.js"></script>
 <script>
   const colorThief = new ColorThief();
-  const img = document.querySelector('.single main .content article .post-cover .cover img');
+  const img = document.querySelector('.single main .content article .post-cover .cover #color-thief');
   const getColorFun=()=>{
     let colors = colorThief.getColor(img);
     // console.log(`rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`);
@@ -90,7 +91,7 @@
   }
 </script>
 <script>
-  let postImg = document.querySelectorAll('.post-content .wp-block-image img');
+  let postImg = document.querySelectorAll('.post-content img');
   if(postImg) {
     let postImgUrl = [];
     $(postImg).each(function(i) {

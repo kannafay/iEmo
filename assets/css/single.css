@@ -36,6 +36,10 @@
   word-wrap: break-word;
 }
 
+.single .post-content p img {
+  margin-top: 20px;
+}
+
 
 /* a标签 */
 .single .post-content a {
@@ -150,6 +154,7 @@
   overflow: auto;
   padding: 15px;
   background-color: #1e1e1e;
+  color: #fff;
 }
 
 .single .post-content pre code {

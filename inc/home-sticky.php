@@ -20,8 +20,8 @@
                 <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>" alt="<?php the_title_attribute(); ?>" >
               <?php }
             ?>
+            <img id="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
           </a>
-          <script>$('.home main .content article .bottom .post-part ul li .left a.cover img').attr('crossorigin','anonymous');</script>
           <?php echo the_category(' ', 'single'); ?>
         </div>
         <div class="right">

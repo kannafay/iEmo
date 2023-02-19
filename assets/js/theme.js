@@ -47,7 +47,7 @@ if(user_set_btn) {
 
 
 
-// Scrolling and hide menu
+// Scrolling with hide menu and search
 $('article, aside .aside-content').scroll(function() {
   $(user_set_menu).removeClass('active');
   $('.search-m').removeClass('active');
