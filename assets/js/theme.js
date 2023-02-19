@@ -86,7 +86,7 @@ if(menuItemA) {
       $(menuItemA[i]).attr('title','');
       $('<span class="menu-item-title"></span>').text(menuItemTitle[i]).appendTo(menuItemA[i]);
     } else {
-      console.log(false);
+      // console.log(false);
     }
   })
 }
@@ -109,7 +109,7 @@ $('.home .recommend-bar ul li a').each(function(i) {
       width: width,
       left: position.left,
     });
-    console.log(position.left);
+    // console.log(position.left);
     $('.home .post-part').removeClass('active');
     $($('.home .post-part')[$(this).attr('index')]).addClass('active');
   })
