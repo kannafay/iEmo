@@ -29,7 +29,7 @@
                     </div>
                   </div>
                   <div class="bottom">
-                    <a href="<?php the_permalink(); ?>"><i class="iconfont icon-message-square"></i>查看全文</a>
+                    <a href="<?php the_permalink(); ?>"><i class="iconfont icon-message-square"></i>查看原文</a>
                   </div>
                 </li>
               <?php 
