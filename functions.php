@@ -143,6 +143,19 @@ if ( ! function_exists( 'dr_filter_get_avatar' ) ) {
 
 
 
+
+
+// 获取头像
+function get_avatar_author() {
+  if(get_option("iemo_avatar_author")) {
+    echo '<img src="'.get_option("iemo_avatar_author").'">';
+  } else {
+    echo get_avatar(1, '400');
+  }
+}
+
+
+
 // 添加媒体外链
 require_once('plugins/external-media-without-import/external-media-without-import.php');
 

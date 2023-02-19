@@ -1,5 +1,6 @@
 <?php
 @$iemo_recommend_post = stripslashes($_POST["iemo_recommend_post"]);
+@$iemo_avatar_author = stripslashes($_POST["iemo_avatar_author"]);
 @$iemo_cover_author = stripslashes($_POST["iemo_cover_author"]);
 @$iemo_cover_post = stripslashes($_POST["iemo_cover_post"]);
 @$iemo_copyright = stripslashes($_POST["iemo_copyright"]);
@@ -10,6 +11,7 @@
 
 if(@stripslashes($_POST["iemo_option"])){
   update_option("iemo_recommend_post", $iemo_recommend_post);
+  update_option("iemo_avatar_author", $iemo_avatar_author);
   update_option("iemo_cover_author", $iemo_cover_author);
   update_option("iemo_cover_post", $iemo_cover_post);
   update_option("iemo_copyright", $iemo_copyright);
@@ -72,19 +74,27 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
+          <th scope="row"><label for="iemo_avatar_author">个人头像</label></th>
+          <td>
+            <textarea name="iemo_avatar_author" rows="3" class="regular-text"><?php echo get_option("iemo_avatar_author"); ?></textarea> <br/>
+            <p class="description">填写图片URL，显示在侧边栏</p>
+            <p class="description">默认：<a href="https://cravatar.cn" target="_blank">Cravatar头像</a></p>
+          </td>
+        </tr>
+        <tr>
           <th scope="row"><label for="iemo_cover_author">个人背景</label></th>
           <td>
             <textarea name="iemo_cover_author" rows="3" class="regular-text"><?php echo get_option("iemo_cover_author"); ?></textarea> <br/>
-            <p class="description">填写图片URL即可，显示在侧边栏</p>
-            <p class="description">默认：主题目录/assets/images/cover-author.jpg</p>
+            <p class="description">填写图片URL，显示在侧边栏</p>
+            <p class="description">默认：<a href="<?php bloginfo('template_url'); ?>/assets/images/cover-author.jpg" target="_blank">主题目录/assets/images/cover-author.jpg</a></p>
           </td>
         </tr>
         <tr>
           <th scope="row"><label for="iemo_cover_post">文章默认封面</label></th>
           <td>
             <textarea name="iemo_cover_post" rows="3" class="regular-text"><?php echo get_option("iemo_cover_post"); ?></textarea> <br/>
-            <p class="description">填写图片URL即可，文章没有设置封面时顶替</p>
-            <p class="description">默认：主题目录/assets/images/cover-post.jpg</p>
+            <p class="description">填写图片URL，文章没有设置封面时顶替</p>
+            <p class="description">默认：<a href="<?php bloginfo('template_url'); ?>/assets/images/cover-post.jpg" target="_blank">主题目录/assets/images/cover-post.jpg</a></p>
           </td>
         </tr>
         <tr>

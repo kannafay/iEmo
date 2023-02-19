@@ -7,7 +7,7 @@
       </div>
       <div class="author-info">
         <div class="avatar">
-          <?php echo get_avatar(1, '400'); ?>
+          <?php get_avatar_author(); ?>
         </div>
         <div class="name"><?php echo get_user_role(1)->display_name; ?></div>
         <?php  ?>
