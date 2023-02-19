@@ -20,6 +20,8 @@ if(@stripslashes($_POST["iemo_option"])){
 }
 ?>
 
+<link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/iconfont/iconfont.css">
+
 <div class="wrap">
   <h1>iEmo主题设置</h1>
   <form method="post" action="" novalidate="novalidate">
@@ -28,13 +30,31 @@ if(@stripslashes($_POST["iemo_option"])){
         <tr>
           <th scope="row"><label for="">站点图标</label></th>
           <td>
-            <p class="description"><a href="<?php site_url(); ?>/wp-admin/customize.php">点我前往设置</a>（外观 -> 自定义 -> 站点身份 -> 站点图标）</p>
+            <p class="description"><a href="<?php site_url(); ?>/wp-admin/customize.php">前往设置</a>（外观 -> 自定义 -> 站点身份 -> 站点图标）</p>
           </td>
         </tr>
         <tr>
           <th scope="row"><label for="">菜单图标</label></th>
           <td>
-            <p class="description"><a href="<?php echo fileUri(); ?>/assets/static/iconfont/demo_index.html" target="_blank">点我查看使用方法</a>（左侧菜单 / 社交链接）</p>
+            <p class="description"><span class="iconfont icon-home"></span> 首页：&lt;span class="iconfont icon-home"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-folder"></span> 分类：&lt;span class="iconfont icon-folder"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-hash"></span> 标签：&lt;span class="iconfont icon-hash"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-archive"></span> 归档：&lt;span class="iconfont icon-archive"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-message-square"></span> 说说：&lt;span class="iconfont icon-message-square"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-link"></span> 链接：&lt;span class="iconfont icon-link"&gt;&lt;/span&gt;</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><label for="">社交图标</label></th>
+          <td>
+            <p class="description"><span class="iconfont icon-QQ"></span> QQ：&lt;span class="iconfont icon-QQ"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-weixin"></span> WeChat：&lt;span class="iconfont icon-weixin"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-github"></span> GitHub：&lt;span class="iconfont icon-github"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-gitee"></span> Gitee：&lt;span class="iconfont icon-gitee"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-bilibili-line"></span> Bilibili：&lt;span class="iconfont icon-bilibili-line"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-Youtube-fill"></span> Youtube：&lt;span class="iconfont icon-Youtube-fill"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-tuitetwitter43"></span> Twitter：&lt;span class="iconfont icon-tuitetwitter43"&gt;&lt;/span&gt;</p>
+            <p class="description"><span class="iconfont icon-telegram"></span> Telegram：&lt;span class="iconfont icon-telegram"&gt;&lt;/span&gt;</p>
           </td>
         </tr>
         <tr>
@@ -104,7 +124,7 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
-          <th scope="row">又拍云联盟:<?php echo get_option("iemo_upyun"); ?></th>
+          <th scope="row">又拍云联盟</th>
           <td>
             <fieldset><legend class="screen-reader-text"><span>又拍云联盟</span></legend>
             <label><input type='checkbox' name='iemo_upyun' value='true' <?php echo get_option("iemo_upyun") == 'true' ? 'checked' : ""; ?>/> <span class="date-time-text format-i18n">开启</span></label>

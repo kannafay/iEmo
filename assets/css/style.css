@@ -1427,7 +1427,7 @@ footer .copyright p {
 .search main .content article h2,
 .note main .content article > h2,
 .link main .content article > h2 {
-  font-size: 32px;
+  font-size: 28px;
   color: #333;
   margin-bottom: 25px;
 }
@@ -1879,6 +1879,27 @@ footer .copyright p {
 
 
 @media screen and (max-width: 700px) {
+  /* page h2 */
+  .home main .content article > h2,
+  .category main .content article h2,
+  .tag main .content article h2,
+  .archive main .content article h2,
+  .search main .content article h2,
+  .note main .content article > h2,
+  .link main .content article > h2 {
+    font-size: 26px;
+  }
+  .home main .content article > h2 span,
+  .category main .content article h2 span,
+  .tag main .content article h2 span,
+  .archive main .content article h2 span,
+  .search main .content article h2 span,
+  .note main .content article > h2 span,
+  .link main .content article > h2 span {
+    font-size: 13px;
+  }
+
+
   .home main .content article .top section div a {
     height: 100px;
   }
@@ -2059,7 +2080,7 @@ footer .copyright p {
   .search main .content article h2,
   .note main .content article > h2,
   .link main .content article > h2 {
-    font-size: 26px;
+    font-size: 24px;
   }
   .home main .content article > h2 span,
   .category main .content article h2 span,
@@ -2068,7 +2089,7 @@ footer .copyright p {
   .search main .content article h2 span,
   .note main .content article > h2 span,
   .link main .content article > h2 span {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .category main .content article .cate-box ul, 
@@ -2243,7 +2264,7 @@ footer .copyright p {
     height: 40px;
     font-size: 12px;
   }
-  header .menu ul li a i {
+  header .menu ul li a > * {
     font-size: 20px;
   }
   

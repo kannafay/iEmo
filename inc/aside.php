@@ -36,16 +36,20 @@
         </div>
       </div>
     </div>
-    <div class="social">
-      <h2>社交 <span>Social.</span></h2>
-      <?php
-        wp_nav_menu( array( 
-          'theme_location'  => 'aside',
-          'container_class' => 'social-content',
-          'fallback_cb'     => 'aside_fallback'
-        ) );
-      ?>
-    </div>
+    <?php
+      if(has_nav_menu('aside')) { ?>
+        <div class="social">
+          <h2>社交 <span>Social.</span></h2>
+          <?php
+            wp_nav_menu( array( 
+              'theme_location'  => 'aside',
+              'container_class' => 'social-content',
+              'fallback_cb'     => 'aside_fallback'
+            ) );
+          ?>
+        </div>
+      <?php }
+    ?>
     <div class="notes-box">
       <h2>说说 <span>Notes.</span></h2>
       <ul>

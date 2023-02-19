@@ -164,6 +164,42 @@ register_nav_menus( array(
   'aside' => '社交链接'
 ) );
 
+// 返回函数
+function menu_fallback(){
+  if(is_user_logged_in()) {
+    if(is_home()) {
+      echo '<div class="menu">
+        <ul class="menu">
+          <li class="current-menu-item"><a href="'.home_url().'" title="首页"><i class="iconfont icon-home"></i></a></li>
+          <li><a href="'.home_url().'/wp-admin/nav-menus.php" title="前往设置菜单"><i class="iconfont icon-settings"></i></a></li>
+        </ul>
+      </div>';
+    } else {
+      echo '<div class="menu">
+        <ul class="menu">
+          <li><a href="'.home_url().'" title="首页"><i class="iconfont icon-home"></i></a></li>
+          <li><a href="'.home_url().'/wp-admin/nav-menus.php" title="前往设置菜单"><i class="iconfont icon-settings"></i></a></li>
+        </ul>
+      </div>';
+    }
+    
+  } else {
+    if(is_home()) {
+      echo '<div class="menu">
+        <ul class="menu">
+          <li class="current-menu-item"><a href="'.home_url().'" title="首页"><i class="iconfont icon-home"></i></a></li>
+        </ul>
+      </div>';
+    } else {
+      echo '<div class="menu">
+        <ul class="menu">
+          <li><a href="'.home_url().'" title="首页"><i class="iconfont icon-home"></i></a></li>
+        </ul>
+      </div>';
+    }
+  }
+}
+
 
 
 // 说说
