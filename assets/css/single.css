@@ -45,6 +45,7 @@
 .single .post-content a {
   color: var(--theme-bak);
   text-decoration: underline;
+  display: inline-block;
 }
 
 .single .wp-block-image a {
