@@ -594,10 +594,14 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   opacity: 0;
   color: #999;
   font-size: 14px;
+  cursor: default;
 }
 .home main .content article .bottom .post-part ul li .left .cate-view a {
   color: #333;
   font-size: 14px;
+}
+.home main .content article .bottom .post-part ul li .left .cate-view a:hover {
+  text-decoration: underline;
 }
 
 .home main .content article .bottom .post-part ul li .left a.cover:hover ~ .cate-view,
