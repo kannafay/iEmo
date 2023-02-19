@@ -94,7 +94,7 @@ if(@stripslashes($_POST["iemo_option"])){
           <td>
             <textarea name="iemo_cover_post" rows="3" class="regular-text"><?php echo get_option("iemo_cover_post"); ?></textarea> <br/>
             <p class="description">填写图片URL，文章没有设置封面时顶替</p>
-            <p class="description">默认：<a href="<?php bloginfo('template_url'); ?>/assets/images/cover-post.jpg" target="_blank">主题目录/assets/images/cover-post.jpg</a></p>
+            <p class="description">默认：主题目录/assets/images/random/cover-post-x.jpg（随机）</p>
           </td>
         </tr>
         <tr>
