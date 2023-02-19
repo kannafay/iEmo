@@ -15,7 +15,7 @@
                 if (has_post_thumbnail()) {
                   the_post_thumbnail('large');
                 } else { ?>
-                  <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>" alt="">
+                  <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_single_cover();} ?>" alt="">
                 <?php }
               ?>
               <img id="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">

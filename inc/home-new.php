@@ -1,5 +1,6 @@
 <div class="post-part new active">
   <ul>
+    <?php $new_i = 0; ?>
     <?php 
       $sticky = get_option( 'sticky_posts' );
       $args = array(
@@ -15,7 +16,7 @@
               if (has_post_thumbnail()) {
                 the_post_thumbnail();
               } else { ?>
-                <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?post-new=<?php $new_i++; echo $new_i; ?>" alt="" >
+                <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?new=<?php $new_i++; echo $new_i; ?>" alt="" >
               <?php }
             ?>
             <img id="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">

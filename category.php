@@ -11,6 +11,7 @@
           <?php wp_list_categories(array('title_li' => '<h2>分类 <span>Categories.</span></h2>')); ?>
           <div class="cate-box">
             <ul>
+              <?php $cate_i = 0; ?>
               <?php if(have_posts()) : ?>
               <?php while(have_posts()) : the_post(); ?>
                 <li>
@@ -20,7 +21,7 @@
                         if (has_post_thumbnail()) {
                           the_post_thumbnail();
                         } else { ?>
-                          <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?cate=<?php $i++; echo $i; ?>" alt="" >
+                          <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?cate=<?php $cate_i++; echo $cate_i; ?>" alt="" >
                         <?php }
                       ?>
                     </a>

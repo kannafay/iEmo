@@ -11,6 +11,7 @@
           <h2>标签 <span>Tags.</span></h2>
           <div class="tag-bar">
             <ul>
+              <?php $tag_i = 0; ?>
               <?php
                 $tags = get_tags();
                 if($tags) : foreach($tags as $tag) : 
@@ -41,7 +42,7 @@
                         if (has_post_thumbnail()) {
                           the_post_thumbnail();
                         } else { ?>
-                          <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?tag=<?php $i++; echo $i; ?>" alt="" >
+                          <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?tag=<?php $tag_i++; echo $tag_i; ?>" alt="" >
                         <?php }
                       ?>
                     </a>

@@ -2,7 +2,6 @@
   <div class="aside-content">
     <div class="author">
       <div class="cover">
-        <!-- <img src="<?php //if(get_the_author_meta('bgi',1)) {the_author_meta('bgi',1);} else {echo fileUri().'/assets/images/cover-author.jpg';} ?>" alt=""> -->
         <img src="<?php if(get_option("iemo_cover_author")) {echo get_option("iemo_cover_author");} else {echo fileUri().'/assets/images/cover-author.jpg';} ?>" alt="">
       </div>
       <div class="author-info">

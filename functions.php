@@ -91,8 +91,50 @@ function default_post_cover() {
   if(get_option("iemo_cover_post")) {
     return get_option("iemo_cover_post");
   } else {
-    return fileUri().'/assets/images/cover-post.jpg';
+    return fileUri().'/assets/images/random/cover-post-'.rand(1,2).'.jpg';
   }
+}
+
+function default_single_cover() {
+  if(get_option("iemo_cover_post")) {
+    if(!img_redirect_url(get_option("iemo_cover_post"))) {
+      return get_option("iemo_cover_post");
+    } else {
+      return img_redirect_url(get_option("iemo_cover_post"));
+    }
+    
+  } else {
+    return fileUri().'/assets/images/random/cover-post-'.rand(1,2).'.jpg';
+  }
+}
+
+
+
+// 获取随机图API重定向地址
+function img_redirect_url($url, $ua=0) {
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+  $httpheader[] = "Accept:*/*";
+  $httpheader[] = "Accept-Encoding:gzip,deflate,sdch";
+  $httpheader[] = "Accept-Language:zh-CN,zh;q=0.8";
+  $httpheader[] = "Connection:close";
+  curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
+  curl_setopt($ch, CURLOPT_HEADER, true);
+  if ($ua) {
+    curl_setopt($ch, CURLOPT_USERAGENT, $ua);
+  } else {
+    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; U; Android 4.0.4; es-mx; HTC_One_X Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0");
+  }
+  curl_setopt($ch, CURLOPT_NOBODY, 1);
+  curl_setopt($ch, CURLOPT_ENCODING, "gzip");
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  $ret = curl_exec($ch);
+  curl_close($ch);
+  preg_match("/Location: (.*?)\r\n/iU",$ret,$location);
+  return $location[1];
 }
 
 

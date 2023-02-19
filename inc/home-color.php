@@ -8,7 +8,7 @@
     let title = [];
     let more = [];
     $(postItem).each(function(i) {
-      $(postItem[i].querySelector('.left a.cover #color-thief')).attr('src', $(postItem[i].querySelector('.left a.cover img:first-child')).attr('src'))
+      $(postItem[i].querySelector('.left a.cover #color-thief')).attr('src', $(postItem[i].querySelector('.left a.cover img:first-child')).attr('src'));
 
       imgs[i] = postItem[i].querySelector('.left a.cover #color-thief');
       title[i] =  postItem[i].querySelector('.right .text .title a');

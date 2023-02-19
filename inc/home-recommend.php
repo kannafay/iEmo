@@ -9,7 +9,7 @@
   ?>
   <div class="top">
     <section>
-    <?php $new_i=0; ?>
+    <?php $recommend_i = 0; ?>
     <?php if($recommend_query->have_posts()) : while($recommend_query->have_posts()) : $recommend_query->the_post(); ?>
       <div>
         <a href="<?php the_permalink(); ?>">
@@ -17,7 +17,7 @@
             if (has_post_thumbnail()) {
               the_post_thumbnail('large');
             } else { ?>
-              <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?recommend=<?php $i++; echo $i; ?>" alt="" >
+              <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?recommend=<?php $recommend_i++; echo $recommend_i; ?>" alt="" >
             <?php }
           ?>
           <h2><?php the_title(); ?></h2>
