@@ -7,7 +7,7 @@
   --social-hover: #fff;
   --theme-bak: #333;
   --code-bgc: rgba(0 0 0 / .05);
-  --tr3: .3s;
+  --tr3: .3s ease;
 }
 * {
   margin: 0;
@@ -528,18 +528,13 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   display: block;
   color: #333;
   padding: 6px 15px;
-  /* border: 1px solid #333; */
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
   user-select: none;
 }
-.home main .content article .bottom .recommend-bar ul li a:hover {
-  /* border: 1px solid #333; */
-}
 
 .home main .content article .bottom .recommend-bar ul li a.active {
-  /* background-color: #333; */
   color: #fff;
 }
 

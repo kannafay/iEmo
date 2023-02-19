@@ -22,7 +22,9 @@
             ?>
             <img id="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
           </a>
-          <?php echo the_category(' ', 'single'); ?>
+          <div class="cate-view">
+            <?php echo the_category(' <span>/</span> '); ?>
+          </div>
         </div>
         <div class="right">
           <div class="text">

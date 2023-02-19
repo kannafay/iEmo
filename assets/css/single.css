@@ -116,8 +116,6 @@
 .single .post-content ul, 
 .single .post-content ol {
   margin-left: 20px;
-  /* display: flex; */
-  /* flex-direction: column; */
 }
 
 .single .post-content ul li, 
@@ -169,6 +167,8 @@
 .single .post-content pre::-webkit-scrollbar {
   width: 6px;
   height: 6px;
+  padding: 20px 0;
+  
 }
 .single .post-content pre:hover::-webkit-scrollbar-thumb {
   background: var(--scroll);
