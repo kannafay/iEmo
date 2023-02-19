@@ -16,7 +16,7 @@
                     <a href="<?php the_permalink(); ?>">
                       <?php
                         if (has_post_thumbnail()) {
-                          the_post_thumbnail('large');
+                          the_post_thumbnail();
                         } else { ?>
                           <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>" alt="<?php the_title_attribute(); ?>" >
                         <?php }

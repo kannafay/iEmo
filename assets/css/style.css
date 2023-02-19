@@ -1457,6 +1457,10 @@ footer .copyright p {
   white-space: nowrap;
 }
 
+.category main .content article .categories ul li .children {
+  display: none;
+}
+
 .category main .content article .categories ul li:last-child,
 .tag main .content article .tag-bar ul li:last-child {
   margin-right: 0;
@@ -1595,7 +1599,7 @@ footer .copyright p {
   align-items: start;
 }
 .archive main .content article .archive-box li:last-child {
-  padding-bottom: 25px;
+  padding-bottom: 0;
 }
 
 .archive main .content article .archive-box li span {
