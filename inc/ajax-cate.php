@@ -11,7 +11,10 @@
 
         $('.category .categories ul .slider').width($(this).outerWidth());
         let position = $(this).position();
-        $(".category .categories ul .slider").css({left: position.left});
+        let scrollLeft = $('.category .categories ul').scrollLeft();
+        $(".category .categories ul .slider").css({
+          left: position.left + scrollLeft,
+        });
       }
 
       $(this).click(function() {
@@ -19,9 +22,10 @@
         $(this).addClass('active');
         let width = $(this).outerWidth();
         let position = $(this).position();
+        let scrollLeft = $('.category .categories ul').scrollLeft();
         $(".category .categories ul .slider").css({
           width: width,
-          left: position.left,
+          left: position.left + scrollLeft,
         });
       })
     })
@@ -88,7 +92,10 @@
 
           $('.category .categories ul .slider').width($(this).outerWidth());
           let position = $(this).position();
-          $(".category .categories ul .slider").css({left: position.left});
+          let scrollLeft = $('.category .categories ul').scrollLeft();
+          $(".category .categories ul .slider").css({
+            left: position.left + scrollLeft,
+          });
         }
 
         $(this).click(function() {
@@ -96,9 +103,10 @@
           $(this).addClass('active');
           let width = $(this).outerWidth();
           let position = $(this).position();
+          let scrollLeft = $('.category .categories ul').scrollLeft();
           $(".category .categories ul .slider").css({
             width: width,
-            left: position.left,
+            left: position.left + scrollLeft,
           });
         })
       })

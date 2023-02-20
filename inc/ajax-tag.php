@@ -11,7 +11,10 @@
 
         $('.tag .tag-bar ul .slider').width($(this).outerWidth());
         let position = $(this).position();
-        $(".tag .tag-bar ul .slider").css({left: position.left});
+        let scrollLeft = $('.tag .tag-bar ul').scrollLeft();
+        $(".tag .tag-bar ul .slider").css({
+          left: position.left + scrollLeft,
+        });
       }
 
       $(this).click(function() {
@@ -19,9 +22,10 @@
         $(this).addClass('active');
         let width = $(this).outerWidth();
         let position = $(this).position();
+        let scrollLeft = $('.tag .tag-bar ul').scrollLeft();
         $(".tag .tag-bar ul .slider").css({
           width: width,
-          left: position.left,
+          left: position.left + scrollLeft,
         });
       })
     })
@@ -88,7 +92,10 @@
 
           $('.tag .tag-bar ul .slider').width($(this).outerWidth());
           let position = $(this).position();
-          $(".tag .tag-bar ul .slider").css({left: position.left});
+          let scrollLeft = $('.tag .tag-bar ul').scrollLeft();
+          $(".tag .tag-bar ul .slider").css({
+            left: position.left + scrollLeft,
+          });
         }
 
         $(this).click(function() {
@@ -96,14 +103,15 @@
           $(this).addClass('active');
           let width = $(this).outerWidth();
           let position = $(this).position();
+          let scrollLeft = $('.tag .tag-bar ul').scrollLeft();
           $(".tag .tag-bar ul .slider").css({
             width: width,
-            left: position.left,
+            left: position.left + scrollLeft,
           });
         })
       })
 
-      console.log(title);
+      // console.log(title);
       $.ajax({
         type: 'get',
         url: url,

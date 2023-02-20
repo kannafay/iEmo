@@ -66,7 +66,12 @@ $(document).scroll(function() {
 
 
 // Horizontal scrolling
-const cateTagContainer = document.querySelectorAll(".category main .content article .categories ul, .tag main .content article .tag-bar ul,.single main .content article .post-cover .post-info .more");
+const cateTagContainer = document.querySelectorAll(`
+  .category main .content article .categories ul, 
+  .tag main .content article .tag-bar ul,
+  .single main .content article .post-cover .post-info .more,
+  .home main .content article .bottom .recommend-bar
+`);
 
 if(cateTagContainer) {
   $(cateTagContainer).each(function(i) {
@@ -110,9 +115,10 @@ $(document).ready(function() {
       $(this).addClass('active');
       let width = $(this).outerWidth();
       let position = $(this).position();
+      let scrollLeft = $('.home .recommend-bar ul').scrollLeft();
       $(".home .recommend-bar ul .slider").css({
         width: width,
-        left: position.left,
+        left: position.left + scrollLeft,
       });
       // console.log(position.left);
       $('.home .post-part').removeClass('active');
