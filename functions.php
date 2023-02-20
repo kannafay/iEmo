@@ -112,41 +112,38 @@ function default_single_cover() {
 
 
 // API
-add_action('wp_ajax_random_img', 'random_img');
-add_action( 'wp_ajax_nopriv_random_img', 'random_img' );
+// add_action('wp_ajax_random_img', 'random_img');
+// add_action( 'wp_ajax_nopriv_random_img', 'random_img' );
 
-function random_img() {
-  header('Content-Type: application/json');
-  try {
-    $context = stream_context_create([
-      'ssl' => [
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-      ],
-    ]);
-    $headers = @get_headers(get_option("iemo_cover_post"), true, $context);
-    $location = isset($headers['Location']) ? $headers['Location'] : (isset($headers['location']) ? $headers['location'] : '');
-    if (empty($location)) {
-      throw new \Exception();
-    }
-    echo json_encode([
-      'code' => 200,
-      'msg' => 'success',
-      'data' => [
-        'url' => $location,
-      ],
-    ]);
-  } catch (\Throwable $e) {
-    echo json_encode([
-      'code' => 500,
-      'msg' => 'Get image failed',
-    ]);
-  }
-  exit;
-}
-
-
-
+// function random_img() {
+//   header('Content-Type: application/json');
+//   try {
+//     $context = stream_context_create([
+//       'ssl' => [
+//         'verify_peer' => false,
+//         'verify_peer_name' => false,
+//       ],
+//     ]);
+//     $headers = @get_headers(get_option("iemo_cover_post"), true, $context);
+//     $location = isset($headers['Location']) ? $headers['Location'] : (isset($headers['location']) ? $headers['location'] : '');
+//     if (empty($location)) {
+//       throw new \Exception();
+//     }
+//     echo json_encode([
+//       'code' => 200,
+//       'msg' => 'success',
+//       'data' => [
+//         'url' => $location,
+//       ],
+//     ]);
+//   } catch (\Throwable $e) {
+//     echo json_encode([
+//       'code' => 500,
+//       'msg' => 'Get image failed',
+//     ]);
+//   }
+//   exit;
+// }
 
 
 
