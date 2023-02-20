@@ -1,7 +1,7 @@
 <script src="<?php echo fileUri(); ?>/assets/js/color-thief.min.js"></script>
 <script>
   const colorThief = new ColorThief();
-  const img = document.querySelector('.single main .content article .post-cover .cover #color-thief');
+  const img = document.querySelector('.single main .content article .post-cover .cover .color-thief');
   const getColorFun=()=>{
     let colors = colorThief.getColor(img);
     // console.log(`rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`);
