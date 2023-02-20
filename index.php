@@ -10,9 +10,9 @@
           <div class="bottom">
             <div class="recommend-bar">
               <ul>
+                <li><a class="active"><i class="iconfont icon-bookmark"></i> 最新发布</a></li>
+                <li><a><i class="iconfont icon-flag"></i> 为你推荐</a></li> 
                 <div class="slider"></div>
-                <li><a class="active">最新发布</a></li>
-                <li><a>为你推荐</a></li> 
               </ul>
             </div>
             <?php require_once('inc/home-new.php'); ?>

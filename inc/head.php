@@ -17,8 +17,10 @@
     if(get_option("iemo_page_toggle")) { ?>
       <style>
         article,
-        .home main .content article .bottom .post-part.active {
-          animation: FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards;
+        .home main .content article .bottom .post-part ul li,
+        .category main .content article .cate-box ul li,
+        .tag main .content article .tag-box ul li {
+          animation: FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards !important;
         }
       </style>
     <?php }
