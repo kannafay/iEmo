@@ -8,7 +8,6 @@
       if($(this).attr('href') == url) {
         $('.category .categories ul li a').removeClass('active');
         $(this).addClass('active');
-
         $('.category .categories ul .slider').width($(this).outerWidth());
         let position = $(this).position();
         let scrollLeft = $('.category .categories ul').scrollLeft();
@@ -33,6 +32,24 @@
 
 
 
+
+
+
+  $(window).resize(function() {
+    let url = location.href;
+    $('.category .categories ul li a').each(function() {
+      if($(this).attr('href') == url) {
+        $('.category .categories ul li a').removeClass('active');
+        $(this).addClass('active');
+        $('.category .categories ul .slider').width($(this).outerWidth());
+        let position = $(this).position();
+        let scrollLeft = $('.category .categories ul').scrollLeft();
+        $(".category .categories ul .slider").css({
+          left: position.left + scrollLeft,
+        });
+      }
+    })
+  })
 
 
   
