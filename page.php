@@ -18,9 +18,9 @@
                   <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_single_cover();} ?>" alt="">
                 <?php }
               ?>
-              <img id="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
+              <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
             </div>
-            <script>$('.single .post-cover .cover #color-thief').attr('src',$('.single .post-cover .cover img:first').attr('src'));</script>
+            <script>$('.single .post-cover .cover .color-thief').attr('src',$('.single .post-cover .cover img:first').attr('src'));</script>
             <div class="post-info">
               <div class="title" title="<?php the_title(); ?>"><?php the_title(); ?></div>
               <div class="more">
