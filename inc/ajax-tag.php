@@ -8,7 +8,6 @@
       if($(this).attr('href') == url) {
         $('.tag .tag-bar ul li a').removeClass('active');
         $(this).addClass('active');
-
         $('.tag .tag-bar ul .slider').width($(this).outerWidth());
         let position = $(this).position();
         let scrollLeft = $('.tag .tag-bar ul').scrollLeft();
@@ -36,9 +35,27 @@
 
 
 
+  $(window).resize(function() {
+    let url = location.href;
+    $('.tag .tag-bar ul li a').each(function() {
+      if($(this).attr('href') == url) {
+        $('.tag .tag-bar ul li a').removeClass('active');
+        $(this).addClass('active');
+        $('.tag .tag-bar ul .slider').width($(this).outerWidth());
+        let position = $(this).position();
+        let scrollLeft = $('.tag .tag-bar ul').scrollLeft();
+        $(".tag .tag-bar ul .slider").css({
+          left: position.left + scrollLeft,
+        });
+      }
+    })
+  })
 
 
 
+
+
+  
   // click event
   $(document).ready(function() {
     $('.tag .tag-bar ul li a').on('click',function(){
