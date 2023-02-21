@@ -28,7 +28,7 @@ body::-webkit-scrollbar {
   height: 0;
 }
 .container {
-  width: 1200px;
+  width: 1400px;
   height: 100%;
   margin: 0 auto;
   background-color: #fff;
@@ -380,6 +380,7 @@ main .content article {
   height: 100%;
   padding: 25px;
   position: relative;
+  background-color: #fff;
 }
 main .content article .bottom {
   position: relative;
@@ -1750,6 +1751,14 @@ footer .copyright p {
 
 
 
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 100%;
+    border: 0;
+  }
+}
+
+
 
 
 
@@ -1765,11 +1774,6 @@ footer .copyright p {
   html,body {
     background-color: #fff;
   } 
-
-  .container {
-    width: 100%;
-    border: 0;
-  }
 
   header {
     position: fixed;
