@@ -18,6 +18,7 @@
     if(get_option("iemo_page_toggle")) { ?>
       <style>
         article,
+        .home article .top,
         .home main .content article .bottom .post-part ul li,
         .category main .content article .cate-box ul li,
         .tag main .content article .tag-box ul li,

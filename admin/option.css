@@ -1,0 +1,170 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.iemo-recommend-post {
+  display: inline-block;
+  padding: 6px 16px ;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: all .3s;
+}
+.iemo-recommend-post:hover {
+  background-color: #444;
+}
+.iemo-recommend-post:active {
+  background-color: #555;
+}
+
+
+#iemo-recommend-post {
+  width: 600px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0 0 0 / .1);
+  padding: 50px;
+  padding-bottom: 80px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 10;
+  transition: all .3s;
+}
+#iemo-recommend-post.active {
+  transform: translateX(0);
+  visibility: visible;
+  opacity: 1;
+}
+#iemo-recommend-post form {
+  height: 100%;
+}
+#iemo-recommend-post ul {
+  height: 100%;
+  overflow: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#iemo-recommend-post button,
+#iemo-recommend-post .close {
+  display: inline-block;
+  padding: 8px 30px;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  cursor: pointer;
+  user-select: none;
+  margin-right: 5px;
+  transition: all .3s;
+  cursor: pointer;
+  user-select: none;
+}
+#iemo-recommend-post .submit {
+  background-color: #333;
+  color: #fff;
+}
+#iemo-recommend-post .submit:hover {
+  background-color: #444;
+  border: 1px solid #444;
+}
+#iemo-recommend-post .submit:active {
+  background-color: #555;
+  border: 1px solid #555;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.success {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0 0 0 / .1);
+  padding: 10px 40px;
+  border-radius: 6px;
+  font-size: 15px;
+  transform: translate(-50%, -100%);
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s;
+  z-index: 9999;
+}
+
+.success.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.mask {
+  position: fixed;
+  width: calc(100% - 160px);
+  height: 100%;
+  right: 0;
+  top: 0;
+  background-color: rgba(0 0 0 / .3);
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .3s, opacity .3s;
+}
+.mask.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 960px) {
+  .mask {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 782px) {
+  #iemo-recommend-post {
+    width: 100%;
+  }
+  .mask,
+  .mask.active {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  #iemo-recommend-post {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+  }
+  .success {
+    top: 40px;
+  }
+}
