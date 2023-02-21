@@ -2,14 +2,14 @@
   <ul>
     <?php $sticky_i = 0; ?>
     <?php 
-      $sticky = get_option( 'sticky_posts' );
+      $sticky = get_option('sticky_posts');
       $args = array(
       	'ignore_sticky_posts' => 1,
       	'post__in' => $sticky,
         'showposts' => 10,
       );
       query_posts(array_merge($args, $wp_query->query)); 
-      if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+      if(have_posts()) : while(have_posts()) : the_post(); 
     ?> 
       <li>
         <div class="left">

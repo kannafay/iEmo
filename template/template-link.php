@@ -33,7 +33,7 @@
                   foreach ($bookmarks as $bookmark) {
               ?>
                 <li>
-                  <a href="<?php echo $bookmark->link_url; ?>">
+                  <a href="<?php echo $bookmark->link_url; ?>" target="<?php echo $bookmark->link_target; ?>">
                     <div class="left">
                       <img src="<?php echo $bookmark->link_image; ?>" alt="">
                     </div>

@@ -13,13 +13,16 @@
   <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/css/style.css">
   <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/iconfont/iconfont.css">
   <script src="<?php echo fileUri(); ?>/assets/js/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="<?php //echo fileUri(); ?>/assets/static/nprogress/nprogress.css"> -->
   <?php
     if(get_option("iemo_page_toggle")) { ?>
       <style>
         article,
+        .home article .top,
         .home main .content article .bottom .post-part ul li,
         .category main .content article .cate-box ul li,
-        .tag main .content article .tag-box ul li {
+        .tag main .content article .tag-box ul li,
+        .search main .content article .search-box ul li {
           animation: FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards !important;
         }
       </style>

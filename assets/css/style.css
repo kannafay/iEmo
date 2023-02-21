@@ -28,7 +28,7 @@ body::-webkit-scrollbar {
   height: 0;
 }
 .container {
-  width: 1200px;
+  width: 1400px;
   height: 100%;
   margin: 0 auto;
   background-color: #fff;
@@ -66,7 +66,7 @@ a {
 .single *,
 *::before,
 *::after {
-  transition: all var(--tr3) !important;
+  transition: all var(--tr3);
 }
 
 
@@ -380,6 +380,7 @@ main .content article {
   height: 100%;
   padding: 25px;
   position: relative;
+  background-color: #fff;
 }
 main .content article .bottom {
   position: relative;
@@ -428,29 +429,33 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
 
 
 /* home */
-.home main .content article .top section {
-  padding-bottom: 25px;
+.home article .top {
+  padding-bottom: 20px;
   margin-bottom: 25px;
   border-bottom: 1px solid #e2e2e2;
+  overflow: hidden;
+}
+
+.home article .top .regular {
+  margin-bottom: 10px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 25px;
+  position: relative;
 }
 
-.home main .content article .top section div a {
-  display: block;
+.home article .top .regular .regular-box a {
   width: 100%;
-  height: 150px;
+  height: 180px;
+  display: block;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 10px;
   position: relative;
 }
-.home main .content article .top section div a:hover h2 {
-  text-decoration: underline;
-}
-.home main .content article .top section div a::before {
+
+.home article .top .regular .regular-box a::before {
   content: '';
   display: block;
   width: 100%;
@@ -458,29 +463,34 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   position: absolute;
   bottom: 0;
   left: 0;
-  background: linear-gradient(to top,rgba(0 0 0 / .5),rgba(0 0 0 / .05));
+  background: linear-gradient(to top,rgba(0 0 0 / .3),rgba(0 0 0 / .05));
 }
-.home main .content article .top section div a img {
+
+.home article .top .regular .regular-box a .regular-post-info {
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0 0 0 / .2);
+  position: absolute;
+  bottom: 0;
+  padding: 0 20px 20px 20px;
+}
+.home article .top .regular .regular-box a img {
   width: 100%;
   height: 100%;
   vertical-align: middle;
   object-fit: cover;
 }
-.home main .content article .top section div h2 {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: justify;
-  color: #fff;
+.home article .top .regular .regular-box h2 {
   font-size: 14px;
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 10px;
 }
-.home main .content article .top section div p {
+.home article .top .regular .regular-box a:hover h2 {
+  text-decoration: underline;
+}
+.home article .top .regular .regular-box p {
   font-size: 13px;
   color: #999;
   -webkit-line-clamp: 3;
@@ -490,6 +500,135 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   text-overflow: ellipsis;
   padding: 0 4px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* swiper */
+
+.home article .top .swiper {
+  width: 100%;
+  height: 250px;
+  padding: 10px 0 40px 0;
+  position: relative;
+}
+.home article .top .swiper-slide {
+  background-color: #fff;
+  /* box-shadow: 0 0 10px rgba(0 0 0 / .1); */
+  border-radius: 8px;
+  transform: scale(0.8);
+  transition: all 0s;
+  user-select: none;
+}
+
+.home article .top .swiper-slide-active,
+.home article .top .swiper-slide-duplicate-active {
+  transform: scale(1);
+}
+
+.home article .top .swiper-pagination-bullet-active {
+  background-color: #333;
+}
+
+.home article .top .swiper-button-prev,
+.home article .top .swiper-button-next {
+  background-color: rgba(0 0 0 / .2);
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: -15px;
+}
+.home article .top .swiper-button-prev::after,
+.home article .top .swiper-button-next::after {
+  font-size: 12px;
+  padding-top: 1px;
+}
+.home article .top .swiper-button-prev::after {
+  padding-right: 2px;
+}
+.home article .top .swiper-button-next::after {
+  padding-left: 2px;
+}
+.home article .top .swiper-button-prev {
+  /* left: 0; */
+}
+.home article .top .swiper-button-next {
+  /* right: 0; */
+}
+.home article .top .swiper:hover .swiper-button-prev,
+.home article .top .swiper:hover .swiper-button-next {
+  visibility: visible;
+  opacity: 1;
+}
+
+.home article .top .swiper-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.home article .top .swiper-slide a::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top,rgba(0 0 0 / .3),rgba(0 0 0 / .05));
+}
+
+.home article .top .swiper-slide a img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.home article .top .swiper-slide a .swiper-post-info {
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0 0 0 / .2);
+  position: absolute;
+  bottom: 0;
+  padding: 0 20px 20px 20px;
+}
+.home article .top .swiper-slide a .swiper-post-info h2 {
+  font-size: 15px;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.home article .top .swiper-slide a .swiper-post-info h2:hover  {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
 
 
 .home main .content article .bottom .recommend-bar {
@@ -1750,9 +1889,18 @@ footer .copyright p {
 
 
 
-
-
-
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 100%;
+    border: 0;
+  }
+  .home article .top .swiper {
+    height: 230px;
+  }
+  .home article .top .regular .regular-box a {
+    height: 170px;
+  }
+}
 
 
 
@@ -1765,11 +1913,6 @@ footer .copyright p {
   html,body {
     background-color: #fff;
   } 
-
-  .container {
-    width: 100%;
-    border: 0;
-  }
 
   header {
     position: fixed;
@@ -1798,7 +1941,26 @@ footer .copyright p {
     margin-top: 90px;
     position: relative;
   }
+
+  .home article .top .swiper {
+    height: 230px;
+  }
+
+
 }
+
+
+
+@media screen and (max-width: 1100px) {
+  .home article .top .swiper {
+    height: 220px;
+  }
+  .home article .top .regular .regular-box a {
+    height: 150px;
+  }
+}
+
+
 
 
 @media screen and (max-width: 1000px) {
@@ -1827,6 +1989,13 @@ footer .copyright p {
   #pagination-post,
   .no-more-post {
     padding-top: 25px;
+  }
+
+  .home article .top .swiper {
+    height: 240px;
+  }
+  .home article .top .regular .regular-box a {
+    height: 170px;
   }
 }
 
@@ -1878,6 +2047,13 @@ footer .copyright p {
     height: calc(100% - 70px);
     margin-top: 70px;
   }
+  .home main .content article .bottom .post-part ul li .left {
+    width: 230px;
+    height: 150px;
+  }
+  .home main .content article .bottom .post-part ul li .right {
+    width: calc(100% - 250px);
+  }
   .home main .content article .bottom .post-part ul li .left .cate-view {
     transform: translateX(10px);
     opacity: 1;
@@ -1885,6 +2061,19 @@ footer .copyright p {
   main .content aside {
     height: calc(100% - 70px);
     top: 70px;
+  }
+
+  .home article .top .swiper {
+    height: 210px;
+  }
+  .home article .top .regular .regular-box a {
+    height: 150px;
+  }
+  .home article .top .regular .regular-box h2 {
+    font-size: 15px;
+  }
+  .home article .top .regular .regular-box p {
+    -webkit-line-clamp: 2;
   }
 }
 
@@ -1922,21 +2111,6 @@ footer .copyright p {
   .note main .content article > h2 span,
   .link main .content article > h2 span {
     font-size: 13px;
-  }
-
-
-  .home main .content article .top section div a {
-    height: 100px;
-  }
-  .home main .content article .top section div p {
-    -webkit-line-clamp: 2;
-  }
-  .home main .content article .top section div h2 {
-    font-size: 13px;
-    -webkit-line-clamp: 1;
-  }
-  .home main .content article .top section div p {
-    font-size: 12px;
   }
 
   .home main .content article .bottom .post-part ul li .left {
@@ -1994,6 +2168,21 @@ footer .copyright p {
   .link main .content article .link-box ul {
     grid-template-columns: 1fr 1fr;
   }
+
+
+
+  .home article .top .swiper {
+    height: 240px;
+  }
+  .home article .top .regular {
+    grid-template-columns: 1fr 1fr;
+  }
+  .home article .top .regular .regular-box:last-child {
+    display: none;
+  }
+  .home article .top .regular .regular-box a {
+    height: 170px;
+  }
 }
 
 
@@ -2001,7 +2190,14 @@ footer .copyright p {
 
 
 
-
+@media screen and (max-width: 600px) {
+  .home article .top .swiper {
+    height: 210px;
+  }
+  .home article .top .regular .regular-box a {
+    height: 150px;
+  }
+}
 
 
 
@@ -2014,34 +2210,6 @@ footer .copyright p {
   header.active,
   main .content aside.active {
     box-shadow: none;
-  }
-
-  main .content article .top {
-    overflow: auto;
-  }
-  .home main .content article .top section {
-    display: flex;
-  }
-  .home main .content article .top section div {
-    opacity: 0;
-    visibility: hidden;
-    display: none;
-  }
-  .home main .content article .top section div:first-child {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    
-  }
-  .home main .content article .top section div:first-child h2 {
-    -webkit-line-clamp: 2;
-    font-size: 14px;
-  }
-  .home main .content article .top section div:first-child a {
-    height: 170px;
-  }
-  .home main .content article .top section div:first-child p {
-    font-size: 13px;
   }
 
   .home main .content article .bottom .post-part ul li .left {
@@ -2211,6 +2379,48 @@ footer .copyright p {
   .note main .content article .note-page li {
     margin-bottom: 20px;
   }
+
+
+
+
+
+  .home article .top {
+    padding-bottom: 10px;
+  }
+
+
+  .home article .top .swiper {
+    height: 260px;
+    padding-top: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .home article .top .swiper-slide {
+    transform: scale(1);
+  }
+  .home article .top .swiper-button-prev,
+  .home article .top .swiper-button-next {
+    display: none;
+  }
+  .home article .top .swiper-slide a .swiper-post-info h2 {
+    -webkit-line-clamp: 3;
+  }
+  .home article .top .swiper-slide a .swiper-post-info h2:hover  {
+    text-decoration: none;
+  }
+
+  .home article .top .regular {
+    grid-template-columns: 1fr;
+  }
+  .home article .top .regular .regular-box {
+    display: none;
+  }
+  .home article .top .regular .regular-box:first-child {
+    display: block;
+  }
+  .home article .top .regular .regular-box a {
+    height: 180px;
+  }
 }
 
 
@@ -2303,6 +2513,10 @@ footer .copyright p {
 
   footer {
     padding: 10px 25px;
+  }
+
+  .home article .top .swiper {
+    height: 220px;
   }
 
 }
