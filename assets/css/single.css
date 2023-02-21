@@ -144,10 +144,10 @@
   color: var(--theme-bak);
   font-size: 14px;
   padding: 2px 4px;
-  font-family: 'PingFang SC','Consolas','Courier New';
+  font-family: 'Consolas','Courier New','monospace';
 }
 .single .post-content pre {
-  max-height: 512px;
+  /* max-height: 512px; */
   font-family: 'Consolas','Courier New','monospace';
   border-radius: 8px;
   overflow: auto;
@@ -164,17 +164,11 @@
 }
 
 
-.single .post-content pre::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  padding: 20px 0;
-  
+.single .post-content pre::-webkit-scrollbar，
+.single .post-content pre code::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
-.single .post-content pre:hover::-webkit-scrollbar-thumb {
-  background: var(--scroll);
-  border-radius: 6px;
-}
-
 
 
 
@@ -354,15 +348,6 @@
 
 
 
-
-
-
-
-@media screen and (max-width: 500px) {
-  .single .post-content pre {
-    max-height: 256px;
-  }
-}
 
 
 
