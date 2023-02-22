@@ -151,6 +151,10 @@
 
 
 @media screen and (max-width: 782px) {
+  .iemo-recommend-post {
+    padding: 8px 20px;
+  }
+
   #iemo-recommend-post {
     width: 100%;
   }

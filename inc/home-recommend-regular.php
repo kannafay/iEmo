@@ -1,4 +1,113 @@
 <?php if(get_option("iemo_recommend_post")) { ?>
+
+  <?php
+    if(count(get_option("iemo_recommend_post")) == 1) { ?>
+      <script>
+        $(`
+          <style>
+          .home article .top .regular {
+            grid-template-columns: 1fr;
+          }
+          .home article .top .regular .regular-box a {
+            height: 300px;
+            margin-bottom: 15px;
+          }
+          .home article .top .regular .regular-box h2 {
+            font-size: 18px;
+          }
+          .home article .top .regular .regular-box p {
+            font-size: 15px;
+          }
+          .home article .top .regular .regular-box a .regular-post-info {
+            padding: 0 30px 30px 30px;
+          }
+          .home article .top .regular .regular-box:last-child {
+            display: block;
+          }
+
+          @media screen and (max-width: 700px) {
+            .home article .top .regular .regular-box a {
+              height: 280px;
+              margin-bottom: 15px;
+            }
+            .home article .top .regular .regular-box h2 {
+              font-size: 16px;
+            }
+            .home article .top .regular .regular-box p {
+              font-size: 14px;
+            }
+          }
+          @media screen and (max-width: 600px) {
+            .home article .top .regular .regular-box a {
+              height: 260px;
+              margin-bottom: 10px;
+            }
+            .home article .top .regular .regular-box a .regular-post-info {
+              padding: 0 20px 20px 20px;
+            }
+          }
+          @media screen and (max-width: 500px) {
+            .home article .top .regular .regular-box a {
+              height: 180px;
+            }
+            .home article .top .regular .regular-box h2 {
+              font-size: 15px;
+            }
+          }
+          </style>
+        `).appendTo('head');
+      </script>
+    <?php } else if(count(get_option("iemo_recommend_post")) == 2) { ?>
+      <script>
+        $(`
+          <style>
+          .home article .top .regular {
+            grid-template-columns: 1fr 1fr;
+          }
+          .home article .top .regular .regular-box a {
+            height: 240px;
+          }
+
+          @media screen and (max-width: 1200px) {
+            .home article .top .regular .regular-box a {
+              height: 220px;
+            }
+          }
+          @media screen and (max-width: 800px) {
+            .home article .top .regular .regular-box a {
+              height: 200px;
+            }
+          }
+          @media screen and (max-width: 700px) {
+            .home article .top .regular .regular-box:last-child {
+              display: block;
+            }
+            .home article .top .regular .regular-box a {
+              height: 170px;
+            }
+          }
+          @media screen and (max-width: 600px) {
+            .home article .top .regular .regular-box a {
+              height: 150px;
+            }
+          }
+          @media screen and (max-width: 500px) {
+            .home article .top .regular {
+              grid-template-columns: 1fr;
+            }
+            .home article .top .regular .regular-box:last-child {
+              display: none;
+            }
+            .home article .top .regular .regular-box a {
+              height: 180px;
+            }
+          }
+          </style>
+        `).appendTo('head');
+      </script>
+    <?php }
+  ?>
+
   <?php
     if(is_array(get_option("iemo_recommend_post"))) {
       $iemo_post = implode(',',get_option("iemo_recommend_post"));

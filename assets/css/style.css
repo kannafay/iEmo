@@ -606,6 +606,7 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   color: #fff;
   text-shadow: 0 0 5px rgba(0 0 0 / .2);
   position: absolute;
+  left: 0;
   bottom: 0;
   padding: 0 20px 20px 20px;
 }
@@ -1449,6 +1450,10 @@ footer .copyright p {
   object-fit: cover;
   pointer-events: none;
 }
+.single main .content article .post-cover .cover .get_img_url,
+.single main .content article .post-cover .cover .thumbnail_loading {
+  object-fit: contain;
+}
 
 .single main .content article .post-cover .post-info {
   width: 100%;
@@ -2073,9 +2078,6 @@ footer .copyright p {
   .home article .top .regular .regular-box h2 {
     font-size: 15px;
   }
-  .home article .top .regular .regular-box p {
-    -webkit-line-clamp: 2;
-  }
 }
 
 
@@ -2423,6 +2425,9 @@ footer .copyright p {
   }
   .home article .top .regular .regular-box h2:hover {
     text-decoration: none;
+  }
+  .home article .top .regular .regular-box p {
+    font-size: 14px;
   }
 }
 

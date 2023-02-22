@@ -95,91 +95,9 @@ function default_post_cover() {
   }
 }
 
-function default_single_cover() {
-  if(get_option("iemo_cover_post")) {
-    if(!img_redirect_url(get_option("iemo_cover_post"))) {
-      return get_option("iemo_cover_post");
-    } else {
-      return img_redirect_url(get_option("iemo_cover_post"));
-    }
-    
-  } else {
-    return fileUri().'/assets/images/random/cover-post-'.rand(1,2).'.jpg';
-  }
-}
-
-
-
-
-// API
-// add_action('wp_ajax_random_img', 'random_img');
-// add_action( 'wp_ajax_nopriv_random_img', 'random_img' );
-
-// function random_img() {
-//   header('Content-Type: application/json');
-//   try {
-//     $context = stream_context_create([
-//       'ssl' => [
-//         'verify_peer' => false,
-//         'verify_peer_name' => false,
-//       ],
-//     ]);
-//     $headers = @get_headers(get_option("iemo_cover_post"), true, $context);
-//     $location = isset($headers['Location']) ? $headers['Location'] : (isset($headers['location']) ? $headers['location'] : '');
-//     if (empty($location)) {
-//       throw new \Exception();
-//     }
-//     echo json_encode([
-//       'code' => 200,
-//       'msg' => 'success',
-//       'data' => [
-//         'url' => $location,
-//       ],
-//     ]);
-//   } catch (\Throwable $e) {
-//     echo json_encode([
-//       'code' => 500,
-//       'msg' => 'Get image failed',
-//     ]);
-//   }
-//   exit;
-// }
-
-
-
-
-
-// 获取随机图API重定向地址
-function img_redirect_url($url, $ua=0) {
-  $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-  $httpheader[] = "Accept:*/*";
-  $httpheader[] = "Accept-Encoding:gzip,deflate,sdch";
-  $httpheader[] = "Accept-Language:zh-CN,zh;q=0.8";
-  $httpheader[] = "Connection:close";
-  curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
-  curl_setopt($ch, CURLOPT_HEADER, true);
-  if ($ua) {
-    curl_setopt($ch, CURLOPT_USERAGENT, $ua);
-  } else {
-    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; U; Android 4.0.4; es-mx; HTC_One_X Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0");
-  }
-  curl_setopt($ch, CURLOPT_NOBODY, 1);
-  curl_setopt($ch, CURLOPT_ENCODING, "gzip");
-  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  $ret = curl_exec($ch);
-  curl_close($ch);
-  preg_match("/Location: (.*?)\r\n/iU",$ret,$location);
-  return $location[1];
-}
-
-
 
 // 获取文章第一张图片
-function first_post_cover($content){
+function first_post_cover($content) {
   error_reporting(0);
   if ( $content === false ) $content = get_the_content();
   preg_match_all('|<img.*?src=[\'"](.*?)[\'"].*?>|i', $content, $images);
@@ -189,6 +107,93 @@ function first_post_cover($content){
     return false;
   }
 }
+
+
+
+// function default_single_cover() {
+//   if(get_option("iemo_cover_post")) {
+//     if(!img_redirect_url(get_option("iemo_cover_post"))) {
+//       return get_option("iemo_cover_post");
+//     } else {
+//       return img_redirect_url(get_option("iemo_cover_post"));
+//     }
+    
+//   } else {
+//     return fileUri().'/assets/images/random/cover-post-'.rand(1,2).'.jpg';
+//   }
+// }
+
+
+
+
+// API
+add_action('wp_ajax_random_img', 'random_img');
+add_action( 'wp_ajax_nopriv_random_img', 'random_img' );
+
+function random_img() {
+  header('Content-Type: application/json');
+  try {
+    $context = stream_context_create([
+      'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+      ],
+    ]);
+    $headers = @get_headers(get_option("iemo_cover_post"), true, $context);
+    $location = isset($headers['Location']) ? $headers['Location'] : (isset($headers['location']) ? $headers['location'] : '');
+    if (empty($location)) {
+      throw new \Exception();
+    }
+    echo json_encode([
+      'code' => 200,
+      'msg' => 'success',
+      'data' => [
+        'url' => $location,
+      ],
+    ]);
+  } catch (\Throwable $e) {
+    echo json_encode([
+      'code' => 500,
+      'msg' => 'Get image failed',
+    ]);
+  }
+  exit;
+}
+
+
+
+
+
+// 获取随机图API重定向地址
+// function img_redirect_url($url, $ua=0) {
+//   $ch = curl_init();
+//   curl_setopt($ch, CURLOPT_URL, $url);
+//   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//   curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+//   $httpheader[] = "Accept:*/*";
+//   $httpheader[] = "Accept-Encoding:gzip,deflate,sdch";
+//   $httpheader[] = "Accept-Language:zh-CN,zh;q=0.8";
+//   $httpheader[] = "Connection:close";
+//   curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
+//   curl_setopt($ch, CURLOPT_HEADER, true);
+//   if ($ua) {
+//     curl_setopt($ch, CURLOPT_USERAGENT, $ua);
+//   } else {
+//     curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Linux; U; Android 4.0.4; es-mx; HTC_One_X Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0");
+//   }
+//   curl_setopt($ch, CURLOPT_NOBODY, 1);
+//   curl_setopt($ch, CURLOPT_ENCODING, "gzip");
+//   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+//   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//   $ret = curl_exec($ch);
+//   curl_close($ch);
+//   preg_match("/Location: (.*?)\r\n/iU",$ret,$location);
+//   return $location[1];
+// }
+
+
+
+
 
 
 

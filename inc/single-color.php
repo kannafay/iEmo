@@ -1,8 +1,10 @@
 <script src="<?php echo fileUri(); ?>/assets/js/color-thief.min.js"></script>
 <script>
   const colorThief = new ColorThief();
+  const getImgUrl = $('.get_img_url');
   const img = document.querySelector('.single main .content article .post-cover .cover .color-thief');
   const getColorFun=()=>{
+    // console.log(img.src);
     let colors = colorThief.getColor(img);
     // console.log(`rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`);
     function changeColor() {
@@ -36,11 +38,34 @@
     }
     
   }
-  if (img.complete) {
-    getColorFun();
-  } else {
-    img.addEventListener('load', function () {
-      getColorFun(); 
-    });
+
+  if (getImgUrl.length === 0){
+    if (img.complete) {
+      getColorFun();
+    } else {
+      $(img).on('load',function (){
+        getColorFun(); 
+      });
+    }
   }
+
+  getImgUrl.each(function (){
+    var that = this;
+    get_color(function (result){
+      const url = result.code === 200 ? result.data.url : '<?=default_post_cover()?>';
+      console.log(url);
+      const newImg = $('<img src="'+url+'">');
+ 
+      newImg.on('load',function (){
+        $(that).remove();
+        $(this).show();
+      }).hide();
+ 
+      $(that).parent().append(newImg);
+ 
+      $('.single .post-cover .cover .color-thief').on('load',function (){
+        getColorFun();
+      }).attr('src',url);
+    });
+  });
 </script>

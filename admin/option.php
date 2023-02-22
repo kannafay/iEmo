@@ -81,12 +81,12 @@ if(@stripslashes($_POST["iemo_option"])){
         <tr>
           <th scope="row"><label>推荐文章</label></th>
           <td>
-            <div class="iemo-recommend-post" onclick="iemo_post_show()">选取文章</div>
+            <div class="iemo-recommend-post" onclick="iemo_post_show()">选择文章</div>
             <br><br>
             <p class="description">显示方式（首页顶部）：</p>
             <fieldset>
         	    <label><input type="radio" name="iemo_recommend_show" value="" <?php echo get_option("iemo_recommend_show") == '' ? 'checked' : ''; ?>>不显示</label><br>
-        	    <label><input type="radio" name="iemo_recommend_show" value="swiper" <?php echo get_option("iemo_recommend_show") == 'swiper' ? 'checked' : ''; ?>>轮播图（少于3篇不显示，最多支持10篇）</label><br>
+        	    <label><input type="radio" name="iemo_recommend_show" value="swiper" <?php echo get_option("iemo_recommend_show") == 'swiper' ? 'checked' : ''; ?>>轮播图（最多支持10篇）</label><br>
               <label><input type="radio" name="iemo_recommend_show" value="regular" <?php echo get_option("iemo_recommend_show") == 'regular' ? 'checked' : ''; ?>>固定卡片（建议3篇，移动端仅显示第一篇）</label><br>
         	  </fieldset>
           </td>
