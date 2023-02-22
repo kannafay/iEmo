@@ -144,11 +144,11 @@
   color: var(--theme-bak);
   font-size: 14px;
   padding: 2px 4px;
-  font-family: 'Consolas','Courier New','monospace';
+  font-family: 'PingFang SC','Consolas','Courier New','monospace';
 }
 .single .post-content pre {
   /* max-height: 512px; */
-  font-family: 'Consolas','Courier New','monospace';
+  font-family: 'PingFang SC','Consolas','Courier New','monospace';
   border-radius: 8px;
   overflow: auto;
   padding: 15px;
