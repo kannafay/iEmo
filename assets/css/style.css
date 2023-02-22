@@ -1588,7 +1588,7 @@ footer .copyright p {
 
 .category main .content article .categories,
 .tag main .content article .tag-bar {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .category main .content article .categories ul,
@@ -1596,11 +1596,12 @@ footer .copyright p {
   display: flex;
   overflow: auto;
   position: relative;
+  padding-bottom: 10px;
 }
 
 .category main .content article .categories ul .slider,
 .tag main .content article .tag-bar ul .slider {
-  height: 100%;
+  height: calc(100% - 10px);
   border-radius: 6px;
   background-color: #333;
   position: absolute;
@@ -1613,6 +1614,7 @@ footer .copyright p {
   width: 0;
   height: 0;
 }
+
 .tag main .content article .tag-bar ul li,
 .category main .content article .categories ul li {
   margin-right: 10px;

@@ -164,11 +164,18 @@
 }
 
 
-.single .post-content pre::-webkit-scrollbar，
+.single .post-content pre::-webkit-scrollbar,
 .single .post-content pre code::-webkit-scrollbar {
   width: 0;
-  height: 0;
+  height: 6px;
 }
+
+.single .post-content pre:hover::-webkit-scrollbar-thumb,
+.single .post-content pre code:hover::-webkit-scrollbar-thumb {
+  background: var(--scroll);
+  border-radius: 6px;
+}
+
 
 
 
@@ -341,7 +348,11 @@
 }
 
 
-
+@media screen and (max-width: 500px) {
+  .single .post-content pre {
+    padding: 10px;
+  }
+}
 
 
 
