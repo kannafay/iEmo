@@ -66,6 +66,7 @@ a {
 .single *,
 *::before,
 *::after {
+  -webkit-transition: all var(--tr3);
   transition: all var(--tr3);
 }
 
@@ -318,16 +319,14 @@ main .nav .user-menu .user-menu-box {
   right: 0;
   top: 0;
   width: 150px;
-  margin-top: 24px;
-  padding-top: 10px;
-  opacity: 0;
+  margin-top: 35px;
   visibility: hidden;
+  opacity: 0;
   transform: translateY(10px);
-    
 }
 main .nav .user-menu .user-menu-box.active {
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -487,7 +486,7 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.home article .top .regular .regular-box a:hover h2 {
+.home article .top .regular .regular-box h2:hover {
   text-decoration: underline;
 }
 .home article .top .regular .regular-box p {
@@ -2064,7 +2063,7 @@ footer .copyright p {
   }
 
   .home article .top .swiper {
-    height: 210px;
+    height: 250px;
   }
   .home article .top .regular .regular-box a {
     height: 150px;
@@ -2392,7 +2391,6 @@ footer .copyright p {
   .home article .top .swiper {
     height: 260px;
     padding-top: 0;
-    border-radius: 8px;
     overflow: hidden;
   }
   .home article .top .swiper-slide {
@@ -2420,6 +2418,9 @@ footer .copyright p {
   }
   .home article .top .regular .regular-box a {
     height: 180px;
+  }
+  .home article .top .regular .regular-box h2:hover {
+    text-decoration: none;
   }
 }
 

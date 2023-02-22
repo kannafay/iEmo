@@ -6,7 +6,7 @@
 
 .iemo-recommend-post {
   display: inline-block;
-  padding: 6px 16px ;
+  padding: 6px 20px;
   border-radius: 5px;
   background-color: #333;
   color: #fff;
@@ -43,20 +43,23 @@
   visibility: visible;
   opacity: 1;
 }
-#iemo-recommend-post form {
+#iemo-recommend-post .form {
   height: 100%;
 }
+#iemo-recommend-post h2 {
+  margin-top: 0;
+}
 #iemo-recommend-post ul {
-  height: 100%;
+  height: calc(100% - 20px);
   overflow: auto;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 0 10px;
+  margin: 20px 0;
 }
 
 #iemo-recommend-post button,
 #iemo-recommend-post .close {
   display: inline-block;
-  padding: 8px 30px;
+  padding: 6px 20px;
   border-radius: 4px;
   background-color: #fff;
   color: #333;
@@ -71,6 +74,7 @@
 #iemo-recommend-post .submit {
   background-color: #333;
   color: #fff;
+  margin-left: 10px;
 }
 #iemo-recommend-post .submit:hover {
   background-color: #444;

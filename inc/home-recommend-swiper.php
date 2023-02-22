@@ -1,4 +1,4 @@
-<?php if(get_option("iemo_recommend_post")) { ?>
+<?php if(count(get_option("iemo_recommend_post")) >= 3) { ?>
   <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/swiper/swiper-bundle.min.css">
   <?php
     if(is_array(get_option("iemo_recommend_post"))) {
@@ -13,6 +13,7 @@
     $recommend_i = 0;
   ?>
   <div class="top">
+    <div class="box">
     <div class="swiper">
       <div class="swiper-wrapper">
         <?php if($recommend_query->have_posts()) : while($recommend_query->have_posts()) : $recommend_query->the_post(); ?>
@@ -36,6 +37,8 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-pagination"></div>
     </div>
+    </div>
+    
 
     <script src="<?php echo fileUri(); ?>/assets/static/swiper/swiper-bundle.min.js"></script>  
     <script>
@@ -44,12 +47,14 @@
         slidesPerView: 1,
         spaceBetween: 10,
         centeredSlides: true,
+        speed: 500,
         breakpoints: { 
           500: {
             slidesPerView: 2,
             spaceBetween: -10,
+            
           },
-          700: {
+          800: {
             slidesPerView: 3,
             spaceBetween: -10,
           },
@@ -70,7 +75,7 @@
         },
       });
       $(document).ready(()=> {
-        $('.home article .top .swiper-slide').css('transition','all .3s');
+        $('.home article .top .swiper-slide').css('transition','all .5s');
       })
     </script>
   </div>

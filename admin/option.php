@@ -52,7 +52,7 @@ if(@stripslashes($_POST["iemo_option"])){
             <p class="description">外观->菜单->显示选项（右上角）->勾选〔title属性〕和〔CSS类〕</p>
             <p class="description">导航标签请填写以上对应的标签代码（非必填）</p>
             <p class="description">title属性用于文本提示（鼠标移到菜单显示本文内容）</p>
-            <p class="description">分类页CSS类填写〔cate〕，标签CSS类填写〔tag〕</p>
+            <p class="description">分类页面CSS类填写〔cate〕，标签页面CSS类填写〔tag〕</p>
           </td>
         </tr>
         <tr>
@@ -81,12 +81,12 @@ if(@stripslashes($_POST["iemo_option"])){
         <tr>
           <th scope="row"><label>推荐文章</label></th>
           <td>
-            <div class="iemo-recommend-post" onclick="iemo_post_show()">前往设置</div>
+            <div class="iemo-recommend-post" onclick="iemo_post_show()">选取文章</div>
             <br><br>
             <p class="description">显示方式（首页顶部）：</p>
             <fieldset>
         	    <label><input type="radio" name="iemo_recommend_show" value="" <?php echo get_option("iemo_recommend_show") == '' ? 'checked' : ''; ?>>不显示</label><br>
-        	    <label><input type="radio" name="iemo_recommend_show" value="swiper" <?php echo get_option("iemo_recommend_show") == 'swiper' ? 'checked' : ''; ?>>轮播图（最少3篇，最多支持10篇）</label><br>
+        	    <label><input type="radio" name="iemo_recommend_show" value="swiper" <?php echo get_option("iemo_recommend_show") == 'swiper' ? 'checked' : ''; ?>>轮播图（少于3篇不显示，最多支持10篇）</label><br>
               <label><input type="radio" name="iemo_recommend_show" value="regular" <?php echo get_option("iemo_recommend_show") == 'regular' ? 'checked' : ''; ?>>固定卡片（建议3篇，移动端仅显示第一篇）</label><br>
         	  </fieldset>
           </td>
@@ -138,7 +138,7 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="iemo_page_toggle">页面切换效果</label></th>
+          <th scope="row"><label for="iemo_page_toggle">页面切换动画</label></th>
           <td>
             <select name="iemo_page_toggle" id="iemo_page_toggle">
               <option value="" <?php echo get_option("iemo_page_toggle") == '' ? 'selected' : ''; ?>>关闭</option>
@@ -180,9 +180,10 @@ if(@stripslashes($_POST["iemo_option"])){
             $post = "";
           }
           update_option("iemo_recommend_post", $post);
+          update_option("iemo_recommend_show", $iemo_recommend_show);
         }
       ?>
-      <form method="post" action="" novalidate="novalidate" target="frameName">
+      <div class="form">
         <ul>   
           <h2>当前已发布文章：</h2>   
           <?php 
@@ -202,13 +203,12 @@ if(@stripslashes($_POST["iemo_option"])){
           <!-- <p>已选择：<?php //var_dump(get_option("iemo_recommend_post")); ?></p> -->
         </ul>
         <button class="submit" type="submit" name="iemo_option" onclick="change_success();">保存</button>
-        <button class="reset" type="reset">取消</button>
+        <button class="reset" type="reset">撤销</button>
         <div class="close" onclick="iemo_post_close()">关闭</div>
       </form>
       <iframe src="" frameborder="0" name="frameName" style="display:none"></iframe>
-      
     </div>
-  </form>
+  </div>
 </div>
 
 <div class="success">保存成功</div>
