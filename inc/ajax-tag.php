@@ -2,7 +2,7 @@
 
   // tag change bar
   $('<div class="slider"></div>').appendTo($('.tag-bar ul'));
-  $(document).ready(function() {
+  // $(document).ready(function() {
     let url = location.href;
     $('.tag .tag-bar ul li a').each(function() {
       if($(this).attr('href') == url) {
@@ -31,7 +31,7 @@
     })
 
     $('.tag .tag-bar ul li a.active')[0].scrollIntoView({behavior:'smooth', block:'center', inline:'center'});
-  })
+  // })
 
 
 

@@ -2,7 +2,7 @@
 
   // category change bar
   $('<div class="slider"></div>').appendTo($('.categories ul'));
-  $(document).ready(function() {
+  // $(document).ready(function() {
     let url = location.href;
     $('.category .categories ul li a').each(function() {
       if($(this).attr('href') == url) {
@@ -31,7 +31,7 @@
     })
 
     $('.category .categories ul li a.active')[0].scrollIntoView({behavior:'smooth', block:'center', inline:'center'});
-  })
+  // })
 
 
 
