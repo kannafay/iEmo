@@ -14,13 +14,20 @@
               <?php
                 if (has_post_thumbnail()) {
                   the_post_thumbnail('large');
-                } else { ?>
-                  <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_single_cover();} ?>" alt="">
-                <?php }
-              ?>
-              <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
+                ?>
+                <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
+                <script>$('.single .post-cover .cover .color-thief').attr('src',$('.single .post-cover .cover img:first').attr('src'));</script>
+              <?php } else { ?>
+                <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
+                <?php  
+                  $imgUrl = first_post_cover(get_the_content());
+                  if($imgUrl){ ?>
+                    <img src="<?=$imgUrl?>" alt="">
+                  <?php }else{ ?>  
+                    <img class="get_img_url" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
+                <?php } ?>
+              <?php } ?>
             </div>
-            <script>$('.single .post-cover .cover .color-thief').attr('src',$('.single .post-cover .cover img:first').attr('src'));</script>
             <div class="post-info">
               <div class="title" title="<?php the_title(); ?>"><?php the_title(); ?></div>
               <div class="more">

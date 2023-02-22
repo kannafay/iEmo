@@ -126,3 +126,18 @@ $('.home .recommend-bar ul li a').each(function(i) {
 })
 
 
+function get_color(callback) {
+  $.ajax({
+		type: 'POST',
+		url: '/wp-admin/admin-ajax.php',
+		contentType: "application/x-www-form-urlencoded",
+		dataType: "json",
+		data: {
+			"action": "random_img",
+		}
+	}).done(function(data) {
+    callback(data);
+	}).fail(function(jqXHR, textStatus, errorThrown) {
+		// console.debug(jqXHR);
+	})
+}

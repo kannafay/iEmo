@@ -1,4 +1,126 @@
 <?php if(get_option("iemo_recommend_post")) { ?>
+
+  <?php 
+    if(count(get_option("iemo_recommend_post")) == 1) { ?>
+      <script>
+        $(`
+          <style>
+            .home article .top .swiper {
+              height: 300px;
+              border-radius: 8px;
+              overflow: hidden;
+              padding: 0;
+              margin-bottom: 5px;
+              transition: height 0s;
+            }
+            .home article .top .swiper-slide a .swiper-post-info h2 {
+              font-size: 16px;
+              transition: font-size 0s;
+            }
+            .home article .top .swiper-button-prev, 
+            .home article .top .swiper-button-next {
+              margin-top: 0;
+            }
+            .home article .top .swiper-button-prev {
+              left: 20px;
+            }
+            .home article .top .swiper-button-next {
+              right: 20px;
+            }
+            .home article .top .swiper-slide a .swiper-post-info {
+              padding: 0 30px 30px 30px;
+              transition: padding 0s;
+            }
+            @media screen and (max-width: 700px) {
+              .home article .top .swiper {
+                height: 240px;
+              }
+            }
+            @media screen and (max-width: 600px) {
+              .home article .top .swiper {
+                height: 180px;
+                margin-bottom: 15px;
+              }
+              .home article .top .swiper-slide a .swiper-post-info {
+                padding: 0 20px 20px 20px;
+                transition: all 0s;
+              }
+              .home article .top .swiper-slide a .swiper-post-info h2 {
+                font-size: 15px;
+                transition: all 0s;
+              }
+            }
+          </style>
+        `).appendTo('head');
+        let spaceBetween = 20;
+        let slidesPerView = 1;
+        let breakpoints = {};
+        let autoplay = false;
+      </script>
+    <?php } else if(count(get_option("iemo_recommend_post")) == 2) { ?>
+      <script>
+        $(`
+          <style>
+            .home article .top .swiper {
+              height: 300px;
+              transition: height 0s;
+            }
+            @media screen and (max-width: 800px) {
+              .home article .top .swiper {
+                height: 280px;
+              }
+            }
+            @media screen and (max-width: 700px) {
+              .home article .top .swiper {
+                height: 250px;
+              }
+            }
+            @media screen and (max-width: 600px) {
+              .home article .top .swiper {
+                height: 220px;
+              }
+            }
+          </style>
+        `).appendTo('head');
+        let spaceBetween = 20;
+        let slidesPerView = 1;
+        let breakpoints = {
+          500: {
+            slidesPerView: 2,
+            spaceBetween: -10,
+          },
+        };
+        let autoplay = {
+          delay: 4000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        };
+      </script>
+    <? } else if(count(get_option("iemo_recommend_post")) >= 3) { ?>
+      <script>
+        let spaceBetween = 20;
+        let slidesPerView = 1;
+        let breakpoints = {
+          500: {
+            slidesPerView: 2,
+            spaceBetween: 0,
+          },
+          800: {
+            slidesPerView: 3,
+            spaceBetween: 0,
+          },
+        };
+        let autoplay = {
+          delay: 4000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        };
+      </script>
+    <? }
+  ?>
+
+
+
   <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/swiper/swiper-bundle.min.css">
   <?php
     if(is_array(get_option("iemo_recommend_post"))) {
@@ -41,24 +163,12 @@
     <script>
       var swiper = new Swiper('.swiper', {
         loop: true,
-        slidesPerView: 1,
-        spaceBetween: 10,
+        spaceBetween: spaceBetween,
+        slidesPerView: slidesPerView,
+        breakpoints: breakpoints,
         centeredSlides: true,
-        breakpoints: { 
-          500: {
-            slidesPerView: 2,
-            spaceBetween: -10,
-          },
-          700: {
-            slidesPerView: 3,
-            spaceBetween: -10,
-          },
-        },
-        autoplay: { 
-          delay: 4000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        },
+        speed: 500,
+        autoplay: autoplay,
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -70,7 +180,7 @@
         },
       });
       $(document).ready(()=> {
-        $('.home article .top .swiper-slide').css('transition','all .3s');
+        $('.home article .top .swiper-slide').css('transition','all .5s');
       })
     </script>
   </div>

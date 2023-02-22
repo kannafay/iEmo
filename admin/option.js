@@ -19,7 +19,7 @@ function change_success() {
   $('.success').addClass('active');
   timer = setTimeout(function() {
     $('.success').removeClass('active');
-  },1000)
+  },1500)
 }
 
 
