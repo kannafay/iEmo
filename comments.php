@@ -8,7 +8,7 @@
     <?php //var_dump(get_comments()); ?><br>
       
       <div class="response">
-      <?php //require_once('comments-tmp.php'); ?>
+      <?php //require_once('comments-response.php'); ?>
       <?php comment_form() ?>
       </div>
       
