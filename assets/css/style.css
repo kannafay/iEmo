@@ -1310,6 +1310,7 @@ main .content .notes-content ol li {
   object-fit: cover;
   border-radius: 8px;
   vertical-align: middle;
+  pointer-events: none;
 }
 .note main .content article .note-page li .top .right {
   width: calc(100% - 65px);

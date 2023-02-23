@@ -16,7 +16,7 @@
                 <li>
                   <div class="top">
                     <div class="left">
-                      <?php echo get_avatar(1, '200'); ?>
+                      <?php the_avatar_author(); ?>
                     </div>
                     <div class="right">
                       <div class="note-author"><?php echo get_user_role(1)->display_name; ?></div>
