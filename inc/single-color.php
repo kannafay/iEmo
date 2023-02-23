@@ -1,8 +1,8 @@
 <script src="<?php echo fileUri(); ?>/assets/js/color-thief.min.js"></script>
 <script>
-  const colorThief = new ColorThief();
   const getImgUrl = $('.get_img_url');
-  const img = document.querySelector('.single main .content article .post-cover .cover .color-thief');
+  const colorThief = new ColorThief();
+  const img = document.querySelector('.single .post-cover .cover .color-thief');
   const getColorFun=()=>{
     // console.log(img.src);
     let colors = colorThief.getColor(img);
@@ -53,15 +53,16 @@
     var that = this;
     get_color(function (result){
       const url = result.code === 200 ? result.data.url : '<?=default_post_cover()?>';
-      console.log(url);
+      // console.log(url);
       const newImg = $('<img src="'+url+'">');
- 
+      $(that).parent().append(newImg);
+      newImg.css('opacity','0');
       newImg.on('load',function (){
         $(that).remove();
-        $(this).show();
-      }).hide();
+        $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards');
+      });
  
-      $(that).parent().append(newImg);
+      
  
       $('.single .post-cover .cover .color-thief').on('load',function (){
         getColorFun();

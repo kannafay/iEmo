@@ -87,7 +87,7 @@ if(@stripslashes($_POST["iemo_option"])){
             <fieldset>
         	    <label><input type="radio" name="iemo_recommend_show" value="" <?php echo get_option("iemo_recommend_show") == '' ? 'checked' : ''; ?>>不显示</label><br>
         	    <label><input type="radio" name="iemo_recommend_show" value="swiper" <?php echo get_option("iemo_recommend_show") == 'swiper' ? 'checked' : ''; ?>>轮播图（最多支持10篇）</label><br>
-              <label><input type="radio" name="iemo_recommend_show" value="regular" <?php echo get_option("iemo_recommend_show") == 'regular' ? 'checked' : ''; ?>>固定卡片（建议3篇，移动端仅显示第一篇）</label><br>
+              <label><input type="radio" name="iemo_recommend_show" value="regular" <?php echo get_option("iemo_recommend_show") == 'regular' ? 'checked' : ''; ?>>固定卡片（最多支持3篇，移动端仅显示第一篇）</label><br>
         	  </fieldset>
           </td>
         </tr>

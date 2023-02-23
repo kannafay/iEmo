@@ -42,6 +42,9 @@ li {
 a {
   text-decoration: none;
 }
+img {
+  user-select: none;
+}
 
 ::-moz-selection {
   background-color: var(--theme); 
@@ -1310,6 +1313,7 @@ main .content .notes-content ol li {
   object-fit: cover;
   border-radius: 8px;
   vertical-align: middle;
+  pointer-events: none;
 }
 .note main .content article .note-page li .top .right {
   width: calc(100% - 65px);
@@ -1431,6 +1435,7 @@ footer .copyright p {
   bottom: 0;
   left: 0;
   background: linear-gradient(to top, var(--post-cover), rgba(0 0 0 / 0));
+  z-index: 1;
 }
 .single main .content article .post-cover .cover::after {
   content: '';
@@ -1441,6 +1446,7 @@ footer .copyright p {
   bottom: 0;
   left: 0;
   background: linear-gradient(to top, rgba(0 0 0 / .5), rgba(0 0 0 / 0));
+  z-index: 2;
 }
 
 .single main .content article .post-cover .cover img {
@@ -1453,6 +1459,8 @@ footer .copyright p {
 .single main .content article .post-cover .cover .get_img_url,
 .single main .content article .post-cover .cover .thumbnail_loading {
   object-fit: contain;
+  position: absolute;
+  top: 0;
 }
 
 .single main .content article .post-cover .post-info {
@@ -1460,6 +1468,7 @@ footer .copyright p {
   position: absolute;
   bottom: 0;
   padding: 0 25px 25px 25px;
+  z-index: 3;
 }
 .single main .content article .post-cover .post-info .title {
   font-size: 28px;
@@ -1471,6 +1480,12 @@ footer .copyright p {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.single main .content article .post-cover .post-info .title h2 {
+  display: inline;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
 }
 
 .single main .content article .post-cover .post-info .more {
@@ -1659,7 +1674,6 @@ footer .copyright p {
 
 .category main .content article .categories ul li a.active,
 .tag main .content article .tag-bar ul li a.active {
-  /* background-color: #333; */
   color: #fff;
 }
 
@@ -2173,6 +2187,31 @@ footer .copyright p {
   }
 
 
+  .single main .content article .post-cover {
+    height: 240px;
+  }
+  .single main .content article .post-cover .post-info {
+    padding: 0 25px 20px 25px;
+  }
+  .single main .content article .post-cover .post-info .title,
+  .single main .content article .post-cover .post-info .title h2 {
+    font-size: 22px;
+  }
+  .single main .content article .post-cover .post-info .more div {
+    margin-left: 10px;
+  }
+  .single main .content article .post-cover .post-info .more .time span,
+  .single main .content article .post-cover .post-info .more .cate a,
+  .single main .content article .post-cover .post-info .more .tag a {
+    font-size: 13px;
+  }
+  .single main .content article .post-cover .post-info .more .time i,
+  .single main .content article .post-cover .post-info .more .cate a::before,
+  .single main .content article .post-cover .post-info .more .tag a::before {
+    font-size: 14px;
+  }
+
+
 
   .home article .top .swiper {
     height: 240px;
@@ -2355,28 +2394,6 @@ footer .copyright p {
 
   .single main .content article .post-content {
     padding: 30px 25px;
-  }
-  .single main .content article .post-cover {
-    height: 240px;
-  }
-  .single main .content article .post-cover .post-info {
-    padding: 0 25px 20px 25px;
-  }
-  .single main .content article .post-cover .post-info .title {
-    font-size: 22px;
-  }
-  .single main .content article .post-cover .post-info .more div {
-    margin-left: 10px;
-  }
-  .single main .content article .post-cover .post-info .more .time span,
-  .single main .content article .post-cover .post-info .more .cate a,
-  .single main .content article .post-cover .post-info .more .tag a {
-    font-size: 13px;
-  }
-  .single main .content article .post-cover .post-info .more .time i,
-  .single main .content article .post-cover .post-info .more .cate a::before,
-  .single main .content article .post-cover .post-info .more .tag a::before {
-    font-size: 14px;
   }
 
   .note main .content article .note-page li {

@@ -57,10 +57,23 @@ $('article, aside .aside-content').scroll(function() {
   $(user_set_menu).removeClass('active');
   $('.search-m').removeClass('active');
 })
+
 $(document).scroll(function() {
   $(user_set_menu).removeClass('active');
   $('.search-m').removeClass('active');
 })
+
+$('article').scroll(function() {
+  $('header').removeClass('active');
+  $('aside').removeClass('active');
+})
+
+$('article').click(function() {
+  $('header').removeClass('active');
+  $('aside').removeClass('active');
+})
+
+
 
 
 
