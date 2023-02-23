@@ -42,6 +42,9 @@ li {
 a {
   text-decoration: none;
 }
+img {
+  user-select: none;
+}
 
 ::-moz-selection {
   background-color: var(--theme); 
