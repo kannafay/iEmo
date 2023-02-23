@@ -28,6 +28,5 @@
       </style>
     <?php }
   ?>
-  
 </head>
 <body>

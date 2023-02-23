@@ -11,25 +11,45 @@
         <article>
           <div class="post-cover">
             <div class="cover">
-              <?php
-                if (has_post_thumbnail()) {
-                  the_post_thumbnail('large');
-                ?>
+              <?php 
+                if (has_post_thumbnail()) { ?>
+                <img class="thumbnail_loading" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
+                <?php the_post_thumbnail('large'); ?>
                 <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
-                <script>$('.single .post-cover .cover .color-thief').attr('src',$('.single .post-cover .cover img:first').attr('src'));</script>
-              <?php } else { ?>
-                <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
-                <?php  
-                  $imgUrl = first_post_cover(get_the_content());
-                  if($imgUrl){ ?>
-                    <img src="<?=$imgUrl?>" alt="">
-                  <?php }else{ ?>  
-                    <img class="get_img_url" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
+                <script>
+                  const imgELem = $('.single .post-cover .cover img:nth-child(2)');
+                  imgELem.css('opacity','0');
+                  imgELem.on('load',function (){
+                    $('.single .post-cover .cover img:first').remove();
+                    $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards');
+                  });
+                  $('.single .post-cover .cover .color-thief').attr('src',imgELem.attr('src'));
+                </script>
+              <?php } else {
+                $imgUrl = first_post_cover(get_the_content());
+                if($imgUrl){ ?>
+                  <img class="thumbnail_loading" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
+                  <img src="<?=$imgUrl?>" alt="">
+                  <img class="color-thief" src="<?=$imgUrl?>" alt="" crossorigin="anonymous" style="display:none">
+                  <script>
+                    const imgELem = $('.single .post-cover .cover img:nth-child(2)');
+                    imgELem.css('opacity','0');
+                    imgELem.on('load',function (){
+                      $('.single .post-cover .cover img:first').remove();
+                      $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards');
+                    });
+                  </script>
+                <?php }else{ ?>  
+                  <img class="get_img_url" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
+                  <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
                 <?php } ?>
               <?php } ?>
             </div>
+            
             <div class="post-info">
-              <div class="title" title="<?php the_title(); ?>"><?php the_title(); ?></div>
+              <div class="title">
+                <h2 title="<?php the_title(); ?>"><?php the_title(); ?></h2>
+              </div>
               <div class="more">
                 <div class="time">
                   <i class="iconfont icon-clock"></i>

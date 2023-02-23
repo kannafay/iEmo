@@ -30,7 +30,7 @@
 /* p标签 */
 .single .post-content p {
   line-height: 1.8;
-  text-align: justify;
+  /* text-align: justify; */
   white-space: normal;
   word-break: break-all;
   word-wrap: break-word;
@@ -46,6 +46,7 @@
   color: var(--theme-bak);
   text-decoration: underline;
   display: inline-block;
+  outline: 0;
 }
 
 .single .wp-block-image a {
