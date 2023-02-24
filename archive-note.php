@@ -1,6 +1,9 @@
 <?php get_head(); ?>
   <div class="container note">
     <?php get_header(); ?>
+    <script>
+      $('header .menu ul li.note').addClass('current-menu-item');
+    </script>
     <main>
       <?php get_nav(); ?>
       <div class="content">

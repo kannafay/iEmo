@@ -52,7 +52,7 @@ if(@stripslashes($_POST["iemo_option"])){
             <p class="description">外观->菜单->显示选项（右上角）->勾选〔title属性〕和〔CSS类〕</p>
             <p class="description">导航标签请填写以上对应的标签代码（非必填）</p>
             <p class="description">title属性用于文本提示（鼠标移到菜单显示本文内容）</p>
-            <p class="description">分类页面CSS类填写〔cate〕，标签页面CSS类填写〔tag〕</p>
+            <p class="description">分类页面CSS类填写〔cate〕，标签页面CSS类填写〔tag〕，说说页面CSS类填写〔note〕</p>
           </td>
         </tr>
         <tr>
