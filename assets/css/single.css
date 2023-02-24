@@ -187,7 +187,7 @@
 
 /* 表格 */
 .single .post-content .wp-block-table {
-  overflow-x: auto;
+  overflow: auto;
 }
 .single .post-content .wp-block-table::-webkit-scrollbar {
   width: 6px;
@@ -198,26 +198,28 @@
   background-color: var(--scroll);
 }
 
-.single .post-content table {
+.single .post-content .wp-block-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.single .post-content tr:hover {
+.single .post-content .wp-block-table table.has-fixed-layout {
+  table-layout: fixed;
+}
+.single .post-content .wp-block-table tr:hover {
   background-color: var(--menu-hover);
 }
-.single .post-content table, 
-.single .post-content th, 
-.single .post-content td {
+.single .post-content .wp-block-table table, 
+.single .post-content .wp-block-table th, 
+.single .post-content .wp-block-table td {
   font-size: 15px;
   border: 1px solid #e2e2e2;
 }
-.single .post-content th, 
-.single .post-content td {
+.single .post-content .wp-block-table th, 
+.single .post-content .wp-block-table td {
   padding: 10px;
-  text-align: left;
 }
 
-.single .post-content th {
+.single .post-content .wp-block-table th {
   background-color: var(--theme);
   color: #fff;
   text-shadow: 0 0 5px rgba(0 0 0 / .2);
@@ -276,6 +278,13 @@
   vertical-align: middle;
 }
 
+.single .post-content .wp-block-audio {
+  max-width: 100%;
+  vertical-align: middle;
+}
+.single .post-content .wp-block-audio audio {
+  width: 100%;
+}
 
 
 
@@ -334,8 +343,6 @@
 
 
 
-
-
 /* note */
 .single .post-content .wp-video {
   max-width: 100% !important;
@@ -347,6 +354,9 @@
   margin-bottom: 0;
   vertical-align: middle;
 }
+
+
+
 
 
 @media screen and (max-width: 500px) {
