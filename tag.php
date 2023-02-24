@@ -23,13 +23,6 @@
               <?php endif; ?>
             </ul>
           </div>
-          <script>
-            $('.tag main .content article .tag-bar ul li a').each(function() {
-              if($(this).attr('href') == window.location.href) {
-                $(this).addClass('current-tag');
-              }
-            })
-          </script>
 
           <div class="tag-box">
             <ul>
