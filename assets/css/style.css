@@ -434,7 +434,7 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
 .home article .top {
   padding-bottom: 20px;
   margin-bottom: 25px;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px dashed #e2e2e2;
   overflow: hidden;
 }
 
@@ -1570,7 +1570,7 @@ footer .copyright p {
 
 /* single content */
 .single main .content article .post-content {
-  padding: 25px;
+  padding: 30px 25px;
 }
 
 
@@ -2263,6 +2263,8 @@ footer .copyright p {
   
   .home main .content article .bottom .post-part ul li {
     margin-bottom: 20px;
+    padding-bottom: 0;
+    border-bottom: 0;
   }
   .home main .content article .bottom .post-part ul li .left {
     margin-right: 10px;
