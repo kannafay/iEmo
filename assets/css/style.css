@@ -380,7 +380,7 @@ main .content {
 main .content article {
   width: calc(100% - 300px);
   height: 100%;
-  padding: 25px;
+  padding: 25px 25px 50px 25px;
   position: relative;
   background-color: #fff;
 }
@@ -695,6 +695,8 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   display: flex;
   margin-bottom: 25px;
   transition: all 0s !important;
+  padding-bottom: 25px;
+  border-bottom: 1px dashed #e2e2e2;
 }
 .home main .content article .bottom .post-part ul li:last-child {
   margin-bottom: 0;

@@ -65,6 +65,7 @@
           <div class="post-content">
             <?php the_content(); ?>
           </div>
+          <?php require_once('comments.php'); ?>
         </article>
         <?php get_aside(); ?>
       </div>

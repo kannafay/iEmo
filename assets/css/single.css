@@ -29,7 +29,7 @@
 
 /* p标签 */
 .single .post-content p {
-  line-height: 1.8;
+  line-height: 1.5;
   /* text-align: justify; */
   white-space: normal;
   word-break: break-all;
@@ -58,9 +58,9 @@
 
 /* h标签 */
 .single .post-content h6 {
-  font-size: 15px;
+  font-size: 14px;
   color: #333;
-  font-weight: 400;
+  font-weight: 700;
   position: relative;
 }
 .single .post-content h5 {
@@ -69,26 +69,24 @@
   position: relative;
 }
 .single .post-content h4 {
-  font-size: 15px;
-  color: #333;
-  position: relative;
-
-}
-.single .post-content h3 {
   font-size: 16px;
   color: #333;
   position: relative;
 }
-.single .post-content h2 {
+.single .post-content h3 {
   font-size: 18px;
   color: #333;
   position: relative;
 }
-.single .post-content h1 {
-  font-size: 20px;
+.single .post-content h2 {
+  font-size: 22px;
   color: #333;
   position: relative;
-
+}
+.single .post-content h1 {
+  font-size: 24px;
+  color: #333;
+  position: relative;
 }
 
 
@@ -116,7 +114,7 @@
 /* 列表标签 */
 .single .post-content ul, 
 .single .post-content ol {
-  margin-left: 20px;
+  margin-left: 1em;
 }
 
 .single .post-content ul li, 
@@ -131,7 +129,7 @@
   list-style: disc;
 }
 .single .post-content ol li {
-  list-style: auto;
+  list-style: decimal;
 }
 
 
@@ -354,6 +352,33 @@
   margin-bottom: 0;
   vertical-align: middle;
 }
+
+
+
+
+
+@media screen and (max-width: 700px) {
+  /* h标签 */
+  .single .post-content h6 {
+    font-size: 14px;
+  }
+  .single .post-content h5 {
+    font-size: 15px;
+  }
+  .single .post-content h4 {
+    font-size: 16px;
+  }
+  .single .post-content h3 {
+    font-size: 18px;
+  }
+  .single .post-content h2 {
+    font-size: 20px;
+  }
+  .single .post-content h1 {
+    font-size: 22px;
+  }
+}
+
 
 
 

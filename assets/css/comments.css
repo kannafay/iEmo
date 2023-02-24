@@ -1,9 +1,13 @@
+article {
+  scroll-padding-top: 25px;
+}
+
 .comments {
   padding: 0 25px;
   margin-bottom: 25px;
 }
 
-.comments .comments-body h2 {
+.comments .comments-body h3 {
   color: #333;
   margin-bottom: 25px;
 }
@@ -18,13 +22,23 @@
   border-radius: 8px;
 }
 
+.comments .comments-body ul .child .at {
+  user-select: none;
+  color: var(--theme-bak);
+  margin-right: 10px;
+  font-style: italic;
+  font-size: 14px;
+}
+.comments .comments-body ul .child .at:hover {
+  text-decoration: underline;
+}
+
 .comments .comments-body ul li {
   width: 100%;
   height: auto;
   background-color: #f5f5f5;
   border-radius: 8px;
   padding: 15px;
-  padding-bottom: 20px;
   margin-bottom: 20px;
   
 }
@@ -44,6 +58,24 @@
   vertical-align: middle;
 }
 
+.comments .comments-body ul li .user-avatar .change-comment {
+  margin-top: 5px;
+}
+.comments .comments-body ul li .user-avatar .change-comment a {
+  display: block;
+  width: 100%;
+  color: #999;
+  background-color: rgba(0 0 0 / .05);
+  font-size: 12px;
+  padding: 2px 0;
+  border-radius: 4px;
+  text-align: center;
+}
+.comments .comments-body ul li .user-avatar .change-comment a:hover {
+  color: var(--theme-bak);
+  background-color: var(--code-bgc);
+}
+
 
 .comments .comments-body ul li .comment-info {
   width: calc(100% - 62px);
@@ -52,15 +84,31 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.comments .comments-body ul li .comment-info .info .user {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: calc(100% - 60px);
+}
+
+.comments .comments-body ul li .comment-info .info .user .user-name {
+  display: flex;
+  margin-bottom: 6px;
 }
 .comments .comments-body ul li .comment-info .info .user h4 {
   font-size: 15px;
   font-weight: 700;
   color: #333;
-  margin-bottom: 6px;
+  max-width: calc(100% - 50px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.comments .comments-body ul li .comment-info .info .user h4 span {
+.comments .comments-body ul li .comment-info .info .user .master {
   display: inline-block;
   font-size: 12px;
   font-weight: 400;
@@ -73,15 +121,18 @@
   margin-left: 8px;
   user-select: none;
 }
-.comments .comments-body ul li .comment-info .info .user {
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.comments .comments-body ul li .comment-info .info .user p {
+
+
+.comments .comments-body ul li .comment-info .info .user p,
+.comments .comments-body ul li .comment-info .info .user p i {
   font-size: 13px;
   color: #999;
+}
+.comments .comments-body ul li .comment-info .info .user p i {
+  margin-right: 3px;
+}
+.comments .comments-body ul li .comment-info .info .user .user-ip {
+  margin-left: 15px;
 }
 
 .comments .comments-body ul li .comment-info .info .reply-btn a {
@@ -99,14 +150,50 @@
 }
 
 
+.comments .comments-body ul li .comment-info .comment-content {
+  margin-bottom: 5px;
+}
+
 .comments .comments-body ul li .comment-info .comment-content p {
   font-size: 15px;
   color: #333;
 }
 .comments .comments-body ul li .comment-info .comment-content p a {
-  color: #333;
+  font-size: 15px;
+  color: var(--theme-bak);
   text-decoration: underline;
 }
+
+
+
+
+
+.comments .comments-body .no-comments {
+  width: 100%;
+}
+.comments .comments-body .no-comments .no-comment-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comments .comments-body .no-comments .no-comment-img img {
+  height: 200px;
+  width: 200px;
+}
+.comments .comments-body .no-comments .no-comment-img p {
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: #999;
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -115,13 +202,69 @@
 .comments .response {
   margin-bottom: 50px;
 }
-.comments .response h2 {
+.comments .response h3 {
   color: #333;
   margin-bottom: 25px;
 }
 
 
 
+
+
+
+
+
+@media screen and (max-width: 700px) {
+  .comments .comments-body ul li,
+  .comments .comments-body ul .child {
+    padding: 10px;
+  }
+  .comments .comments-body ul .child {
+    margin-top: 10px;
+  }
+  .comments .comments-body ul li .comment-info .info {
+    margin-bottom: 10px;
+  }
+  .comments .comments-body ul li .comment-info .info .user {
+    height: auto;
+  }
+  .comments .comments-body ul li .comment-info .info .user .user-name {
+    margin-bottom: 3px;
+  }
+  .comments .comments-body ul li .comment-info .info .user h4 {
+    font-size: 14px;
+  }
+  .comments .comments-body ul li .comment-info .info .user .master {
+    padding: 0px 4px;
+  }
+  .comments .comments-body ul li .comment-info .info .user p,
+  .comments .comments-body ul li .comment-info .info .user p i {
+    font-size: 12px;
+  }
+  .comments .comments-body ul li .comment-info .info .user p i {
+    margin-right: 2px;
+  }
+  .comments .comments-body ul li .comment-info .info .user .user-ip {
+    display: block;
+    margin-left: 0;
+    margin-top: 2px;
+  }
+
+  .comments .comments-body ul .child .at {
+    /* font-size: 13px; */
+  }
+
+  .comments .comments-body ul li .comment-info .comment-content p {
+    /* font-size: 14px; */
+  }
+  .comments .comments-body ul li .comment-info .comment-content p a {
+    /* font-size: 14px; */
+  }
+
+  .comments .comments-body .no-comments .no-comment-img p {
+    font-size: 12px;
+  }
+}
 
 
 

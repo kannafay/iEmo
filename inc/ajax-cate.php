@@ -152,7 +152,7 @@
             success: function(data) {
               $this.removeClass('loading').html('<i class="iconfont icon-activity"></i> 加载更多文章');
               var $res = $(data).find("article .cate-box ul li");
-              $('article .cate-box ul').append($res.fadeOut(0).fadeIn(300));
+              $('article .cate-box ul').append($res);
               var newhref = $(data).find("#pagination-post a").attr("href");
               if (newhref != undefined) {
                 $("#pagination-post a").attr("href", newhref);

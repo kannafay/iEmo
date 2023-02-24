@@ -440,3 +440,14 @@ function redirect_after_logout(){
   wp_safe_redirect(home_url());
   exit();
 }
+
+
+
+// 评论区同步昵称
+add_filter('get_comment_author', function ($author, $comment_ID, $comment) {
+  if (!$comment->user_id) {
+    return $author;
+  }
+  $newuser = get_userdata($comment->user_id);
+  return $newuser->display_name ?: $author;
+}, 10, 3);

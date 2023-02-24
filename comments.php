@@ -6,105 +6,101 @@
       
     <div class="comments">
     <?php //var_dump(get_comments()); ?><br>
+    <?php //var_dump(get_comment_author('29')); ?>
       
       <div class="response">
-      <?php //require_once('comments-response.php'); ?>
-      <?php comment_form() ?>
+      <?php 
+        //var_dump(wp_get_current_commenter());
+      ?>
+
+      <?php require_once('comment-response.php'); ?>
+      <?php //comment_form(); ?>
       </div>
-      
+      <?php
+        $comment_count = get_comment_count(get_the_ID())['approved'];
+      ?>
       <div class="comments-body">
-        <?php echo count($comments) >= 1 ? '<h2>发现'.count($comments).'条评论</h2>': '<h2>没有发现评论</h2>' ; ?>
-        <div class="comments-item">
-          <ul>
-            <?php foreach($comments as $value) {
-              if($value -> comment_post_ID == get_the_ID() && $value -> comment_parent == '0') { ?>
-                <li>
-                  <div class="parent">
-                    <div class="user-avatar">
-                      <div class="avatar">
-                        <?php
-                          if($value -> user_id == 1) {
-                            the_avatar_author();
-                          } else {
-                            echo '<img src="https://ldbbs.ldmnq.com/bbs/topic/attachment/2023-2/935a9ec7-ddce-4d9f-a57b-5e5a82ed8a69.jpg">';
+        <?php
+          if($comment_count >= 1) { ?>
+            <h3>发现<?=$comment_count?>条评论</h3>
+            <div class="comments-item">
+              <ul>
+                <?php 
+                $commentIndexs = [];
+                foreach ($comments as $item){
+                  if (!isset($commentIndexs[$item->comment_parent])) {
+                    $commentIndexs[$item->comment_parent] = [];
+                  }
+                  $commentIndexs[$item->comment_parent][$item->comment_ID] = $item;
+                  // var_dump($item->comment_parent.'='.$item->comment_content);
+                }
+                // var_dump($commentIndexs);
+                foreach($commentIndexs['0'] as $value) {
+                  if($value -> comment_post_ID == get_the_ID() && $value -> comment_parent == '0' && $value -> comment_approved == '1') { //var_dump($value -> comment_ID);?>
+                    <li>
+                      <div class="parent" id="comment-<?=$value -> comment_ID?>">
+                        <div class="user-avatar">
+                          <div class="avatar">
+                            <?php
+                              if($value -> user_id == 1) {
+                                the_avatar_author();
+                              } else {
+                                echo get_avatar($value -> user_id);
+                              }
+                            ?>
+                          </div>
+                          <?php
+                            if(is_user_logged_in() && current_user_can('level_7')) { ?>
+                              <div class="change-comment">
+                                <a href="<?=bloginfo('url').'/wp-admin/comment.php?action=editcomment&c='.$value -> comment_ID?>">编辑</a>
+                              </div>
+                            <? }
+                          ?>
+                        </div>
+                        <div class="comment-info">
+                          <div class="info">
+                            <div class="user">
+                              <?php
+                                $user_name = get_comment_author($value -> comment_ID);
+                                //var_dump($user_name);
+                              ?>
+                              <div class="user-name">
+                                <h4><?=$user_name; ?></h4>
+                                <?=$value -> user_id == 1 ? '<span class="master">博主</span>' : ''?>
+                              </div>
+                              <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($value -> comment_date)); ?><span class="user-ip" ip="<?=$value -> comment_author_IP?>"></span></p>
+                            </div>
+                            <div class="reply-btn"><a href="?replytocom=<?=$value -> comment_ID; ?>#respond">回复</a></div>
+                          </div>
+                          <div class="comment-content">
+                            <p><?=$value->comment_content?></p>
+                          </div>
+                        </div>
+                      </div>
+                        <?php 
+                          $parentComment = $value;
+                          // var_dump($parentId);
+                          if (isset($commentIndexs[$parentComment->comment_ID])) {
+                            require 'comment-child.php'; 
                           }
                         ?>
-                      </div>
-                    </div>
-                    <div class="comment-info">
-                      <div class="info">
-                        <div class="user">
-                          <h4><?php echo $value -> comment_author; ?><?php echo $value -> user_id == 1 ? '<span>博主</span>' : ''; ?></h4>
-                          <p><?php echo $value -> comment_date; ?> <span>北京</span></p>
-                        </div>
-                        <div class="reply-btn"><a href="?replytocom=<?php echo $value -> comment_ID; ?>#respond">回复</a></div>
-                      </div>
-                      <div class="comment-content">
-                        <p><?php echo $value->comment_content; ?></p>
-                      </div>
-                    </div>
-                  </div>
-
-
-
-                    <?php foreach($comments as $child) {
-                      if($child -> comment_parent ==  $value -> comment_ID) { ?>
-                          <div class="child">
-                            <div class="user-avatar">
-                              <div class="avatar">
-                                <?php
-                                  if($child -> user_id == 1) {
-                                    the_avatar_author();
-                                  } else {
-                                    echo '<img src="https://ldbbs.ldmnq.com/bbs/topic/attachment/2023-2/935a9ec7-ddce-4d9f-a57b-5e5a82ed8a69.jpg">';
-                                  }
-                                ?>
-                              </div>
-                            </div>
-                            <div class="comment-info">
-                              <div class="info">
-                                <div class="user">
-                                  <h4><?php echo $child -> comment_author; ?><?php echo $child -> user_id == 1 ? '<span>博主</span>' : ''; ?></h4>
-                                  <p><?php echo $child -> comment_date; ?> <span>北京1</span></p>
-                                </div>
-                                <div class="reply-btn"><a href="?replytocom=<?php echo $child -> comment_ID; ?>#respond">回复</a></div>
-                              </div>
-                              <div class="comment-content">
-                                <p><?php echo $child->comment_content; ?></p>
-                              </div>
-                            </div>
-                          </div>
-                      <?php }
-                    } ?>
-
-
-
-
-                </li>
-              <?php }
-            } ?>
-          </ul>
-        </div>
+                    </li>
+                  <?php }
+                } ?>
+              </ul>
+            </div>
+          <? } else { ?>
+            <h3>没有发现评论</h3>
+            <div class="no-comments">
+              <div class="no-comment-img">
+                <img src="<?php echo fileUri(); ?>/assets/images/no-comment.png" alt="">
+                <p>里面居然是空的</p>
+              </div>
+            </div>
+          <?php }
+        ?>
+        
       </div>
     </div>  
     <script src="<?php echo fileUri(); ?>/assets/js/comments.js"></script>
 <?php } ?>
-
-
-
-<ul>
-  <li>
-    <?php 
-      foreach($comments as $parent) {
-        if($parent -> comment_post_ID == get_the_ID() && $parent -> comment_parent == '0') {
-          echo '<p>我是父亲</p>';
-          foreach($comments as $child) {
-            if($child -> comment_parent == $parent -> comment_ID) {
-              echo '<li><p>我是孩子</p></li>';
-            }
-          }       
-        }
-      }       
-    ?>
-  </li>
-</ul>
