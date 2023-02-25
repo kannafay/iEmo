@@ -16,17 +16,215 @@ $('.comments .user-ip').each(function (){
 
 
 
+// 添加
+$('.write').click(function(e) {
+  e.preventDefault;
+
+  $(this).parent().hide();
+  $('.submit-comment-btn').addClass('active');
+
+  $('.text').addClass('active');
+  $('.text textarea').focus();
+
+  $('#comment_post_ID').attr('value', $('.comments').attr('id'))
+  $('#comment_parent').attr('value', '0')
+})
+
+// 取消
+function cancal_comment() {
+  $('.text').removeClass('active');
+  $('.text textarea').removeClass('active');
+  $('.text textarea').blur();
+  $('.text .pholder').text('').hide();
+  
+  $('#comment_post_ID').attr('value', '');
+  $('#comment_parent').attr('value', '');
+}
+
+$('.cancal1').click(function(e) {
+  e.preventDefault;
+  $('.submit-comment-btn').removeClass('active');
+  $('.write-comment-btn').show();
+  cancal_comment();
+})
+
+// 取消回复
+$('.cancal2').click(function(e) {
+  e.preventDefault;
+  $('.text .pholder').text('').hide();
+  $('.text textarea').removeClass('active');
+  $('.cancal1').show();
+  $(this).hide();
+  $('#comment_post_ID').attr('value', $('.comments').attr('id'))
+  $('#comment_parent').attr('value', '0')
+})
+
+
+// 回复
+const comment_li = $('.comments .comments-body ul li .comment-card');
+comment_li.each(function(){
+  const that = $(this);
+  $(this.querySelector('.reply-btn a')).click(function(e){
+    
+    e.preventDefault();
+    cancal_comment();
+    
+    // $('article').animate({scrollTop:$('#response-title').offset().top - 25}, 300);
+    // console.log($('#response-title').offset().top);
+
+    let reply_username = $(that[0].querySelector('.user-name h4')).text();
+
+    $('.submit-comment-btn').addClass('active');
+    $('.write-comment-btn').hide();
+    $('.cancal1').hide();
+    $('.cancal2').show();
+
+    $('.text').addClass('active');
+    $('.text textarea').focus();
+    $('.text textarea').addClass('active');
+    $('.text .pholder').text('@' + reply_username).show();
+
+    $('#comment_post_ID').attr('value', $('.comments').attr('id'))
+    $('#comment_parent').attr('value', $(this).attr('id'))
+  })
+})
 
 
 
 
-// $('.reply-btn a').each(function(){
-//   $(this).click((e)=>{
-//     e.preventDefault();
-//     replyUrl = $(this).attr('href');
-//     console.log(replyUrl);
-//     window.history.pushState('', '', replyUrl);
+// 判断text
+let text = $('.comments .response textarea').val();
+if($.trim(text)) {
+  $('.submit').show();
+} else {
+  $('.submit').hide();
+}
+
+$('.comments .response textarea').on('input', function(){
+  text = $(this).val();
+  if($.trim(text)) {
+    $('.submit').show();
+  } else {
+    $('.submit').hide();
+  }
+})
+
+
+
+
+
+// visitor
+const visitor_btn = document.querySelector('.comments .response .user-info a');
+const visitor_write = document.querySelector('.comments .response .visitor');
+if(visitor_btn && visitor_write) {
+  function remove_set_menu(e) {
+    visitor_write.classList.remove('active');
+    document.removeEventListener("click",remove_set_menu);
+  };
+  visitor_btn.addEventListener("click",(e)=>{
+    e.stopPropagation();
+    if(visitor_write.classList.toggle('active')) {
+      document.addEventListener("click",remove_set_menu);
+    };
+  });
+  visitor_write.addEventListener("click",(e)=>e.stopPropagation());
+
+  $('article').on('click', function(){
+    $(visitor_write).removeClass('active');
+  })
+};
+
+$('.comments .response .visitor > input:first').on('input', function(){
+  $('.comments .response .user-info p').text($(this).val());
+  if($(this).val() == '') {
+    $('.comments .response .user-info p').text('点击填写用户信息');
+  }
+})
+
+
+
+
+
+
+
+
+// const visitor_name = $('.comments .response .visitor > input:first');
+// const visitor_email = $('.comments .response .visitor > input:eq(2)');
+
+// if(visitor_name.length) {
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// if(visitor_name.length) {
+//   let text = $('.comments .response textarea').val();
+//   if(text == '') {
+//     $('.submit').hide();
+//   }
+//   $('.comments .response textarea').on('input', function(){
+//     text = $(this).val();
+//     console.log(text);
+//     if(text) {
+      
+//     } else {
+//       $('.submit').hide();
+//     }
 //   })
-// })
+  
 
+  // $('.comments .response textarea').on('input', function(){
+  //   let textarea_text = $('.comments .response textarea').val();
+  //   if(!textarea_text) {
+  //     console.log(1);
+  //   } else {
+  //     $('.submit').disabled = true;
+  //   }
+  // })
+  // if(!visitor_name.val() && !visitor_email.val()) {
+    
+  // }
 
+// }

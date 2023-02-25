@@ -1,4 +1,7 @@
 <?php
+@$iemo_login_hidden = stripslashes($_POST["iemo_login_hidden"]);
+@$iemo_comments = stripslashes($_POST["iemo_comments"]);
+@$iemo_comments_visitor = stripslashes($_POST["iemo_comments_visitor"]);
 @$iemo_recommend_show = stripslashes($_POST["iemo_recommend_show"]);
 @$iemo_avatar_author = stripslashes($_POST["iemo_avatar_author"]);
 @$iemo_cover_author = stripslashes($_POST["iemo_cover_author"]);
@@ -6,10 +9,13 @@
 @$iemo_copyright = stripslashes($_POST["iemo_copyright"]);
 @$iemo_icp = stripslashes($_POST["iemo_icp"]);
 @$iemo_icp_gov = stripslashes($_POST["iemo_icp_gov"]);
-@$iemo_page_toggle = stripslashes($_POST["iemo_page_toggle"]);
+@$iemo_page_animation = stripslashes($_POST["iemo_page_animation"]);
 @$iemo_upyun = stripslashes($_POST["iemo_upyun"]);
 
 if(@stripslashes($_POST["iemo_option"])){
+  update_option("iemo_login_hidden", $iemo_login_hidden);
+  update_option("iemo_comments", $iemo_comments);
+  update_option("iemo_comments_visitor", $iemo_comments_visitor);
   update_option("iemo_recommend_show", $iemo_recommend_show);
   update_option("iemo_avatar_author", $iemo_avatar_author);
   update_option("iemo_cover_author", $iemo_cover_author);
@@ -17,7 +23,7 @@ if(@stripslashes($_POST["iemo_option"])){
   update_option("iemo_copyright", $iemo_copyright);
   update_option("iemo_icp", $iemo_icp);
   update_option("iemo_icp_gov", $iemo_icp_gov);
-  update_option("iemo_page_toggle", $iemo_page_toggle);
+  update_option("iemo_page_animation", $iemo_page_animation);
   update_option("iemo_upyun", $iemo_upyun);
 }
 ?>
@@ -73,9 +79,27 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
+          <th scope="row">登录入口</th>
+          <td>
+            <fieldset>
+              <label><input type='checkbox' name='iemo_login_hidden' value='true' <?php echo get_option("iemo_login_hidden") == 'true' ? 'checked' : ''; ?>/>隐藏登录入口</label>
+              <p class="description">域名末尾输入〔/admin〕或〔/wp-admin〕即可进入登录页面</p>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">评论功能</th>
+          <td>
+            <fieldset>
+              <label><input type='checkbox' name='iemo_comments' value='true' <?php echo get_option("iemo_comments") == 'true' ? 'checked' : ''; ?>/>开启评论</label><br>
+              <label><input type='checkbox' name='iemo_comments_visitor' value='true' <?php echo get_option("iemo_comments_visitor") == 'true' ? 'checked' : ''; ?>/>允许游客评论</label>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
           <th scope="row"><label for="">为你推荐</label></th>
           <td>
-            <p class="description">将文章设为置顶即可在首页〔为你推荐〕中显示，最多10篇</p>
+            <p class="description">将文章设为〔置顶〕即可在首页〔为你推荐〕中显示，最多10篇</p>
           </td>
         </tr>
         <tr>
@@ -83,7 +107,7 @@ if(@stripslashes($_POST["iemo_option"])){
           <td>
             <div class="iemo-recommend-post" onclick="iemo_post_show()">选择文章</div>
             <br><br>
-            <p class="description">显示方式（首页顶部）：</p>
+            <p class="description">显示方式（显示在首页顶部）：</p>
             <fieldset>
         	    <label><input type="radio" name="iemo_recommend_show" value="" <?php echo get_option("iemo_recommend_show") == '' ? 'checked' : ''; ?>>不显示</label><br>
         	    <label><input type="radio" name="iemo_recommend_show" value="swiper" <?php echo get_option("iemo_recommend_show") == 'swiper' ? 'checked' : ''; ?>>轮播图（最多支持10篇）</label><br>
@@ -95,7 +119,8 @@ if(@stripslashes($_POST["iemo_option"])){
           <th scope="row"><label for="iemo_avatar_author">个人头像</label></th>
           <td>
             <textarea name="iemo_avatar_author" rows="3" class="regular-text"><?php echo get_option("iemo_avatar_author"); ?></textarea> <br/>
-            <p class="description">填写图片URL，显示在侧边栏</p>
+            <p class="description">填写图片URL，建议前往<a href="/wp-admin/profile.php#simple-local-avatar-section">个人资料</a>进行设置</p>
+            <p class="description">此处填写后将覆盖个人资料设置的头像（后台不变）</p>
             <p class="description">默认：<a href="https://cravatar.cn" target="_blank">Cravatar头像</a></p>
           </td>
         </tr>
@@ -111,7 +136,7 @@ if(@stripslashes($_POST["iemo_option"])){
           <th scope="row"><label for="iemo_cover_post">文章默认封面</label></th>
           <td>
             <textarea name="iemo_cover_post" rows="3" class="regular-text"><?php echo get_option("iemo_cover_post"); ?></textarea> <br/>
-            <p class="description">填写图片URL，文章没有设置封面时顶替</p>
+            <p class="description">填写图片URL，文章无封面时顶替（支持随机图）</p>
             <p class="description">默认：主题目录/assets/images/random/cover-post-x.jpg（随机）</p>
           </td>
         </tr>
@@ -138,16 +163,16 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="iemo_page_toggle">页面切换动画</label></th>
+          <th scope="row"><label for="iemo_page_animation">页面切换动画</label></th>
           <td>
-            <select name="iemo_page_toggle" id="iemo_page_toggle">
-              <option value="" <?php echo get_option("iemo_page_toggle") == '' ? 'selected' : ''; ?>>关闭</option>
-              <option value="Left" <?php echo get_option("iemo_page_toggle") == 'Left' ? 'selected' : ""; ?>>从左往右</option>
-              <option value="Right" <?php echo get_option("iemo_page_toggle") == 'Right' ? 'selected' : ""; ?>>从右往左</option>
-              <option value="Top" <?php echo get_option("iemo_page_toggle") == 'Top' ? 'selected' : ""; ?>>从上往下</option>
-              <option value="Bottom" <?php echo get_option("iemo_page_toggle") == 'Bottom' ? 'selected' : ""; ?>>从下往上</option>
-              <option value="Enlarge" <?php echo get_option("iemo_page_toggle") == 'Enlarge' ? 'selected' : ""; ?>>放大效果</option>
-              <option value="Narrow" <?php echo get_option("iemo_page_toggle") == 'Narrow' ? 'selected' : ""; ?>>缩小效果</option>
+            <select name="iemo_page_animation" id="iemo_page_animation">
+              <option value="" <?php echo get_option("iemo_page_animation") == '' ? 'selected' : ''; ?>>关闭</option>
+              <option value="Left" <?php echo get_option("iemo_page_animation") == 'Left' ? 'selected' : ""; ?>>从左往右</option>
+              <option value="Right" <?php echo get_option("iemo_page_animation") == 'Right' ? 'selected' : ""; ?>>从右往左</option>
+              <option value="Top" <?php echo get_option("iemo_page_animation") == 'Top' ? 'selected' : ""; ?>>从上往下</option>
+              <option value="Bottom" <?php echo get_option("iemo_page_animation") == 'Bottom' ? 'selected' : ""; ?>>从下往上</option>
+              <option value="Enlarge" <?php echo get_option("iemo_page_animation") == 'Enlarge' ? 'selected' : ""; ?>>放大效果</option>
+              <option value="Narrow" <?php echo get_option("iemo_page_animation") == 'Narrow' ? 'selected' : ""; ?>>缩小效果</option>
             </select>
           </td>
         </tr>

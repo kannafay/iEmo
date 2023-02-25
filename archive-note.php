@@ -32,6 +32,7 @@
                     </div>
                   </div>
                   <div class="bottom">
+                    <a href="<?php the_permalink(); ?>#response"><i class="iconfont icon-message-circle"></i>参与讨论</a>
                     <a href="<?php the_permalink(); ?>"><i class="iconfont icon-message-square"></i>查看原文</a>
                   </div>
                 </li>

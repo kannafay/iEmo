@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: sans-serif;
+  font-family: sans-serif;
   -webkit-tap-highlight-color: rgba(0 0 0 / 0);
 }
 html {
@@ -1343,6 +1343,7 @@ main .content .notes-content ol li {
   display: inline-block;
   padding: 5px 10px;
   border-radius: 6px;
+  margin-left: 5px;
 }
 .note main .content article .note-page li .bottom a i {
   margin-right: 3px;
@@ -1354,10 +1355,12 @@ main .content .notes-content ol li {
   color: #999;
 }
 
-.note main .content article .note-page li .bottom a:hover,
-.note main .content article .note-page li .bottom a:hover i::before {
+.note main .content article .note-page li .bottom a:hover {
   color: #333;
   background-color: rgba(0 0 0 / .05);
+}
+.note main .content article .note-page li .bottom a:hover i::before {
+  color: #333;
 }
 
 

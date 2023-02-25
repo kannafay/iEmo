@@ -17,13 +17,13 @@
                 <?php the_post_thumbnail('large'); ?>
                 <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
                 <script>
-                  const imgELem = $('.single .post-cover .cover img:nth-child(2)');
-                  imgELem.css('opacity','0');
-                  imgELem.on('load',function (){
+                  const imgELem1 = $('.single .post-cover .cover img:eq(1)');
+                  imgELem1.css('opacity','0');
+                  imgELem1.on('load',function (){
                     $('.single .post-cover .cover img:first').remove();
-                    $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards');
+                    $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
                   });
-                  $('.single .post-cover .cover .color-thief').attr('src',imgELem.attr('src'));
+                  $('.single .post-cover .cover .color-thief').attr('src',imgELem1.attr('src'));
                 </script>
               <?php } else {
                 $imgUrl = first_post_cover(get_the_content());
@@ -32,11 +32,11 @@
                   <img src="<?=$imgUrl?>" alt="">
                   <img class="color-thief" src="<?=$imgUrl?>" alt="" crossorigin="anonymous" style="display:none">
                   <script>
-                    const imgELem = $('.single .post-cover .cover img:nth-child(2)');
-                    imgELem.css('opacity','0');
-                    imgELem.on('load',function (){
+                    const imgELem2 = $('.single .post-cover .cover img:eq(1)');
+                    imgELem2.css('opacity','0');
+                    imgELem2.on('load',function (){
                       $('.single .post-cover .cover img:first').remove();
-                      $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards');
+                      $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
                     });
                   </script>
                 <?php }else{ ?>  
@@ -65,15 +65,18 @@
           <div class="post-content">
             <?php the_content(); ?>
           </div>
-          <?php require_once('comments.php'); ?>
+          <?php
+            if(get_option("iemo_comments") == 'true') {
+              require 'comments.php';
+            }
+          ?>
         </article>
         <?php get_aside(); ?>
       </div>
     </main>
   </div>
 <?php get_foot(); ?>
-
-<?php require_once('inc/single-color.php'); ?>
+<?php require 'inc/single-color.php'; ?>
 
 <script>
   let postImg = document.querySelectorAll('.post-content img');

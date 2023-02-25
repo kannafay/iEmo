@@ -3,7 +3,7 @@
   // var_dump($child);
   if($child -> comment_approved == '1'){
 ?>
-  <div class="child" id="comment-<?=$child -> comment_ID?>">
+  <div class="child comment-card" id="comment-<?=$child -> comment_ID?>">
     <div class="user-avatar">
       <div class="avatar">
         <?php
@@ -27,17 +27,19 @@
         <div class="user">
           <?php
             $user_name = get_comment_author($child -> comment_ID);
+            $reply_user_name = get_comment_author($parentComment -> comment_ID);
+            //var_dump($parentComment -> user_id)
           ?>
           <div class="user-name">
             <h4><?=$user_name; ?></h4>
             <?=$child -> user_id == 1 ? '<span class="master">博主</span>' : ''?>
           </div>
-          <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($child -> comment_date))?><span class="user-ip" ip="<?=$child -> comment_author_IP?>"></span></p>
+          <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($child -> comment_date))?><span class="user-ip" ip="<?=$child -> comment_author_IP?>"><i class="iconfont icon-map-pin"></i>获取中...</span></p>
         </div>
-        <div class="reply-btn"><a href="?replytocom=<?=$child -> comment_ID; ?>#respond">回复</a></div>
+        <div class="reply-btn"><a href="?replytocom=<?=$child -> comment_ID; ?>#respond" id="<?=$child -> comment_ID; ?>">回复</a></div>
       </div>
       <div class="comment-content">
-        <p><span class="at">@<?=$parentComment->comment_author?></span><?=$child->comment_content?></p>
+        <p><span class="at">@<?=$reply_user_name?></span><?=$child->comment_content?></p>
       </div>
     </div>
   </div>
