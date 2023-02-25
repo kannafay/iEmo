@@ -435,8 +435,19 @@ add_filter('pre_get_posts', function($wp_query){
 
 
 // 登出账户后重定向
-add_action('wp_logout','redirect_after_logout');
-function redirect_after_logout(){
-  wp_safe_redirect(home_url());
-  exit();
-}
+// add_action('wp_logout','redirect_after_logout');
+// function redirect_after_logout(){
+//   wp_safe_redirect(home_url());
+//   exit();
+// }
+
+
+
+// 评论区同步昵称
+add_filter('get_comment_author', function ($author, $comment_ID, $comment) {
+  if (!$comment->user_id) {
+    return $author;
+  }
+  $newuser = get_userdata($comment->user_id);
+  return $newuser->display_name ?: $author;
+}, 10, 3);

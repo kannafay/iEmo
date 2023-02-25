@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8474301",
+      "name": "message-circle",
+      "font_class": "message-circle",
+      "unicode": "e6c4",
+      "unicode_decimal": 59076
+    },
+    {
+      "icon_id": "8474296",
+      "name": "map-pin",
+      "font_class": "map-pin",
+      "unicode": "e6c3",
+      "unicode_decimal": 59075
+    },
+    {
       "icon_id": "8474253",
       "name": "flag",
       "font_class": "flag",

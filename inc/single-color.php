@@ -59,7 +59,7 @@
       newImg.css('opacity','0');
       newImg.on('load',function (){
         $(that).remove();
-        $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards');
+        $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
       });
  
       

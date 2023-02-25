@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: sans-serif;
+  font-family: sans-serif;
   -webkit-tap-highlight-color: rgba(0 0 0 / 0);
 }
 html {
@@ -380,7 +380,7 @@ main .content {
 main .content article {
   width: calc(100% - 300px);
   height: 100%;
-  padding: 25px;
+  padding: 25px 25px 50px 25px;
   position: relative;
   background-color: #fff;
 }
@@ -434,7 +434,7 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
 .home article .top {
   padding-bottom: 20px;
   margin-bottom: 25px;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px dashed #e2e2e2;
   overflow: hidden;
 }
 
@@ -695,6 +695,8 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   display: flex;
   margin-bottom: 25px;
   transition: all 0s !important;
+  padding-bottom: 25px;
+  border-bottom: 1px dashed #e2e2e2;
 }
 .home main .content article .bottom .post-part ul li:last-child {
   margin-bottom: 0;
@@ -1341,6 +1343,7 @@ main .content .notes-content ol li {
   display: inline-block;
   padding: 5px 10px;
   border-radius: 6px;
+  margin-left: 5px;
 }
 .note main .content article .note-page li .bottom a i {
   margin-right: 3px;
@@ -1352,10 +1355,12 @@ main .content .notes-content ol li {
   color: #999;
 }
 
-.note main .content article .note-page li .bottom a:hover,
-.note main .content article .note-page li .bottom a:hover i::before {
+.note main .content article .note-page li .bottom a:hover {
   color: #333;
   background-color: rgba(0 0 0 / .05);
+}
+.note main .content article .note-page li .bottom a:hover i::before {
+  color: #333;
 }
 
 
@@ -1568,7 +1573,7 @@ footer .copyright p {
 
 /* single content */
 .single main .content article .post-content {
-  padding: 25px;
+  padding: 30px 25px;
 }
 
 
@@ -2261,6 +2266,8 @@ footer .copyright p {
   
   .home main .content article .bottom .post-part ul li {
     margin-bottom: 20px;
+    padding-bottom: 0;
+    border-bottom: 0;
   }
   .home main .content article .bottom .post-part ul li .left {
     margin-right: 10px;

@@ -49,6 +49,11 @@
               ?>
             </ul>
           </div>
+          <?php
+            if(get_option("iemo_comments") == 'true') {
+              comments_template('/comments.php');
+            }
+          ?>
         </article>
         <?php get_aside(); ?>
       </div>

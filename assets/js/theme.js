@@ -31,6 +31,7 @@ $('#search-btn').click(function() {
 
 
 
+
 // Nav user menu
 const user_set_btn = document.querySelector('main .nav .user-menu #user-menu-btn');
 const user_set_menu = document.querySelector('main .nav .user-menu .user-menu-box');
@@ -71,6 +72,7 @@ $('article').scroll(function() {
 $('article').click(function() {
   $('header').removeClass('active');
   $('aside').removeClass('active');
+  $('.search-m').removeClass('active');
 })
 
 
