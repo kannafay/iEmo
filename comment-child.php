@@ -10,7 +10,7 @@
           if($child -> user_id == 1) {
             the_avatar_author();
           } else {
-            echo get_avatar($child -> user_id);
+            echo get_avatar($child -> comment_author_email);
           }
         ?>
       </div>
