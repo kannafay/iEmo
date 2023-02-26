@@ -115,7 +115,7 @@ article {
 
 .comments .comments-body ul li .comment-info .info .user .user-name {
   display: flex;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .comments .comments-body ul li .comment-info .info .user h4 {
   font-size: 15px;

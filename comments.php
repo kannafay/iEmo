@@ -20,13 +20,15 @@
       <?php
         // IP加密（加了个寂寞）
         function ip_encryption(string $ip) {
-          $ip_addr = $ip;
-          $arr = explode('.',$ip_addr);
-          foreach($arr as $i) {
-            $i = (number_format($i) * 1412073) + 99 ;
-            $new_arr[] = strval($i);
+          if(strlen($ip) <= 15) {
+            $ip_addr = explode('.', $ip);
+            foreach($ip_addr as $i) {
+              $new_ip_arr[] = (intval($i) * 1412073) + 99;
+            }
+            return join(',', array_reverse($new_ip_arr));
+          } else {
+            return 'null';
           }
-          return join(',', array_reverse($new_arr));
         }
       ?>
 
@@ -77,6 +79,7 @@
                               <?php
                                 $user_name = get_comment_author($value -> comment_ID);
                                 //var_dump($user_name);
+                                //var_dump(ip_encryption($value -> comment_author_IP));
                               ?>
                               <div class="user-name">
                                 <?=$value -> user_id == 1 ? '<h4 class="master-name">'.$user_name.'</h4>' : '<h4 class="comment-user-name">'.$user_name.'</h4>'?>
