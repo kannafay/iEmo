@@ -90,7 +90,7 @@ header {
   align-items: center;
   border-right: 1px solid #e2e2e2;
   background-color: #fff;
-  z-index: 998;
+  z-index: 1000;
 }
 header .logo {
   width: 100%;
@@ -212,7 +212,7 @@ main .nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 25px;
-  z-index: 1000;
+  z-index: 998;
     
 }
 main .nav .left {
@@ -1945,11 +1945,14 @@ footer .copyright p {
     top: 90px;
     left: 0;
     transform: translateX(-100%);
-    
+    z-index: 998;
   }
   header.active {
     transform: translateX(0);
     box-shadow: 0 0 10px rgba(0 0 0 / .1);
+  }
+  main .nav {
+    z-index: 1000;
   }
 
   main {
