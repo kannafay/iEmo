@@ -12,12 +12,24 @@
         <p>参与讨论 Beta</p>
         <p>(Participate in the discussion)</p>
       </div>
-
       <div class="response" id="response">
-      <?php //var_dump(wp_get_current_commenter()); ?>
-      <?php require 'comment-response.php'; ?>
-
+        <?php //var_dump(wp_get_current_commenter()); ?>
+        <?php require 'comment-response.php'; ?>
       </div>
+
+      <?php
+        // IP加密（加了个寂寞）
+        function ip_encryption(string $ip) {
+          $ip_addr = $ip;
+          $arr = explode('.',$ip_addr);
+          foreach($arr as $i) {
+            $i = (number_format($i) * 1412073) + 99 ;
+            $new_arr[] = strval($i);
+          }
+          return join(',', array_reverse($new_arr));
+        }
+      ?>
+
       <?php
         $comment_count = get_comment_count(get_the_ID())['approved'];
       ?>
@@ -47,7 +59,7 @@
                               if($value -> user_id == 1) {
                                 the_avatar_author();
                               } else {
-                                echo get_avatar($value -> user_id);
+                                echo get_avatar($value -> comment_author_email);
                               }
                             ?>
                           </div>
@@ -70,7 +82,7 @@
                                 <?=$value -> user_id == 1 ? '<h4 class="master-name">'.$user_name.'</h4>' : '<h4 class="comment-user-name">'.$user_name.'</h4>'?>
                                 <?=$value -> user_id == 1 ? '<span class="master">博主</span>' : ''?>
                               </div>
-                              <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($value -> comment_date)); ?><span class="user-ip" ip="<?=$value -> comment_author_IP?>"><i class="iconfont icon-map-pin"></i>获取中...</span></p>
+                              <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($value -> comment_date)); ?><span class="user-ip" ip="<?=ip_encryption($value -> comment_author_IP)?>"><i class="iconfont icon-map-pin"></i>获取中...</span></p>
                             </div>
                             <div class="reply-btn"><a href="?replytocom=<?=$value -> comment_ID; ?>#respond" id="<?=$value -> comment_ID; ?>">回复</a></div>
                           </div>

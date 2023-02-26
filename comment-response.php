@@ -24,7 +24,7 @@ if (is_user_logged_in()) { ?>
         if ($current_user->ID == '1') {
           the_avatar_author();
         } else
-          echo get_avatar($current_user->ID);
+          echo get_avatar($current_user->user_email);
         ?>
         <p><?= $current_user->display_name ?></p>
       </div>
@@ -70,7 +70,7 @@ if (is_user_logged_in()) { ?>
         <div class="comment-component">
           <div class="user-info">
             <a>
-              <?=get_avatar($current_user->ID)?>
+              <?=get_avatar($comment_author_email)?>
               <?php
                 if(!empty($comment_author)) { ?>
                   <p><?=$comment_author?></p>
@@ -112,7 +112,7 @@ if (is_user_logged_in()) { ?>
         <div class="comment-component">
           <div class="user-info">
             <a href="<?php echo wp_login_url(home_url(add_query_arg(array()))); ?>">
-              <?=get_avatar($current_user->ID)?>
+              <?=get_avatar($comment_author)?>
               <p><?='点击登录参与讨论'?></p>
             </a>
           </div>

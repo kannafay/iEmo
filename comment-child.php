@@ -10,7 +10,7 @@
           if($child -> user_id == 1) {
             the_avatar_author();
           } else {
-            echo get_avatar($child -> user_id);
+            echo get_avatar($child -> comment_author_email);
           }
         ?>
       </div>
@@ -34,7 +34,7 @@
             <?=$child -> user_id == 1 ? '<h4 class="master-name">'.$user_name.'</h4>' : '<h4 class="comment-user-name">'.$user_name.'</h4>'?>
             <?=$child -> user_id == 1 ? '<span class="master">博主</span>' : ''?>
           </div>
-          <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($child -> comment_date))?><span class="user-ip" ip="<?=$child -> comment_author_IP?>"><i class="iconfont icon-map-pin"></i>获取中...</span></p>
+          <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($child -> comment_date))?><span class="user-ip" ip="<?=ip_encryption($child -> comment_author_IP)?>"><i class="iconfont icon-map-pin"></i>获取中...</span></p>
         </div>
         <div class="reply-btn"><a href="?replytocom=<?=$child -> comment_ID; ?>#respond" id="<?=$child -> comment_ID; ?>">回复</a></div>
       </div>

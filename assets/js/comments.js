@@ -1,9 +1,17 @@
+function getIp(ip) {
+  ip_arr = ip.split(',');
+  let new_ip = [];
+  $(ip_arr).each((i)=>{
+    new_ip.push((Number(ip_arr[i]) - 99) / 1412073);
+  })
+  return new_ip.reverse().join('.');
+}
+
 $('.comments .user-ip').each(function (){
   const that = $(this);
-  const url = 'https://ip.useragentinfo.com/json?ip=' + that.attr('ip');
+  const url = 'https://ip.useragentinfo.com/json?ip=' + getIp(that.attr('ip'));
   that.attr('ip','');
   $.get(url, function(res){
-    
     if(res.country || res.province) 
       that.html('<i class="iconfont icon-map-pin"></i>' + $.trim(res.country + ' ' + res.province));
     else
@@ -12,9 +20,6 @@ $('.comments .user-ip').each(function (){
     that.html('<i class="iconfont icon-map-pin"></i>未知');
   });
 });
-
-
-
 
 // 添加
 $('.write').click(function(e) {
@@ -134,10 +139,17 @@ if(visitor_btn && visitor_write) {
   })
 };
 
-$('.comments .response .visitor > input:first').on('input', function(){
+
+let = visitor_user_name = $('.comments .response .visitor > input:first')
+let = visitor_user_name_tip = $('.comments .response .user-info p').text();
+
+if(visitor_user_name == '') {
+  $('.comments .response .user-info p').text(visitor_user_name_tip);
+}
+visitor_user_name.on('input', function(){
   $('.comments .response .user-info p').text($(this).val());
   if($(this).val() == '') {
-    $('.comments .response .user-info p').text('点击填写用户信息');
+    $('.comments .response .user-info p').text(visitor_user_name_tip);
   }
 })
 
