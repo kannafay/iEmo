@@ -157,7 +157,8 @@ function get_color(callback) {
 	})
 }
 
-
-$('.single .to-comment a').on('click', function() {
-  $('article').animate({scrollTop:$('#response').offset().top - 115}, 300);
-}) 
+if($('.single .to-comment a').length) {
+  $('.single .to-comment a').on('click', function() {
+    $('article').animate({scrollTop:$('#response').offset().top - 115}, 300);
+  }) 
+}

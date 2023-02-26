@@ -55,13 +55,17 @@
                 <?php } ?>
               <?php } ?>
             </div>
+            
             <?php
-              if(comments_open()) { ?>
-                <div class="to-comment">
-                  <a><i class="iconfont icon-message-circle"></i>参与讨论</a>
-                </div>
-              <?php }
+              if(get_option("iemo_comments") == 'true') {
+                if(comments_open()) { ?>
+                  <div class="to-comment">
+                    <a><i class="iconfont icon-message-circle"></i>参与讨论</a>
+                  </div>
+                <?php }
+              }
             ?>
+
             <div class="post-info">
               <div class="title">
                 <h2 title="<?php the_title(); ?>"><?php the_title(); ?></h2>
