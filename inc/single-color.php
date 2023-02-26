@@ -59,12 +59,12 @@
       newImg.css('opacity','0');
       newImg.on('load',function (){
         $(that).remove();
-        newImg.css('opacity','1');
         <?php
           if(get_option("iemo_page_animation")) { ?>
             $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
           <?php }
         ?>
+        newImg.css('opacity','1');
       });
  
       $('.single .post-cover .cover .color-thief').on('load',function (){
