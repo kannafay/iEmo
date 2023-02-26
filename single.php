@@ -21,7 +21,12 @@
                   imgELem1.css('opacity','0');
                   imgELem1.on('load',function (){
                     $('.single .post-cover .cover img:first').remove();
-                    $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
+                    $(this).css('opacity','1');
+                    <?php
+                      if(get_option("iemo_page_animation")) { ?>
+                        $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
+                      <?php }
+                    ?>
                   });
                   $('.single .post-cover .cover .color-thief').attr('src',imgELem1.attr('src'));
                 </script>
@@ -36,7 +41,12 @@
                     imgELem2.css('opacity','0');
                     imgELem2.on('load',function (){
                       $('.single .post-cover .cover img:first').remove();
-                      $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
+                      $(this).css('opacity','1');
+                      <?php
+                        if(get_option("iemo_page_animation")) { ?>
+                          $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
+                        <?php }
+                      ?>
                     });
                   </script>
                 <?php }else{ ?>  
