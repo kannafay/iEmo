@@ -1,6 +1,6 @@
 article {
   scroll-padding-top: 25px;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 .comments {
@@ -40,7 +40,7 @@ article {
   user-select: none;
   color: var(--theme-bak);
   margin-right: 10px;
-  font-style: italic;
+  /* font-style: italic; */
   font-size: 14px;
 }
 .comments .comments-body ul .child .at:hover {
@@ -121,11 +121,17 @@ article {
   font-size: 15px;
   font-weight: 700;
   color: #333;
-  max-width: calc(100% - 50px);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.comments .comments-body ul li .comment-info .info .user .master-name {
+  max-width: calc(100% - 42px);
+}
+.comments .comments-body ul li .comment-info .info .user .comment-user-name {
+  max-width: 100%;
+}
+
 .comments .comments-body ul li .comment-info .info .user .master {
   display: inline-block;
   font-size: 12px;
@@ -366,7 +372,7 @@ article {
   box-shadow: 0 2px 20px rgba(0 0 0 / .1);
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  padding: 15px;
   border-radius: 8px;
   visibility: hidden;
   opacity: 0;
@@ -382,7 +388,7 @@ article {
   border-radius: 0;
   border-bottom: 1px dashed transparent;
   outline: 0;
-  padding: 3px 0;
+  padding: 5px 0;
   margin-bottom: 10px;
   font-size: 14px;
   color: #333;
@@ -394,13 +400,12 @@ article {
   font-size: 14px;
   color: #333;
   display: flex;
+  align-items: center;
   margin-bottom: 5px;
   user-select: none;
 }
 .comments .response .visitor label input {
   margin-right: 3px;
-  color: #dd2424;
-  background-color: #dd2424;
 }
 
 .comments .response .user-info a {

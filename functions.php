@@ -451,3 +451,16 @@ add_filter('get_comment_author', function ($author, $comment_ID, $comment) {
   $newuser = get_userdata($comment->user_id);
   return $newuser->display_name ?: $author;
 }, 10, 3);
+
+
+
+// 获取用户真实IP
+function GetIP() {
+  $IP = str_replace('' , '', '', str_replace(isset($_SERVER['REMOTE_ADDR']), '', isset($_SERVER['HTTP_X_FORWARDED_FOR'])));
+  if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) != '') {
+    $_SERVER['REMOTE_ADDR'] = $IP;
+  } else {
+    $_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+  }
+}
+add_action( 'init', 'GetIP' );

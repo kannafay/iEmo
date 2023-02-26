@@ -31,7 +31,7 @@
             //var_dump($parentComment -> user_id)
           ?>
           <div class="user-name">
-            <h4><?=$user_name; ?></h4>
+            <?=$child -> user_id == 1 ? '<h4 class="master-name">'.$user_name.'</h4>' : '<h4 class="comment-user-name">'.$user_name.'</h4>'?>
             <?=$child -> user_id == 1 ? '<span class="master">博主</span>' : ''?>
           </div>
           <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($child -> comment_date))?><span class="user-ip" ip="<?=$child -> comment_author_IP?>"><i class="iconfont icon-map-pin"></i>获取中...</span></p>
