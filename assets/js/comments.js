@@ -1,10 +1,15 @@
 function getIp(ip) {
-  ip_arr = ip.split(',');
-  let new_ip = [];
-  $(ip_arr).each((i)=>{
-    new_ip.push((Number(ip_arr[i]) - 99) / 1412073);
-  })
-  return new_ip.reverse().join('.');
+  if(ip != 'null') {
+    ip_arr = ip.split(',');
+    let new_ip = [];
+    $(ip_arr).each((i)=>{
+      new_ip.push((Number(ip_arr[i]) - 99) / 1412073);
+    })
+    return new_ip.reverse().join('.');
+  } else {
+    return 'null';
+  }
+  
 }
 
 $('.comments .user-ip').each(function (){
