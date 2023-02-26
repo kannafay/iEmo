@@ -3,6 +3,7 @@
 @$iemo_comments = stripslashes($_POST["iemo_comments"]);
 @$iemo_comments_visitor = stripslashes($_POST["iemo_comments_visitor"]);
 @$iemo_recommend_show = stripslashes($_POST["iemo_recommend_show"]);
+@$iemo_code_css = stripslashes($_POST["iemo_code_css"]);
 @$iemo_avatar_author = stripslashes($_POST["iemo_avatar_author"]);
 @$iemo_cover_author = stripslashes($_POST["iemo_cover_author"]);
 @$iemo_cover_post = stripslashes($_POST["iemo_cover_post"]);
@@ -17,6 +18,7 @@ if(@stripslashes($_POST["iemo_option"])){
   update_option("iemo_comments", $iemo_comments);
   update_option("iemo_comments_visitor", $iemo_comments_visitor);
   update_option("iemo_recommend_show", $iemo_recommend_show);
+  update_option("iemo_code_css", $iemo_code_css);
   update_option("iemo_avatar_author", $iemo_avatar_author);
   update_option("iemo_cover_author", $iemo_cover_author);
   update_option("iemo_cover_post", $iemo_cover_post);
@@ -76,6 +78,18 @@ if(@stripslashes($_POST["iemo_option"])){
             <p class="description">使用方法：</p>
             <p class="description">外观->菜单->自定义链接->链接文字</p>
             <p class="description">请填写以上对应的标签代码（非必填）</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><label for="iemo_page_animation">页面动画</label></th>
+          <td>
+            <select name="iemo_page_animation" id="iemo_page_animation">
+              <option value="" <?php echo get_option("iemo_page_animation") == '' ? 'selected' : ''; ?>>关闭</option>
+              <option value="Left" <?php echo get_option("iemo_page_animation") == 'Left' ? 'selected' : ''; ?>>从左往右</option>
+              <option value="Right" <?php echo get_option("iemo_page_animation") == 'Right' ? 'selected' : ''; ?>>从右往左</option>
+              <option value="Top" <?php echo get_option("iemo_page_animation") == 'Top' ? 'selected' : ''; ?>>从上往下</option>
+              <option value="Enlarge" <?php echo get_option("iemo_page_animation") == 'Enlarge' ? 'selected' : ''; ?>>放大效果</option>
+            </select>
           </td>
         </tr>
         <tr>
@@ -141,6 +155,17 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
+          <th scope="row"><label for="iemo_code_css">文章代码样式</label></th>
+          <td>
+            <select name="iemo_code_css" id="iemo_code_css">
+              <option value="" <?php echo get_option("iemo_code_css") == '' ? 'selected' : ''; ?>>VScode</option>
+              <option value="github-dark" <?php echo get_option("iemo_code_css") == 'github-dark' ? 'selected' : ''; ?>>GitHub</option>
+              <option value="tokyo-night-dark" <?php echo get_option("iemo_code_css") == 'tokyo-night-dark' ? 'selected' : ''; ?>>Tokyo</option>
+              <option value="color-brewer" <?php echo get_option("iemo_code_css") == 'color-brewer' ? 'selected' : ''; ?>>ColorBrewer</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
           <th scope="row"><label for="iemo_copyright">版权号</label></th>
           <td>
             <input name="iemo_copyright" type="number" value="<?php echo get_option("iemo_copyright"); ?>" class="regular-text">
@@ -162,20 +187,7 @@ if(@stripslashes($_POST["iemo_option"])){
             <p class="description">填写公网安备号，没有请留空</p>
           </td>
         </tr>
-        <tr>
-          <th scope="row"><label for="iemo_page_animation">页面切换动画</label></th>
-          <td>
-            <select name="iemo_page_animation" id="iemo_page_animation">
-              <option value="" <?php echo get_option("iemo_page_animation") == '' ? 'selected' : ''; ?>>关闭</option>
-              <option value="Left" <?php echo get_option("iemo_page_animation") == 'Left' ? 'selected' : ""; ?>>从左往右</option>
-              <option value="Right" <?php echo get_option("iemo_page_animation") == 'Right' ? 'selected' : ""; ?>>从右往左</option>
-              <option value="Top" <?php echo get_option("iemo_page_animation") == 'Top' ? 'selected' : ""; ?>>从上往下</option>
-              <option value="Bottom" <?php echo get_option("iemo_page_animation") == 'Bottom' ? 'selected' : ""; ?>>从下往上</option>
-              <option value="Enlarge" <?php echo get_option("iemo_page_animation") == 'Enlarge' ? 'selected' : ""; ?>>放大效果</option>
-              <option value="Narrow" <?php echo get_option("iemo_page_animation") == 'Narrow' ? 'selected' : ""; ?>>缩小效果</option>
-            </select>
-          </td>
-        </tr>
+        
         <tr>
           <th scope="row">又拍云联盟</th>
           <td>

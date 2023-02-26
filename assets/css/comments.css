@@ -37,11 +37,11 @@ article {
 }
 
 .comments .comments-body ul .child .at {
-  user-select: none;
   color: var(--theme-bak);
   margin-right: 10px;
-  /* font-style: italic; */
-  font-size: 14px;
+  font-style: italic;
+  font-size: 15px;
+  user-select: none;
 }
 .comments .comments-body ul .child .at:hover {
   text-decoration: underline;
@@ -115,6 +115,7 @@ article {
 
 .comments .comments-body ul li .comment-info .info .user .user-name {
   display: flex;
+  align-items: center;
   margin-bottom: 8px;
 }
 .comments .comments-body ul li .comment-info .info .user h4 {
@@ -181,6 +182,7 @@ article {
 .comments .comments-body ul li .comment-info .comment-content p {
   font-size: 15px;
   color: #333;
+  white-space: pre-wrap;
 }
 .comments .comments-body ul li .comment-info .comment-content p a {
   font-size: 15px;
@@ -489,6 +491,10 @@ article {
 
   .comments .comments-body ul li .comment-info .comment-content {
     margin-bottom: 0;
+  }
+  .comments .comments-body ul li .comment-info .comment-content p,
+  .comments .comments-body ul .child .at {
+    font-size: 14px;
   }
 
   .comments .comments-body .no-comments .no-comment-img p {

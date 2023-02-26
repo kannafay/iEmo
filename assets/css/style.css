@@ -1324,7 +1324,7 @@ main .content .notes-content ol li {
   font-size: 15px;
   font-weight: 700;
   color: #333;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 .note main .content article .note-page li .top .right .note-date {
   font-size: 13px;
@@ -1343,7 +1343,6 @@ main .content .notes-content ol li {
   display: inline-block;
   padding: 5px 10px;
   border-radius: 6px;
-  margin-left: 5px;
 }
 .note main .content article .note-page li .bottom a i {
   margin-right: 3px;
@@ -1466,6 +1465,32 @@ footer .copyright p {
   object-fit: contain;
   position: absolute;
   top: 0;
+}
+
+.single main .content article .post-cover .to-comment {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 3;
+}
+.single main .content article .post-cover .to-comment a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background-color: var(--scroll);
+  text-shadow: 0 0 5px rgba(0 0 0 / .2);
+  padding: 4px 12px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.single main .content article .post-cover .to-comment a i {
+  font-size: 15px;
+  margin-right: 3px;
+}
+.single main .content article .post-cover .to-comment a:hover {
+  background-color: var(--theme);
 }
 
 .single main .content article .post-cover .post-info {
@@ -2578,6 +2603,7 @@ footer .copyright p {
 
 /* keyframes */
 
+/* left to right */
 @keyframes FadeIn-Left {
   from {
     transform: translateX(-20px);
@@ -2589,6 +2615,7 @@ footer .copyright p {
   }
 }
 
+/* right to left */
 @keyframes FadeIn-Right {
   from {
     transform: translateX(20px);
@@ -2600,6 +2627,7 @@ footer .copyright p {
   }
 }
 
+/* top to bottom */
 @keyframes FadeIn-Top {
   from {
     transform: translateY(-20px);
@@ -2611,31 +2639,10 @@ footer .copyright p {
   }
 }
 
-@keyframes FadeIn-Bottom {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
+/* grow */
 @keyframes FadeIn-Enlarge {
   from {
     transform: scale(.98);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes FadeIn-Narrow {
-  from {
-    transform: scale(1.02);
     opacity: 0;
   }
   to {

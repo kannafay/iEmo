@@ -40,6 +40,7 @@ $('.write').click(function(e) {
   $('#comment_parent').attr('value', '0')
 })
 
+
 // 取消
 function cancal_comment() {
   $('.text').removeClass('active');
@@ -98,6 +99,9 @@ comment_li.each(function(){
     $('#comment_parent').attr('value', $(this).attr('id'))
   })
 })
+
+
+
 
 
 

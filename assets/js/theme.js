@@ -156,3 +156,8 @@ function get_color(callback) {
 		// console.debug(jqXHR);
 	})
 }
+
+
+$('.single .to-comment a').on('click', function() {
+  $('article').animate({scrollTop:$('#response').offset().top - 115}, 300);
+}) 

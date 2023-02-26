@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/css/single.css">
 <link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/fancybox/fancybox.css">
-<link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/highlight/styles/vs2015.min.css">
+<link rel="stylesheet" href="<?php echo fileUri(); ?>/assets/static/highlight/styles/<?=get_option("iemo_code_css") == '' ? 'vs2015' : get_option("iemo_code_css")?>.min.css">
 
 <?php get_head(); ?>
   <div class="container single">
@@ -55,7 +55,13 @@
                 <?php } ?>
               <?php } ?>
             </div>
-            
+            <?php
+              if(comments_open()) { ?>
+                <div class="to-comment">
+                  <a><i class="iconfont icon-message-circle"></i>参与讨论</a>
+                </div>
+              <?php }
+            ?>
             <div class="post-info">
               <div class="title">
                 <h2 title="<?php the_title(); ?>"><?php the_title(); ?></h2>
