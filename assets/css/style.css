@@ -1583,6 +1583,7 @@ footer .copyright p {
   margin-right: 5px;
   border-radius: 6px;
   font-size: 14px;
+  text-shadow: 0 0 5px rgba(0 0 0 / .2);
 }
 .single main .content article .post-cover .post-info .more .tag a:last-child {
   margin-right: 0;
