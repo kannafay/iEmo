@@ -4,6 +4,7 @@
  */
 ?>
 
+<title></title>
 <?php get_head(); ?>
   <div class="container tag">
     <?php get_header(); ?>

@@ -3,6 +3,7 @@
  * Template Name: 分类模板
  */
 ?>
+
 <title></title>
 <?php get_head(); ?>
   <div class="container category">
