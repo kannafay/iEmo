@@ -96,32 +96,17 @@ function default_post_cover() {
 }
 
 
+
 // 获取文章第一张图片
 function first_post_cover($content) {
-  error_reporting(0);
-  if ( $content === false ) $content = get_the_content();
+  if($content === false) $content = get_the_content();
   preg_match_all('|<img.*?src=[\'"](.*?)[\'"].*?>|i', $content, $images);
-  if($images){      
+  if(isset($images[1][0])){      
     return $images[1][0];
-  }else{
+  } else {
     return false;
   }
 }
-
-
-
-// function default_single_cover() {
-//   if(get_option("iemo_cover_post")) {
-//     if(!img_redirect_url(get_option("iemo_cover_post"))) {
-//       return get_option("iemo_cover_post");
-//     } else {
-//       return img_redirect_url(get_option("iemo_cover_post"));
-//     }
-    
-//   } else {
-//     return fileUri().'/assets/images/random/cover-post-'.rand(1,2).'.jpg';
-//   }
-// }
 
 
 
@@ -451,16 +436,3 @@ add_filter('get_comment_author', function ($author, $comment_ID, $comment) {
   $newuser = get_userdata($comment->user_id);
   return $newuser->display_name ?: $author;
 }, 10, 3);
-
-
-
-// 获取用户真实IP
-// function GetIP() {
-//   $IP = str_replace('' , '', '', str_replace(isset($_SERVER['REMOTE_ADDR']), '', isset($_SERVER['HTTP_X_FORWARDED_FOR'])));
-//   if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) != '') {
-//     $_SERVER['REMOTE_ADDR'] = $IP;
-//   } else {
-//     $_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
-//   }
-// }
-// add_action( 'init', 'GetIP' );
