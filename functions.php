@@ -24,28 +24,28 @@ function iemo_option_admin() {
 
 // head标签
 function get_head() {
-  require_once('inc/head.php');
+  require 'inc/head.php';
 }
 
 
 
 // foot标签
 function get_foot() {
-  require_once('inc/foot.php');
+  require 'inc/foot.php';
 }
 
 
 
 // nav标签
 function get_nav() {
-  require_once('inc/nav.php');
+  require 'inc/nav.php';
 }
 
 
 
 // aside标签
 function get_aside() {
-  require_once('inc/aside.php');
+  require 'inc/aside.php';
 }
 
 
@@ -206,7 +206,7 @@ function get_user_role($id) {
 
 
 // 头像
-require_once('plugins/simple-local-avatars/simple-local-avatars.php');
+require 'plugins/simple-local-avatars/simple-local-avatars.php';
 
 if ( ! function_exists( 'dr_filter_get_avatar' ) ) {
   function dr_filter_get_avatar( $avatar ) {
@@ -243,7 +243,7 @@ function the_avatar_author() {
 
 
 // 添加媒体外链
-require_once('plugins/external-media-without-import/external-media-without-import.php');
+require 'plugins/external-media-without-import/external-media-without-import.php';
 
 
 

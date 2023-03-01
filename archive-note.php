@@ -41,7 +41,7 @@
               ?>
             </ul>
           </div>
-          <?php require_once('inc/ajax-note-page.php'); ?>
+          <?php require 'inc/ajax/ajax-note-page.php'; ?>
         </article>
         <?php get_aside(); ?>
       </div>

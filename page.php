@@ -99,7 +99,7 @@
   </div>
 <?php get_foot(); ?>
 
-<?php require_once('inc/single-color.php'); ?>
+<?php require 'inc/single-color.php'; ?>
 
 <script>
   let postImg = document.querySelectorAll('.post-content img');

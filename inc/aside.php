@@ -79,7 +79,7 @@
           </li>
         <?php endwhile; endif; ?>
       </ul>
-      <?php require_once('ajax-note.php'); ?>
+      <?php require 'ajax/ajax-note.php'; ?>
     </div>
   </div>
   <?php get_footer(); ?>

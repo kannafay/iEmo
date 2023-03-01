@@ -1,49 +1,36 @@
 <script>
 
-  // category change bar
   $('<div class="slider"></div>').appendTo($('.categories ul'));
 
-  
-  let url = location.href;
-  let title = '';
   let tagA = $('.category .categories ul li a');
+  let firstTagA = $('.category .categories ul li a:first');
+  let url = firstTagA.attr('href');
+  let title = firstTagA.text();
+
   let tagUl = $('.category .categories ul');
   let solider = $('.category .categories ul .slider');
 
-
-  // start
   $(document).ready(()=>{
-    tagA.each(function(){
-      if($(this).attr('href') == url) {
-        $(this).addClass('active');
-        this.scrollIntoView({behavior:'smooth', inline:'center'});
-        solider.width($(this).outerWidth());
-        let position = $(this).position();
-        let scrollLeft = tagUl.scrollLeft();
-        solider.css({
-          left: position.left + scrollLeft,
-        });
+    firstTagA.addClass('active');
+    firstTagA[0].scrollIntoView({behavior:'smooth', inline:'center'});
+    solider.width(firstTagA.outerWidth());
+    let position = firstTagA.position();
+    let scrollLeft = tagUl.scrollLeft();
+    solider.css({
+      left: position.left + scrollLeft,
+    });
+
+    $.ajax({
+      type: 'get',
+      url: url,
+      success: function(data){
+        posts = $(data).find('.cate-box > *');
+        $('.cate-box').html(posts);
+        $('title').html(title + ' &#8211 ' + '<?php bloginfo('name'); ?>');
+        window.history.pushState('', '', url);
       }
-    })
-  })
-  
-  // resize event
-  $(window).resize(()=>{
-    let url = location.href;
-    let title = '';
-    tagA.each(function(){
-      if($(this).attr('href') == url) {
-        tagA.removeClass('active');
-        $(this).addClass('active');
-        this.scrollIntoView({behavior:'smooth', inline:'center'});
-        solider.width($(this).outerWidth());
-        let position = $(this).position();
-        let scrollLeft = tagUl.scrollLeft();
-        solider.css({
-          left: position.left + scrollLeft,
-        });
-      }
-    })
+    });
+    return false;
   })
 
 
@@ -51,10 +38,8 @@
 
 
 
-
-  
-  // click event
-  $(document).ready(()=>{
+    // click event
+    $(document).ready(()=>{
     tagA.on('click',function(){
       let url = $(this).attr('href');
       let title = $(this).text();
@@ -90,8 +75,6 @@
 
 
 
-
-
   // popstate event
   $(document).ready(()=>{
     window.onpopstate = () => {
@@ -112,6 +95,7 @@
         }
       })
 
+
       // request data
       $.ajax({
         type: 'get',
@@ -129,12 +113,10 @@
 
 
 
-  
 
 
 
 
-  
   // ajax loading post 
   const bind_cate_next = () => {
     jQuery(document).ready(function($) { 
@@ -181,4 +163,27 @@
   }
 
   bind_cate_next();
+
+
+
+
+
+  // browser Back event
+  $(function() { 
+    pushHistory(); 
+    window.addEventListener("popstate", function(e) { 
+      let cateUrl = $('header .menu ul .cate a').attr('href');
+      if(location.href == cateUrl) {
+        history.go(-2);
+      }
+    }, false); 
+    function pushHistory() { 
+      var state = { 
+        title: 'title', 
+        url: ''
+      }; 
+      window.history.pushState(state, 'title', ''); 
+    } 
+  });
+
 </script>

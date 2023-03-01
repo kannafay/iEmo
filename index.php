@@ -8,9 +8,9 @@
           <h2>首页 <span>Home.</span></h2>
           <?php 
             if(get_option("iemo_recommend_show") == 'regular') {
-              require_once('inc/home-recommend-regular.php');
+              require 'inc/home-recommend-regular.php';
             } else if(get_option("iemo_recommend_show") == 'swiper'){
-              require_once('inc/home-recommend-swiper.php');
+              require 'inc/home-recommend-swiper.php';
             }
           ?>
           <div class="bottom">
@@ -21,9 +21,9 @@
                 <div class="slider"></div>
               </ul>
             </div>
-            <?php require_once('inc/home-new.php'); ?>
-            <?php require_once('inc/home-sticky.php'); ?>
-            <?php require_once('inc/home-color.php'); ?>
+            <?php require 'inc/home-new.php'; ?>
+            <?php require 'inc/home-sticky.php'; ?>
+            <?php require 'inc/home-color.php'; ?>
           </div>
         </article>
         <?php get_aside(); ?>

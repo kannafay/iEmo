@@ -52,4 +52,4 @@
 <?php get_foot(); ?>
 
 
-<?php require_once('inc/ajax-cate.php'); ?>
+<?php require 'inc/ajax/ajax-cate.php'; ?>

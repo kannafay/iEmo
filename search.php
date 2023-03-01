@@ -33,7 +33,7 @@
               <?php endif; ?>
             </ul>
           </div>
-          <?php require_once('inc/ajax-search.php'); ?>
+          <?php require 'inc/ajax/ajax-search.php'; ?>
         </article>
         <?php get_aside(); ?>
       </div>

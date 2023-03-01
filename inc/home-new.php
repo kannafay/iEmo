@@ -51,5 +51,5 @@
       wp_reset_query(); 
     ?>
   </ul>
-  <?php require_once('ajax-home.php'); ?>
+  <?php require 'ajax/ajax-home.php'; ?>
 </div>

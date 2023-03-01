@@ -1,49 +1,37 @@
 <script>
 
-  // tag add slider
   $('<div class="slider"></div>').appendTo($('.tag-bar ul'));
 
-  
-  let url = location.href;
-  let title = '';
   let tagA = $('.tag .tag-bar ul li a');
+  let firstTagA = $('.tag .tag-bar ul li a:first');
+  let url = firstTagA.attr('href');
+  let title = firstTagA.text();
+
   let tagUl = $('.tag .tag-bar ul');
   let solider = $('.tag .tag-bar ul .slider');
 
-
-  // start
   $(document).ready(()=>{
-    tagA.each(function(){
-      if($(this).attr('href') == url) {
-        $(this).addClass('active');
-        this.scrollIntoView({behavior:'smooth', inline:'center'});
-        solider.width($(this).outerWidth());
-        let position = $(this).position();
-        let scrollLeft = tagUl.scrollLeft();
-        solider.css({
-          left: position.left + scrollLeft,
-        });
-      }
-    })
-  })
+    firstTagA.addClass('active');
+    firstTagA[0].scrollIntoView({behavior:'smooth', inline:'center'});
+    solider.width(firstTagA.outerWidth());
+    let position = firstTagA.position();
+    let scrollLeft = tagUl.scrollLeft();
+    solider.css({
+      left: position.left + scrollLeft,
+    });
 
-  // resize event
-  $(window).resize(()=>{
-    let url = location.href;
-    let title = '';
-    tagA.each(function(){
-      if($(this).attr('href') == url) {
-        tagA.removeClass('active');
-        $(this).addClass('active');
-        this.scrollIntoView({behavior:'smooth', inline:'center'});
-        solider.width($(this).outerWidth());
-        let position = $(this).position();
-        let scrollLeft = tagUl.scrollLeft();
-        solider.css({
-          left: position.left + scrollLeft,
-        });
+    $.ajax({
+      type: 'get',
+      url: url,
+      success: function(data){
+        posts = $(data).find('.tag-box > *');
+        $('.tag-box').html(posts);
+        $('title').html(title + ' &#8211 ' + '<?php bloginfo('name'); ?>');
+        window.history.pushState('', '', url);
+        bind_tag_next();
       }
-    })
+    });
+    return false;
   })
 
 
@@ -51,8 +39,6 @@
 
 
 
-
-  
   // click event
   $(document).ready(()=>{
     tagA.on('click',function(){
@@ -83,8 +69,6 @@
       return false;
     });
   })
-
-
 
 
 
@@ -127,12 +111,12 @@
     }
   })
 
-  
 
 
 
 
-  
+
+
   // ajax loading post 
   const bind_tag_next = () => {
     jQuery(document).ready(function($) { 
@@ -179,4 +163,27 @@
   }
 
   bind_tag_next();
+
+
+
+
+
+  // browser Back event
+  $(function() { 
+    pushHistory(); 
+    window.addEventListener("popstate", function(e) { 
+      let tagUrl = $('header .menu ul .tag a').attr('href');
+      if(location.href == tagUrl) {
+        history.go(-2);
+      }
+    }, false); 
+    function pushHistory() { 
+      var state = { 
+        title: 'title', 
+        url: ''
+      }; 
+      window.history.pushState(state, 'title', ''); 
+    } 
+  });
+
 </script>
