@@ -172,7 +172,7 @@ visitor_name.on('input', function(){
 // 判断是否填写信息
 if(visitor_name.length && visitor_email.length) {
   $('.submit').click(()=>{
-    if($(visitor_name).val() == '' && $(visitor_email).val() == '') {
+    if($(visitor_name).val() == '' || $(visitor_email).val() == '') {
       $(visitor_write).addClass('active');
     }
   })
@@ -187,8 +187,8 @@ if(visitor_name.length && visitor_email.length) {
 
 
 // 顶部参与讨论按钮
-if($('.single .to-comment a').length) {
-  $('.single .to-comment a').on('click', function() {
+if($('.single .shortcuts .to-comment').length) {
+  $('.single .shortcuts .to-comment').on('click', function() {
     $('article').animate({scrollTop:$('#response').offset().top - 115}, 300);
   })
 }

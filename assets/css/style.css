@@ -1467,29 +1467,33 @@ footer .copyright p {
   top: 0;
 }
 
-.single main .content article .post-cover .to-comment {
+.single main .content article .post-cover .shortcuts {
   position: absolute;
   top: 25px;
   right: 25px;
   z-index: 3;
+  display: flex;
+  align-items: center;
 }
-.single main .content article .post-cover .to-comment a {
+.single main .content article .post-cover .shortcuts a {
   display: flex;
   align-items: center;
   color: #fff;
   background-color: var(--scroll);
   text-shadow: 0 0 5px rgba(0 0 0 / .2);
   padding: 4px 12px;
-  font-size: 15px;
+  font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
   user-select: none;
+  margin-left: 10px;
 }
-.single main .content article .post-cover .to-comment a i {
-  font-size: 15px;
+.single main .content article .post-cover .shortcuts a i {
+  font-size: 14px;
   margin-right: 3px;
+  padding-top: 1px;
 }
-.single main .content article .post-cover .to-comment a:hover {
+.single main .content article .post-cover .shortcuts a:hover {
   background-color: var(--theme);
 }
 

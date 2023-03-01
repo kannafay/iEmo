@@ -10,7 +10,7 @@
         <span class="iconfont icon-menu" id="user-menu-btn"></span>
         <div class="user-menu-box">
           <ul>
-            <?php if(current_user_can('level_7')) { ?>
+            <?php if(current_user_can('level_1')) { ?>
               <li><a href="<?php bloginfo('url') ?>/wp-admin/post-new.php"><i class="iconfont icon-edit"></i> 发布新文章</a></li>
               <li><a href="<?php bloginfo('url') ?>/wp-admin/post-new.php?post_type=note"><i class="iconfont icon-edit-"></i> 发布新说说</a></li>
               <li><a href="<?php bloginfo('url') ?>/wp-admin"><i class="iconfont icon-settings"></i> 后台设置</a></li>
