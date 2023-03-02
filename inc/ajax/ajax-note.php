@@ -65,7 +65,7 @@ jQuery(document).ready(function($) {
       }
       
 
-      // pc scroll ajax
+      // note scroll ajax
       const note_scroll_event = () => {
         $('.aside-content').on('scroll', throttle(function(){
           let height = $('.aside-content').height();
