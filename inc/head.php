@@ -24,7 +24,12 @@
         .home main .content article .bottom .post-part ul li,
         .category main .content article .cate-box ul li,
         .tag main .content article .tag-box ul li,
-        .search main .content article .search-box ul li {
+        .search main .content article .search-box ul li,
+        .note main .content article .note-page li,
+        .archive main .content article .archive-box h3,
+        .archive main .content article .archive-box li,
+        .link .single,
+        .link .link-box {
           animation: FadeIn-<?=get_option("iemo_page_animation"); ?> .5s forwards !important;
         }
       </style>

@@ -158,6 +158,9 @@
   background-color: #202124;
   color: #fff;
 }
+.single .post-content pre * {
+  font-family: 'PingFang SC','Consolas','Courier New','monospace';
+}
 
 .single .post-content pre code {
   font-size: 14px;

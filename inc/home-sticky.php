@@ -1,6 +1,5 @@
 <div class="post-part sticky">
   <ul>
-    <?php $sticky_i = 0; ?>
     <?php 
       $sticky = get_option('sticky_posts');
       $args = array(
@@ -18,10 +17,9 @@
               if (has_post_thumbnail()) {
                 the_post_thumbnail();
               } else { ?>
-                <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?sticky=<?php $sticky_i++; echo $sticky_i; ?>" alt="" >
+                <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?<?=the_ID()?>" alt="" >
               <?php }
             ?>
-            <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
           </a>
           <div class="cate-view">
             <?php echo the_category(' <span>/</span> '); ?>

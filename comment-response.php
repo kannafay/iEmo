@@ -1,12 +1,12 @@
 <?php
-if (get_option("iemo_page_toggle")) { ?>
-  <style>
-    .comments .response .comment-component .comment-btns button,
-    .comments .response .text .pholder {
-      animation: FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards !important;
-    }
-  </style>
-<?php }
+  if (get_option("iemo_page_toggle")) { ?>
+    <style>
+      .comments .response .comment-component .comment-btns button,
+      .comments .response .text .pholder {
+        animation: FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards !important;
+      }
+    </style>
+  <?php }
 ?>
 
 <h3 id="response-title">参与讨论</h3>

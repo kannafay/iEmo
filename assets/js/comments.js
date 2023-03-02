@@ -1,3 +1,4 @@
+// IP地址
 function getIp(ip) {
   if(ip != 'null') {
     ip_arr = ip.split(',');
@@ -26,6 +27,9 @@ $('.comments .user-ip').each(function (){
   });
 });
 
+
+
+
 // 添加
 $('.write').click(function(e) {
   e.preventDefault;
@@ -39,6 +43,8 @@ $('.write').click(function(e) {
   $('#comment_post_ID').attr('value', $('.comments').attr('id'))
   $('#comment_parent').attr('value', '0')
 })
+
+
 
 
 // 取消
@@ -58,6 +64,9 @@ $('.cancal1').click(function(e) {
   $('.write-comment-btn').show();
   cancal_comment();
 })
+
+
+
 
 // 取消回复
 $('.cancal2').click(function(e) {
@@ -113,7 +122,6 @@ if($.trim(text)) {
 } else {
   $('.submit').hide();
 }
-
 $('.comments .response textarea').on('input', function(){
   text = $(this).val();
   if($.trim(text)) {
@@ -127,52 +135,60 @@ $('.comments .response textarea').on('input', function(){
 
 
 
-// visitor
-const visitor_btn = document.querySelector('.comments .response .user-info a');
-const visitor_write = document.querySelector('.comments .response .visitor');
-if(visitor_btn && visitor_write) {
-  function remove_set_menu(e) {
-    visitor_write.classList.remove('active');
-    document.removeEventListener("click",remove_set_menu);
-  };
-  visitor_btn.addEventListener("click",(e)=>{
-    e.stopPropagation();
-    if(visitor_write.classList.toggle('active')) {
-      document.addEventListener("click",remove_set_menu);
-    };
-  });
-  visitor_write.addEventListener("click",(e)=>e.stopPropagation());
 
-  $('article').on('click', function(){
-    $(visitor_write).removeClass('active');
-  })
+// visitor
+const visitor_btn = $('.comments .response .user-info a');
+const visitor_write = $('.comments .response .visitor');
+const visitor_name = $('.comments .response .visitor #author')
+const visitor_email = $('.comments .response .visitor #email');
+const visitor_name_tip = $('.comments .response .user-info p').text();
+
+// 点击弹出信息框
+if(visitor_btn.length && visitor_write.length) {
+  function remove_visitor_write() {
+    visitor_write.removeClass('active');
+    $(document).unbind('click',remove_visitor_write);
+  };
+  visitor_btn.bind('click',(e)=>{
+    e.stopPropagation();
+    if(visitor_write.toggleClass('active')) {
+      $(document).bind('click',remove_visitor_write);
+    }
+  });
+  visitor_write.bind('click',(e)=>e.stopPropagation());
 };
 
-
-let = visitor_user_name = $('.comments .response .visitor > input:first')
-let = visitor_user_name_tip = $('.comments .response .user-info p').text();
-
-if(visitor_user_name == '') {
-  $('.comments .response .user-info p').text(visitor_user_name_tip);
+// 实时同步昵称
+if(visitor_name == '') {
+  $('.comments .response .user-info p').text(visitor_name_tip);
 }
-visitor_user_name.on('input', function(){
+visitor_name.on('input', function(){
   $('.comments .response .user-info p').text($(this).val());
   if($(this).val() == '') {
-    $('.comments .response .user-info p').text(visitor_user_name_tip);
+    $('.comments .response .user-info p').text(visitor_name_tip);
   }
 })
 
+// 判断是否填写信息
+if(visitor_name.length && visitor_email.length) {
+  $('.submit').click(()=>{
+    if($(visitor_name).val() == '' || $(visitor_email).val() == '') {
+      $(visitor_write).addClass('active');
+    }
+  })
+  $(document).click((e)=>{
+    if(!$(e.target).is('.submit') && $(visitor_write).attr('class').indexOf('active') > -1) {
+      $(visitor_write).removeClass('active');
+    }
+  })
+}
 
 
 
 
-
-
-
-// const visitor_name = $('.comments .response .visitor > input:first');
-// const visitor_email = $('.comments .response .visitor > input:eq(2)');
-
-// if(visitor_name.length) {
-
-// }
-
+// 顶部参与讨论按钮
+if($('.single .shortcuts .to-comment').length) {
+  $('.single .shortcuts .to-comment').on('click', function() {
+    $('article').animate({scrollTop:$('#response').offset().top - 115}, 300);
+  })
+}

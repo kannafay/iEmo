@@ -24,28 +24,28 @@ function iemo_option_admin() {
 
 // head标签
 function get_head() {
-  require_once('inc/head.php');
+  require 'inc/head.php';
 }
 
 
 
 // foot标签
 function get_foot() {
-  require_once('inc/foot.php');
+  require 'inc/foot.php';
 }
 
 
 
 // nav标签
 function get_nav() {
-  require_once('inc/nav.php');
+  require 'inc/nav.php';
 }
 
 
 
 // aside标签
 function get_aside() {
-  require_once('inc/aside.php');
+  require 'inc/aside.php';
 }
 
 
@@ -96,32 +96,17 @@ function default_post_cover() {
 }
 
 
+
 // 获取文章第一张图片
 function first_post_cover($content) {
-  error_reporting(0);
-  if ( $content === false ) $content = get_the_content();
+  if($content === false) $content = get_the_content();
   preg_match_all('|<img.*?src=[\'"](.*?)[\'"].*?>|i', $content, $images);
-  if($images){      
+  if(isset($images[1][0])){      
     return $images[1][0];
-  }else{
+  } else {
     return false;
   }
 }
-
-
-
-// function default_single_cover() {
-//   if(get_option("iemo_cover_post")) {
-//     if(!img_redirect_url(get_option("iemo_cover_post"))) {
-//       return get_option("iemo_cover_post");
-//     } else {
-//       return img_redirect_url(get_option("iemo_cover_post"));
-//     }
-    
-//   } else {
-//     return fileUri().'/assets/images/random/cover-post-'.rand(1,2).'.jpg';
-//   }
-// }
 
 
 
@@ -206,7 +191,7 @@ function get_user_role($id) {
 
 
 // 头像
-require_once('plugins/simple-local-avatars/simple-local-avatars.php');
+require 'plugins/simple-local-avatars/simple-local-avatars.php';
 
 if ( ! function_exists( 'dr_filter_get_avatar' ) ) {
   function dr_filter_get_avatar( $avatar ) {
@@ -243,7 +228,7 @@ function the_avatar_author() {
 
 
 // 添加媒体外链
-require_once('plugins/external-media-without-import/external-media-without-import.php');
+require 'plugins/external-media-without-import/external-media-without-import.php';
 
 
 
@@ -451,16 +436,3 @@ add_filter('get_comment_author', function ($author, $comment_ID, $comment) {
   $newuser = get_userdata($comment->user_id);
   return $newuser->display_name ?: $author;
 }, 10, 3);
-
-
-
-// 获取用户真实IP
-// function GetIP() {
-//   $IP = str_replace('' , '', '', str_replace(isset($_SERVER['REMOTE_ADDR']), '', isset($_SERVER['HTTP_X_FORWARDED_FOR'])));
-//   if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) != '') {
-//     $_SERVER['REMOTE_ADDR'] = $IP;
-//   } else {
-//     $_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
-//   }
-// }
-// add_action( 'init', 'GetIP' );

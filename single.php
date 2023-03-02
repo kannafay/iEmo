@@ -55,16 +55,22 @@
                 <?php } ?>
               <?php } ?>
             </div>
-            
-            <?php
-              if(get_option("iemo_comments") == 'true') {
-                if(comments_open()) { ?>
-                  <div class="to-comment">
-                    <a><i class="iconfont icon-message-circle"></i>参与讨论</a>
-                  </div>
+
+            <div class="shortcuts">
+              <?php
+                if(get_edit_post_link()) { ?>
+                  <a href="<?=get_edit_post_link()?>"><i class="iconfont icon-edit"></i>编辑</a>
                 <?php }
-              }
-            ?>
+              ?>
+
+              <?php
+                if(get_option("iemo_comments") == 'true') {
+                  if(comments_open()) { ?>
+                    <a class="to-comment"><i class="iconfont icon-message-circle"></i>参与讨论</a>
+                  <?php }
+                }
+              ?>
+            </div>
 
             <div class="post-info">
               <div class="title">

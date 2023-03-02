@@ -65,4 +65,4 @@
   </div>
 <?php get_foot(); ?>
 
-<?php require_once('inc/ajax-tag.php'); ?>
+<?php require 'inc/ajax/ajax-tag.php'; ?>

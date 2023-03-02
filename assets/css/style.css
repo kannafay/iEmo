@@ -380,7 +380,7 @@ main .content {
 main .content article {
   width: calc(100% - 300px);
   height: 100%;
-  padding: 25px 25px 50px 25px;
+  padding: 25px;
   position: relative;
   background-color: #fff;
 }
@@ -844,6 +844,12 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
 .no-more-post {
   padding-top: 25px;
 }
+
+aside #pagination-post,
+aside .no-more-post {
+  padding-top: 0;
+}
+
 #pagination-home a,
 #pagination-post a,
 .no-more-post a {
@@ -875,6 +881,13 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   margin-right: 5px;
 }
 
+.no-more-post a,
+.no-more-post a i,
+.no-more-post a:hover,
+.no-more-post a:hover i {
+  background-color: transparent !important;
+  color: #999 !important;
+}
 
 
 
@@ -1467,29 +1480,33 @@ footer .copyright p {
   top: 0;
 }
 
-.single main .content article .post-cover .to-comment {
+.single main .content article .post-cover .shortcuts {
   position: absolute;
   top: 25px;
   right: 25px;
   z-index: 3;
+  display: flex;
+  align-items: center;
 }
-.single main .content article .post-cover .to-comment a {
+.single main .content article .post-cover .shortcuts a {
   display: flex;
   align-items: center;
   color: #fff;
   background-color: var(--scroll);
   text-shadow: 0 0 5px rgba(0 0 0 / .2);
   padding: 4px 12px;
-  font-size: 15px;
+  font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
   user-select: none;
+  margin-left: 10px;
 }
-.single main .content article .post-cover .to-comment a i {
-  font-size: 15px;
+.single main .content article .post-cover .shortcuts a i {
+  font-size: 14px;
   margin-right: 3px;
+  padding-top: 1px;
 }
-.single main .content article .post-cover .to-comment a:hover {
+.single main .content article .post-cover .shortcuts a:hover {
   background-color: var(--theme);
 }
 
@@ -1583,6 +1600,7 @@ footer .copyright p {
   margin-right: 5px;
   border-radius: 6px;
   font-size: 14px;
+  text-shadow: 0 0 5px rgba(0 0 0 / .2);
 }
 .single main .content article .post-cover .post-info .more .tag a:last-child {
   margin-right: 0;
