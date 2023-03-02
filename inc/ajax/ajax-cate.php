@@ -15,7 +15,7 @@
     tagA.each(function(){
       if($(this).attr('href') == url) {
         $(this).addClass('active');
-        this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
+        this.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
         solider.width($(this).outerWidth());
         let position = $(this).position();
         let scrollLeft = tagUl.scrollLeft();
@@ -47,7 +47,7 @@
       if($(this).attr('href') == url) {
         tagA.removeClass('active');
         $(this).addClass('active');
-        this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
+        this.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
         solider.width($(this).outerWidth());
         let position = $(this).position();
         let scrollLeft = tagUl.scrollLeft();
@@ -66,7 +66,7 @@
       let title = $(this).text();
       tagA.removeClass('active');
       $(this).addClass('active');
-      this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
+      this.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
       solider.width($(this).outerWidth());
       let position = $(this).position();
       let scrollLeft = tagUl.scrollLeft();
@@ -107,7 +107,7 @@
           title = $(this).text();
           tagA.removeClass('active');
           $(this).addClass('active');
-          this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
+          this.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
           solider.width($(this).outerWidth());
           let position = $(this).position();
           let scrollLeft = tagUl.scrollLeft();

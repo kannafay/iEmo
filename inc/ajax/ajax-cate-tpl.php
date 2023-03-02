@@ -12,7 +12,6 @@
 
   $(document).ready(()=>{
     firstTagA.addClass('active');
-    firstTagA[0].scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
     solider.width(firstTagA.outerWidth());
     let position = firstTagA.position();
     let scrollLeft = tagUl.scrollLeft();
@@ -42,7 +41,7 @@
       let title = $(this).text();
       tagA.removeClass('active');
       $(this).addClass('active');
-      this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
+      this.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
       solider.width($(this).outerWidth());
       let position = $(this).position();
       let scrollLeft = tagUl.scrollLeft();
@@ -83,7 +82,7 @@
           title = $(this).text();
           tagA.removeClass('active');
           $(this).addClass('active');
-          this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
+          this.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
           solider.width($(this).outerWidth());
           let position = $(this).position();
           let scrollLeft = tagUl.scrollLeft();
