@@ -23,7 +23,6 @@
             </div>
             <?php require 'inc/home-new.php'; ?>
             <?php require 'inc/home-sticky.php'; ?>
-            <?php require 'inc/home-color.php'; ?>
           </div>
         </article>
         <?php get_aside(); ?>

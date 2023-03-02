@@ -21,7 +21,6 @@
                 <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?sticky=<?php $sticky_i++; echo $sticky_i; ?>" alt="" >
               <?php }
             ?>
-            <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
           </a>
           <div class="cate-view">
             <?php echo the_category(' <span>/</span> '); ?>

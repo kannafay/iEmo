@@ -1,4 +1,6 @@
 <?php
+@$iemo_page_animation = stripslashes($_POST["iemo_page_animation"]);
+@$iemo_auto_load = stripslashes($_POST["iemo_auto_load"]);
 @$iemo_login_hidden = stripslashes($_POST["iemo_login_hidden"]);
 @$iemo_comments = stripslashes($_POST["iemo_comments"]);
 @$iemo_comments_visitor = stripslashes($_POST["iemo_comments_visitor"]);
@@ -10,10 +12,11 @@
 @$iemo_copyright = stripslashes($_POST["iemo_copyright"]);
 @$iemo_icp = stripslashes($_POST["iemo_icp"]);
 @$iemo_icp_gov = stripslashes($_POST["iemo_icp_gov"]);
-@$iemo_page_animation = stripslashes($_POST["iemo_page_animation"]);
 @$iemo_upyun = stripslashes($_POST["iemo_upyun"]);
 
 if(@stripslashes($_POST["iemo_option"])){
+  update_option("iemo_auto_load", $iemo_auto_load);
+  update_option("iemo_page_animation", $iemo_page_animation);
   update_option("iemo_login_hidden", $iemo_login_hidden);
   update_option("iemo_comments", $iemo_comments);
   update_option("iemo_comments_visitor", $iemo_comments_visitor);
@@ -25,7 +28,6 @@ if(@stripslashes($_POST["iemo_option"])){
   update_option("iemo_copyright", $iemo_copyright);
   update_option("iemo_icp", $iemo_icp);
   update_option("iemo_icp_gov", $iemo_icp_gov);
-  update_option("iemo_page_animation", $iemo_page_animation);
   update_option("iemo_upyun", $iemo_upyun);
 }
 ?>
@@ -90,6 +92,15 @@ if(@stripslashes($_POST["iemo_option"])){
               <option value="Top" <?php echo get_option("iemo_page_animation") == 'Top' ? 'selected' : ''; ?>>从上往下</option>
               <option value="Enlarge" <?php echo get_option("iemo_page_animation") == 'Enlarge' ? 'selected' : ''; ?>>放大效果</option>
             </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">自动加载内容</th>
+          <td>
+            <fieldset>
+              <label><input type='checkbox' name='iemo_auto_load' value='true' <?php echo get_option("iemo_auto_load") == 'true' ? 'checked' : ''; ?>/>开启Ajax自动加载</label>
+              <p class="description">当页面内容满时滚动到底部自动加载内容</p>
+            </fieldset>
           </td>
         </tr>
         <tr>

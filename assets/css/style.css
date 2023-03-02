@@ -380,7 +380,7 @@ main .content {
 main .content article {
   width: calc(100% - 300px);
   height: 100%;
-  padding: 25px 25px 50px 25px;
+  padding: 25px;
   position: relative;
   background-color: #fff;
 }
@@ -875,6 +875,13 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   margin-right: 5px;
 }
 
+.no-more-post a,
+.no-more-post a i,
+.no-more-post a:hover,
+.no-more-post a:hover i {
+  background-color: transparent !important;
+  color: #999 !important;
+}
 
 
 

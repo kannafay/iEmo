@@ -158,19 +158,9 @@
                 $("#pagination-post a").attr("href", newhref);
               } else {
                 $("#pagination-post a").removeAttr("href");
+                $("#pagination-post a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
+                $("#pagination-post a").parent().addClass('no-more-post');
                 $("#pagination-post a").unbind("click");
-                $("#pagination-post a")[0].innerHTML = '<i class="iconfont icon-anchor"></i> 好像就这么多';
-                $(`
-                  <style>
-                    #pagination-post a,
-                    #pagination-post a i,
-                    #pagination-post a:hover,
-                    #pagination-post a:hover i {
-                      background-color: transparent;
-                      color: #999;
-                    }
-                  </style>
-                `).appendTo('head');
               }
             }
           });
