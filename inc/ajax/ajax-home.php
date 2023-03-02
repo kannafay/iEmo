@@ -8,6 +8,7 @@
   }
 ?>
 
+
 <script>
   $(document).ready(function($) { 
     $('#pagination-home a').click(function() {
@@ -45,7 +46,6 @@
 </script>
 
 
-
 <?php
   if(get_option('iemo_auto_load') == 'true') { ?>
 
@@ -62,6 +62,7 @@
         }
       }
       
+
       // pc scroll ajax
       const pc_scroll_event = () => {
         $('article').on('scroll', throttle(function(){
@@ -74,6 +75,7 @@
         }));
       }
 
+      
       // mobile scroll ajax
       const mobile_scroll_event = () => {
         $(document).on('scroll', throttle(function(){
@@ -119,11 +121,15 @@
         return false;
       }
 
-      $(document).ready(() => { 
-        pc_scroll_event();
-        mobile_scroll_event();
-      });
+      pc_scroll_event();
+      mobile_scroll_event();
+
     </script>
 
+  <?php } else { ?>
+    <script>
+      let pc_scroll = ()=>{};
+      let mobile_scroll = ()=>{};
+    </script>
   <?php }
 ?>

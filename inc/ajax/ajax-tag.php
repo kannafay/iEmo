@@ -3,7 +3,6 @@
   // tag add slider
   $('<div class="slider"></div>').appendTo($('.tag-bar ul'));
 
-  
   let url = location.href;
   let title = '';
   let tagA = $('.tag .tag-bar ul li a');
@@ -16,7 +15,7 @@
     tagA.each(function(){
       if($(this).attr('href') == url) {
         $(this).addClass('active');
-        this.scrollIntoView({behavior:'smooth', inline:'center'});
+        this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
         solider.width($(this).outerWidth());
         let position = $(this).position();
         let scrollLeft = tagUl.scrollLeft();
@@ -27,15 +26,28 @@
     })
   })
 
+
+  // 封装节流
+  function throttle(fn) {
+    return function() {
+      if(fn.timer) return;
+      fn.timer = setTimeout(() => {
+        fn.call(this);
+        fn.timer = null;
+      }, 300);
+    }
+  }
+
+
   // resize event
-  $(window).resize(()=>{
+  $(window).on('resize', throttle(function() {
     let url = location.href;
     let title = '';
     tagA.each(function(){
       if($(this).attr('href') == url) {
         tagA.removeClass('active');
         $(this).addClass('active');
-        this.scrollIntoView({behavior:'smooth', inline:'center'});
+        this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
         solider.width($(this).outerWidth());
         let position = $(this).position();
         let scrollLeft = tagUl.scrollLeft();
@@ -44,15 +56,9 @@
         });
       }
     })
-  })
+  }))
 
 
-
-
-
-
-
-  
   // click event
   $(document).ready(()=>{
     tagA.on('click',function(){
@@ -60,7 +66,7 @@
       let title = $(this).text();
       tagA.removeClass('active');
       $(this).addClass('active');
-      this.scrollIntoView({behavior:'smooth', inline:'center'});
+      this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
       solider.width($(this).outerWidth());
       let position = $(this).position();
       let scrollLeft = tagUl.scrollLeft();
@@ -78,18 +84,17 @@
           $('title').html(title + ' &#8211 ' + '<?php bloginfo('name'); ?>');
           window.history.pushState('', '', url);
           bind_tag_next();
+
+          $('article').off("scroll");
+          $('article').on("scroll", pc_scroll());
+
+          $(document).off("scroll");
+          $(document).on("scroll", mobile_scroll());
         }
       });
       return false;
     });
   })
-
-
-
-
-
-
-
 
 
   // popstate event
@@ -102,7 +107,7 @@
           title = $(this).text();
           tagA.removeClass('active');
           $(this).addClass('active');
-          this.scrollIntoView({behavior:'smooth', inline:'center'});
+          this.scrollIntoView({behavior:'smooth', inline:'center', block:'center'});
           solider.width($(this).outerWidth());
           let position = $(this).position();
           let scrollLeft = tagUl.scrollLeft();
@@ -121,16 +126,17 @@
           $('.tag-box').html(posts);
           $('title').html(title + ' &#8211 ' + '<?php bloginfo('name'); ?>');
           bind_tag_next();
+
+          $('article').off("scroll");
+          $('article').on("scroll", pc_scroll());
+
+          $(document).off("scroll");
+          $(document).on("scroll", mobile_scroll());
         }
       });
       return false;
     }
   })
-
-  
-
-
-
 
   
   // ajax loading post 
@@ -156,19 +162,11 @@
                 $("#pagination-post a").attr("href", newhref);
               } else {
                 $("#pagination-post a").removeAttr("href");
+                $("#pagination-post a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
+                $("#pagination-post a").parent().addClass('no-more-post');
                 $("#pagination-post a").unbind("click");
-                $("#pagination-post a")[0].innerHTML = '<i class="iconfont icon-anchor"></i> 好像就这么多';
-                $(`
-                  <style>
-                    #pagination-post a,
-                    #pagination-post a i,
-                    #pagination-post a:hover,
-                    #pagination-post a:hover i {
-                      background-color: transparent;
-                      color: #999;
-                    }
-                  </style>
-                `).appendTo('head');
+                $('article').unbind("scroll");
+                $(document).unbind("scroll");
               }
             }
           });
@@ -179,6 +177,7 @@
   }
 
   bind_tag_next();
+
 
   // browser Back event
   $(function() { 
@@ -197,5 +196,89 @@
       window.history.pushState(state, 'title', ''); 
     } 
   });
-  
 </script>
+
+
+<?php
+  if(get_option('iemo_auto_load') == 'true') { ?>
+
+    <script>
+
+      // pc scroll ajax
+      function pc_scroll() {
+        return throttle(function(){
+          let height = $('article').height() + 50;
+          let scrollTop = $('article').scrollTop();
+          let scrollHeight = $('article')[0].scrollHeight;
+          if(scrollHeight - (height + scrollTop) <= 50) {
+            scroll_ajax();
+          }
+        })
+      }
+
+      const pc_scroll_event = () => {
+        $('article').on('scroll', pc_scroll());
+      }
+
+
+      // mobile scroll ajax
+      function mobile_scroll() {
+        return throttle(function(){
+          let height = $(window).height();
+          let topToBottom = $('article')[0].getBoundingClientRect().bottom;
+          if(topToBottom - height <= 100) {
+            scroll_ajax();
+          }
+        })
+      }
+
+      const mobile_scroll_event = () => {
+        $(document).on('scroll', mobile_scroll())
+      }
+
+
+      // scroll ajax
+      const scroll_ajax = () => {
+        $this = $('#pagination-post a');
+        $this.addClass('loading').html('<i class="iconfont icon-loader"></i> 加载中...');
+        var href = $this.attr("href");
+        if (href != undefined) {
+          $.ajax({
+            url: href,
+            type: "get",
+            error: function(request) {
+              // console.log('error');
+            },
+            success: function(data) {
+              $this.removeClass('loading').html('<i class="iconfont icon-activity"></i> 加载更多文章');
+              var $res = $(data).find("article .tag-box ul li");
+              $('article .tag-box ul').append($res);
+              var newhref = $(data).find("#pagination-post a").attr("href");
+              if (newhref != undefined) {
+                $("#pagination-post a").attr("href", newhref);
+              } else {
+                $("#pagination-post a").removeAttr("href");
+                $("#pagination-post a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
+                $("#pagination-post a").parent().addClass('no-more-post');
+                $("#pagination-post a").unbind("click");
+                $('article').unbind("scroll");
+                $(document).unbind("scroll");
+              }
+            }
+          });
+        }
+        return false;
+      }
+
+      pc_scroll_event();
+      mobile_scroll_event();
+
+    </script>
+
+  <?php } else { ?>
+    <script>
+      let pc_scroll = ()=>{};
+      let mobile_scroll = ()=>{};
+    </script>
+  <?php }
+?>

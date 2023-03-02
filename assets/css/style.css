@@ -844,6 +844,12 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
 .no-more-post {
   padding-top: 25px;
 }
+
+aside #pagination-post,
+aside .no-more-post {
+  padding-top: 0;
+}
+
 #pagination-home a,
 #pagination-post a,
 .no-more-post a {

@@ -29,16 +29,10 @@
         $('title').html(title + ' &#8211 ' + '<?php bloginfo('name'); ?>');
         window.history.pushState('', '', url);
         bind_cate_next();
-        pc_scroll_event();
-        mobile_scroll_event();
       }
     });
     return false;
   })
-
-
-
-
 
 
   // click event
@@ -66,16 +60,17 @@
           $('title').html(title + ' &#8211 ' + '<?php bloginfo('name'); ?>');
           window.history.pushState('', '', url);
           bind_cate_next();
+
+          $('article').off("scroll");
+          $('article').on("scroll", pc_scroll());
+
+          $(document).off("scroll");
+          $(document).on("scroll", mobile_scroll());
         }
       });
       return false;
     });
   })
-
-
-
-
-
 
 
   // popstate event
@@ -107,16 +102,17 @@
           $('.cate-box').html(posts);
           $('title').html(title + ' &#8211 ' + '<?php bloginfo('name'); ?>');
           bind_cate_next();
+
+          $('article').off("scroll");
+          $('article').on("scroll", pc_scroll());
+
+          $(document).off("scroll");
+          $(document).on("scroll", mobile_scroll());
         }
       });
       return false;
     }
   })
-
-
-
-
-
 
 
   // ajax loading post 
@@ -194,28 +190,38 @@
           }, 300);
         }
       }
-      
+
+
       // pc scroll ajax
-      const pc_scroll_event = () => {
-        $('article').on('scroll', throttle(function(){
+      function pc_scroll() {
+        return throttle(function(){
           let height = $('article').height() + 50;
           let scrollTop = $('article').scrollTop();
           let scrollHeight = $('article')[0].scrollHeight;
           if(scrollHeight - (height + scrollTop) <= 50) {
             scroll_ajax();
           }
-        }));
+        })
       }
 
+      const pc_scroll_event = () => {
+        $('article').on('scroll', pc_scroll());
+      }
+
+
       // mobile scroll ajax
-      const mobile_scroll_event = () => {
-        $(document).on('scroll', throttle(function(){
+      function mobile_scroll() {
+        return throttle(function(){
           let height = $(window).height();
           let topToBottom = $('article')[0].getBoundingClientRect().bottom;
           if(topToBottom - height <= 100) {
             scroll_ajax();
           }
-        }))
+        })
+      }
+
+      const mobile_scroll_event = () => {
+        $(document).on('scroll', mobile_scroll())
       }
 
 
@@ -251,7 +257,16 @@
         }
         return false;
       }
+
+      pc_scroll_event();
+      mobile_scroll_event();
+
     </script>
 
+  <?php } else { ?>
+    <script>
+      let pc_scroll = ()=>{};
+      let mobile_scroll = ()=>{};
+    </script>
   <?php }
 ?>

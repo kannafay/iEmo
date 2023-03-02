@@ -9,7 +9,6 @@
           <h3>搜索关键词：<span><?php the_search_query(); ?></span></h3>
           <div class="search-box">
             <ul>
-              <?php $search_i = 0; ?>
               <?php if(have_posts()) : ?>
               <?php while(have_posts()) : the_post(); ?>
                 <li>
@@ -19,7 +18,7 @@
                         if (has_post_thumbnail()) {
                           the_post_thumbnail();
                         } else { ?>
-                          <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?search=<?php $search_i++; echo $search_i; ?>" alt="" >
+                          <img src="<?php if(first_post_cover(get_the_content())){echo first_post_cover(get_the_content());}else{echo default_post_cover();} ?>?<?=the_ID()?>" alt="" >
                         <?php }
                       ?>
                     </a>
