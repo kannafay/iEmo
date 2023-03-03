@@ -50,7 +50,8 @@ if(@stripslashes($_POST["iemo_option"])){
         </tr>
         <tr>
           <th scope="row"><label for="">菜单图标</label></th>
-          <td>
+          <td class="menu-icon">
+            <button class="show-menu-icon button button-primary" onclick="showMenuIcon();">查看菜单图标</button>
             <p class="description"><span class="iconfont icon-home"></span> 首页：&lt;span class="iconfont icon-home"&gt;&lt;/span&gt;</p>
             <p class="description"><span class="iconfont icon-folder"></span> 分类：&lt;span class="iconfont icon-folder"&gt;&lt;/span&gt;</p>
             <p class="description"><span class="iconfont icon-hash"></span> 标签：&lt;span class="iconfont icon-hash"&gt;&lt;/span&gt;</p>
@@ -67,7 +68,8 @@ if(@stripslashes($_POST["iemo_option"])){
         </tr>
         <tr>
           <th scope="row"><label for="">社交图标</label></th>
-          <td>
+          <td class="social-icon">
+            <button class="show-social-icon button button-primary" onclick="showSocialIcon();">查看社交图标</button>
             <p class="description"><span class="iconfont icon-QQ"></span> QQ：&lt;span class="iconfont icon-QQ"&gt;&lt;/span&gt;</p>
             <p class="description"><span class="iconfont icon-weixin"></span> WeChat：&lt;span class="iconfont icon-weixin"&gt;&lt;/span&gt;</p>
             <p class="description"><span class="iconfont icon-github"></span> GitHub：&lt;span class="iconfont icon-github"&gt;&lt;/span&gt;</p>
@@ -91,6 +93,17 @@ if(@stripslashes($_POST["iemo_option"])){
               <option value="Right" <?php echo get_option("iemo_page_animation") == 'Right' ? 'selected' : ''; ?>>从右往左</option>
               <option value="Top" <?php echo get_option("iemo_page_animation") == 'Top' ? 'selected' : ''; ?>>从上往下</option>
               <option value="Enlarge" <?php echo get_option("iemo_page_animation") == 'Enlarge' ? 'selected' : ''; ?>>放大效果</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><label for="iemo_code_css">文章代码样式</label></th>
+          <td>
+            <select name="iemo_code_css" id="iemo_code_css">
+              <option value="" <?php echo get_option("iemo_code_css") == '' ? 'selected' : ''; ?>>VScode</option>
+              <option value="github-dark" <?php echo get_option("iemo_code_css") == 'github-dark' ? 'selected' : ''; ?>>GitHub</option>
+              <option value="tokyo-night-dark" <?php echo get_option("iemo_code_css") == 'tokyo-night-dark' ? 'selected' : ''; ?>>Tokyo</option>
+              <option value="color-brewer" <?php echo get_option("iemo_code_css") == 'color-brewer' ? 'selected' : ''; ?>>ColorBrewer</option>
             </select>
           </td>
         </tr>
@@ -166,17 +179,6 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="iemo_code_css">文章代码样式</label></th>
-          <td>
-            <select name="iemo_code_css" id="iemo_code_css">
-              <option value="" <?php echo get_option("iemo_code_css") == '' ? 'selected' : ''; ?>>VScode</option>
-              <option value="github-dark" <?php echo get_option("iemo_code_css") == 'github-dark' ? 'selected' : ''; ?>>GitHub</option>
-              <option value="tokyo-night-dark" <?php echo get_option("iemo_code_css") == 'tokyo-night-dark' ? 'selected' : ''; ?>>Tokyo</option>
-              <option value="color-brewer" <?php echo get_option("iemo_code_css") == 'color-brewer' ? 'selected' : ''; ?>>ColorBrewer</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
           <th scope="row"><label for="iemo_copyright">版权号</label></th>
           <td>
             <input name="iemo_copyright" type="number" value="<?php echo get_option("iemo_copyright"); ?>" class="regular-text">
@@ -213,8 +215,11 @@ if(@stripslashes($_POST["iemo_option"])){
     </table>
     <p class="submit">
       <input type="submit" name="iemo_option"  class="button button-primary" value="保存更改" onclick="change_success()">
+      
+      <!-- <input class="submit fixed" type="submit" name="iemo_option" onclick="change_success();">保存 -->
     </p>
 
+    <input class="submit fixed" type="submit" name="iemo_option" value="保存更改" onclick="change_success()">
 
 
 

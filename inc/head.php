@@ -29,7 +29,8 @@
         .archive main .content article .archive-box h3,
         .archive main .content article .archive-box li,
         .link .single,
-        .link .link-box {
+        .link .link-box,
+        .comments {
           animation: FadeIn-<?=get_option("iemo_page_animation"); ?> .5s forwards !important;
         }
       </style>

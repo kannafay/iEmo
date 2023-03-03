@@ -66,11 +66,9 @@ img {
 .archive *,
 .link *,
 .note *,
-.single *,
-*::before,
-*::after {
+.single * {
   -webkit-transition: all var(--tr3);
-  transition: all var(--tr3);
+  transition: all var(--tr3), height 0s;
 }
 
 
@@ -837,21 +835,30 @@ main .content aside .aside-content:hover::-webkit-scrollbar-thumb {
   color: #333;
 }
 
-/* home ajax */
 
-#pagination-home,
-#pagination-post,
+
+
+
+
+
+
+
+
+
+
+
+/* home ajax */
+.pagination,
 .no-more-post {
   padding-top: 25px;
 }
 
-aside #pagination-post,
+aside .pagination,
 aside .no-more-post {
   padding-top: 0;
 }
 
-#pagination-home a,
-#pagination-post a,
+.pagination a,
 .no-more-post a {
   display: flex;
   align-items: center;
@@ -859,24 +866,15 @@ aside .no-more-post {
   border-radius: 8px;
   padding: 10px 0;
 }
-#pagination-home a,
-#pagination-home a i,
-#pagination-post a,
-#pagination-post a i,
+.pagination a,
+.pagination a i,
 .no-more-post a,
 .no-more-post a i {
   color: #999;
   font-size: 14px;
 }
-#pagination-home a:hover,
-#pagination-home a:hover i,
-#pagination-post a:hover,
-#pagination-post a:hover i {
-  background-color: #f5f5f5;
-  color: #333;
-}
-#pagination-home a i,
-#pagination-post a i,
+
+.pagination a i,
 .no-more-post a i {
   margin-right: 5px;
 }
@@ -890,9 +888,11 @@ aside .no-more-post {
 }
 
 
-
-
-
+.pagination a:hover,
+.pagination a:hover i {
+  background-color: #f5f5f5;
+  color: #333;
+}
 
 
 
@@ -1270,7 +1270,7 @@ main .content .notes-content ol li {
 
 
 /* aside ajax */
-#pagination-aside a,
+.pagination-aside a,
 .no-more-note a {
   display: flex;
   align-items: center;
@@ -1280,13 +1280,14 @@ main .content .notes-content ol li {
   border-radius: 8px;
   padding: 8px 0;
 }
-#pagination-aside a i,
+.pagination-aside a i,
 .no-more-note a i {
   font-size: 12px;
   color: #999;
   margin-right: 3px;
 }
-#pagination-aside a:hover {
+.pagination-aside a:hover,
+.pagination-aside a:hover i {
   background-color: #f5f5f5;
   color: #333;
 }
@@ -1361,7 +1362,7 @@ main .content .notes-content ol li {
   margin-right: 3px;
 }
 .note main .content article .note-page li .bottom a,
-.note main .content article .note-page li .bottom a i::before {
+.note main .content article .note-page li .bottom a i {
   font-weight: 400;
   font-size: 13px;
   color: #999;
@@ -1371,7 +1372,7 @@ main .content .notes-content ol li {
   color: #333;
   background-color: rgba(0 0 0 / .05);
 }
-.note main .content article .note-page li .bottom a:hover i::before {
+.note main .content article .note-page li .bottom a:hover i {
   color: #333;
 }
 
@@ -1494,9 +1495,9 @@ footer .copyright p {
   color: #fff;
   background-color: var(--scroll);
   text-shadow: 0 0 5px rgba(0 0 0 / .2);
-  padding: 4px 12px;
+  padding: 5px 15px;
   font-size: 14px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   user-select: none;
   margin-left: 10px;
@@ -1504,7 +1505,6 @@ footer .copyright p {
 .single main .content article .post-cover .shortcuts a i {
   font-size: 14px;
   margin-right: 3px;
-  padding-top: 1px;
 }
 .single main .content article .post-cover .shortcuts a:hover {
   background-color: var(--theme);
@@ -2143,6 +2143,21 @@ footer .copyright p {
   .home article .top .regular .regular-box h2 {
     font-size: 15px;
   }
+
+  .pagination a:hover,
+  .pagination a:hover i,
+  .pagination-aside a:hover,
+  .pagination-aside a:hover i {
+    background-color: transparent;
+    color: #999;
+  }
+  .pagination a:active,
+  .pagination a:active i,
+  .pagination-aside a:active,
+  .pagination-aside a:active i {
+    background-color: #f5f5f5;
+    color: #333;
+  }
 }
 
 
@@ -2240,6 +2255,10 @@ footer .copyright p {
 
   .single main .content article .post-cover {
     height: 240px;
+  }
+  .single main .content article .post-cover .shortcuts {
+    top: 10px;
+  right: 10px;
   }
   .single main .content article .post-cover .post-info {
     padding: 0 25px 20px 25px;
@@ -2410,6 +2429,7 @@ footer .copyright p {
   }
   .archive main .content article .archive-box h3 {
     font-size: 16px;
+    margin-top: 20px;
   }
   .archive main .content article .archive-box li a,
   .archive main .content article .archive-box li a::before {

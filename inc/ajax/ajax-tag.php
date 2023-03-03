@@ -164,9 +164,9 @@
                 $("#pagination-post a").removeAttr("href");
                 $("#pagination-post a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
                 $("#pagination-post a").parent().addClass('no-more-post');
-                $("#pagination-post a").unbind("click");
-                $('article').unbind("scroll");
-                $(document).unbind("scroll");
+                $("#pagination-post a").off("click");
+                $('article').off("scroll");
+                $(document).off("scroll");
               }
             }
           });
@@ -216,10 +216,6 @@
         })
       }
 
-      const pc_scroll_event = () => {
-        $('article').on('scroll', pc_scroll());
-      }
-
 
       // mobile scroll ajax
       function mobile_scroll() {
@@ -230,10 +226,6 @@
             scroll_ajax();
           }
         })
-      }
-
-      const mobile_scroll_event = () => {
-        $(document).on('scroll', mobile_scroll())
       }
 
 
@@ -256,13 +248,17 @@
               var newhref = $(data).find("#pagination-post a").attr("href");
               if (newhref != undefined) {
                 $("#pagination-post a").attr("href", newhref);
+                $('article').off("scroll");
+                $('article').on("scroll", pc_scroll());
+                $(document).off("scroll");
+                $(document).on("scroll", mobile_scroll());
               } else {
                 $("#pagination-post a").removeAttr("href");
                 $("#pagination-post a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
                 $("#pagination-post a").parent().addClass('no-more-post');
-                $("#pagination-post a").unbind("click");
-                $('article').unbind("scroll");
-                $(document).unbind("scroll");
+                $("#pagination-post a").off("click");
+                $('article').off("scroll");
+                $(document).off("scroll");
               }
             }
           });
@@ -270,8 +266,8 @@
         return false;
       }
 
-      pc_scroll_event();
-      mobile_scroll_event();
+      $('article').on('scroll', pc_scroll());
+      $(document).on("scroll", mobile_scroll());
 
     </script>
 

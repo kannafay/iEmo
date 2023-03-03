@@ -1,6 +1,6 @@
 <?php 
   if(get_next_posts_link()) { ?>
-    <div id="pagination-home" class="pagination-post">
+    <div id="pagination-home" class="pagination">
       <?php next_posts_link(__('<i class="iconfont icon-activity"></i> 加载更多文章')); ?>
     </div>
   <?php } else {
@@ -33,9 +33,9 @@
               $("#pagination-home a").removeAttr("href");
               $("#pagination-home a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
               $("#pagination-home a").parent().addClass('no-more-post');
-              $("#pagination-home a").unbind("click");
-              $('article').unbind("scroll");
-              $(document).unbind("scroll");
+              $("#pagination-home a").off("click");
+              $('article').off("scroll");
+              $(document).off("scroll");
             }
           }
         });
@@ -64,27 +64,31 @@
       
 
       // pc scroll ajax
-      const pc_scroll_event = () => {
-        $('article').on('scroll', throttle(function(){
+      function pc_scroll() {
+        return throttle(function(){
           let height = $('article').height() + 50;
           let scrollTop = $('article').scrollTop();
           let scrollHeight = $('article')[0].scrollHeight;
           if(scrollHeight - (height + scrollTop) <= 50) {
+            $('article').off("scroll");
+            $(document).off("scroll");
             scroll_ajax();
           }
-        }));
+        })
       }
 
       
       // mobile scroll ajax
-      const mobile_scroll_event = () => {
-        $(document).on('scroll', throttle(function(){
+      function mobile_scroll() {
+        return throttle(function(){
           let height = $(window).height();
           let topToBottom = $('article')[0].getBoundingClientRect().bottom;
           if(topToBottom - height <= 100) {
+            $('article').off("scroll");
+            $(document).off("scroll");
             scroll_ajax();
           }
-        }))
+        })
       }
 
 
@@ -107,13 +111,17 @@
               var newhref = $(data).find("#pagination-home a").attr("href");
               if (newhref != undefined) {
                 $("#pagination-home a").attr("href", newhref);
+                $('article').off("scroll");
+                $('article').on("scroll", pc_scroll());
+                $(document).off("scroll");
+                $(document).on("scroll", mobile_scroll());
               } else {
                 $("#pagination-home a").removeAttr("href");
                 $("#pagination-home a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
                 $("#pagination-home a").parent().addClass('no-more-post');
-                $("#pagination-home a").unbind("click");
-                $('article').unbind("scroll");
-                $(document).unbind("scroll");
+                $("#pagination-home a").off("click");
+                $('article').off("scroll");
+                $(document).off("scroll");
               }
             }
           });
@@ -121,8 +129,8 @@
         return false;
       }
 
-      pc_scroll_event();
-      mobile_scroll_event();
+      $('article').on('scroll', pc_scroll());
+      $(document).on('scroll', mobile_scroll());
 
     </script>
 

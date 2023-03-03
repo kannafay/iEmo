@@ -139,9 +139,9 @@
                 $("#pagination-post a").removeAttr("href");
                 $("#pagination-post a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
                 $("#pagination-post a").parent().addClass('no-more-post');
-                $("#pagination-post a").unbind("click");
-                $('article').unbind("scroll");
-                $(document).unbind("scroll");
+                $("#pagination-post a").off("click");
+                $('article').off("scroll");
+                $(document).off("scroll");
               }
             }
           });
@@ -198,13 +198,11 @@
           let scrollTop = $('article').scrollTop();
           let scrollHeight = $('article')[0].scrollHeight;
           if(scrollHeight - (height + scrollTop) <= 50) {
+            $('article').off("scroll");
+            $(document).off("scroll");
             scroll_ajax();
           }
         })
-      }
-
-      const pc_scroll_event = () => {
-        $('article').on('scroll', pc_scroll());
       }
 
 
@@ -214,13 +212,11 @@
           let height = $(window).height();
           let topToBottom = $('article')[0].getBoundingClientRect().bottom;
           if(topToBottom - height <= 100) {
+            $('article').off("scroll");
+            $(document).off("scroll");
             scroll_ajax();
           }
         })
-      }
-
-      const mobile_scroll_event = () => {
-        $(document).on('scroll', mobile_scroll())
       }
 
 
@@ -243,13 +239,17 @@
               var newhref = $(data).find("#pagination-post a").attr("href");
               if (newhref != undefined) {
                 $("#pagination-post a").attr("href", newhref);
+                $('article').off("scroll");
+                $('article').on("scroll", pc_scroll());
+                $(document).off("scroll");
+                $(document).on("scroll", mobile_scroll());
               } else {
                 $("#pagination-post a").removeAttr("href");
                 $("#pagination-post a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
                 $("#pagination-post a").parent().addClass('no-more-post');
-                $("#pagination-post a").unbind("click");
-                $('article').unbind("scroll");
-                $(document).unbind("scroll");
+                $("#pagination-post a").off("click");
+                $('article').off("scroll");
+                $(document).off("scroll");
               }
             }
           });
@@ -257,8 +257,8 @@
         return false;
       }
 
-      pc_scroll_event();
-      mobile_scroll_event();
+      $('article').on('scroll', pc_scroll());
+      $(document).on("scroll", mobile_scroll());
 
     </script>
 
