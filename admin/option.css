@@ -55,6 +55,16 @@
   padding: 0 10px;
   margin: 20px 0;
 }
+#iemo-recommend-post ul::-webkit-scrollbar {
+  width: 6px;
+  height: 0;
+  background: rgba(0 0 0 / .1);
+  border-radius: 6px;
+}
+#iemo-recommend-post ul::-webkit-scrollbar-thumb {
+  background: rgba(0 0 0 / .3);
+  border-radius: 6px;
+}
 
 #iemo-recommend-post button,
 #iemo-recommend-post .close {
@@ -89,8 +99,24 @@
 
 
 
-
-
+.submit.fixed {
+  position: fixed;
+  top: 55px;
+  right: 28px;
+  display: block;
+  padding: 6px 15px;
+  margin: 0;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+.submit.fixed:hover {
+  background-color: #444;
+}
+.submit.fixed:active {
+  background-color: #555;
+}
 
 
 
@@ -139,6 +165,17 @@
 
 
 
+.show-menu-icon,
+.show-social-icon {
+  margin-bottom: 10px !important;
+}
+
+.menu-icon p,
+.social-icon p {
+  display: none;
+}
+
+
 
 
 
@@ -163,6 +200,10 @@
     visibility: hidden;
     opacity: 0;
   }
+
+  .submit.fixed {
+    top: 69px;
+  }
 }
 
 
@@ -174,5 +215,11 @@
   }
   .success {
     top: 40px;
+  }
+
+  .submit.fixed {
+    top: 10px;
+    right: 10px;
+    font-size: 15px;
   }
 }

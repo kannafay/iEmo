@@ -50,7 +50,7 @@
             </ul>
             <?php 
               if(get_next_posts_link()) { ?>
-                <div id="pagination-post" class="pagination-post">
+                <div id="pagination-post" class="pagination">
                   <?php next_posts_link(__('<i class="iconfont icon-activity"></i> 加载更多文章')); ?>
                 </div>
               <?php } else {

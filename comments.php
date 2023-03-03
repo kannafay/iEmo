@@ -9,7 +9,7 @@
     <?php //var_dump(get_comment_author('29')); ?>
       
       <div class="take-part-in-comment">
-        <p>参与讨论 Beta</p>
+        <p>参与讨论</p>
         <p>(Participate in the discussion)</p>
       </div>
       <div class="response" id="response">

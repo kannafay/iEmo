@@ -141,6 +141,7 @@ $('.home .recommend-bar ul li a').each(function(i) {
 })
 
 
+// color-theif
 function get_color(callback) {
   $.ajax({
 		type: 'POST',
