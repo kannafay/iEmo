@@ -408,7 +408,6 @@ add_action( 'load-themes.php', 'ashu_add_pages' );
 
 
 
-
 // 搜索排除页面
 add_filter('pre_get_posts', function($wp_query){
   if($wp_query->is_search){
@@ -436,3 +435,11 @@ add_filter('get_comment_author', function ($author, $comment_ID, $comment) {
   $newuser = get_userdata($comment->user_id);
   return $newuser->display_name ?: $author;
 }, 10, 3);
+
+
+
+// 修正评论用户IP不准确问题
+if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+  $list = explode(',',$_SERVER['HTTP_X_FORWARDED_FOR']);
+  $_SERVER['REMOTE_ADDR'] = $list[0];
+}
