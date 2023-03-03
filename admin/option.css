@@ -101,7 +101,7 @@
 
 .submit.fixed {
   position: fixed;
-  top: 50px;
+  top: 55px;
   right: 28px;
   display: block;
   padding: 6px 15px;
@@ -202,7 +202,7 @@
   }
 
   .submit.fixed {
-    top: 64px;
+    top: 69px;
   }
 }
 
