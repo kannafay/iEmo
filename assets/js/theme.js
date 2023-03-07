@@ -219,7 +219,7 @@ $(document).ready(function() {
         if(!$(e.target).is($(this).children('a, ul')) && !$(e.target).is(this.querySelector('ul li ul li a'))) {
           $(this).height(menu_parent_a_hight[i]);
           $(this).children('a').removeClass('active');
-          $(this).children('span').removeClass('active');
+          $(this.querySelector('span')).removeClass('active');
         }
       }
     })
