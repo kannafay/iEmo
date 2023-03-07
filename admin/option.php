@@ -5,9 +5,12 @@
 @$iemo_comments = stripslashes($_POST["iemo_comments"]);
 @$iemo_comments_visitor = stripslashes($_POST["iemo_comments_visitor"]);
 @$iemo_recommend_show = stripslashes($_POST["iemo_recommend_show"]);
+@$iemo_swiper_shownum = stripslashes($_POST["iemo_swiper_shownum"]);
 @$iemo_code_css = stripslashes($_POST["iemo_code_css"]);
 @$iemo_avatar_author = stripslashes($_POST["iemo_avatar_author"]);
 @$iemo_cover_author = stripslashes($_POST["iemo_cover_author"]);
+@$iemo_aside_subpage = stripslashes($_POST["iemo_aside_subpage"]);
+@$iemo_about = stripslashes($_POST["iemo_about"]);
 @$iemo_cover_post = stripslashes($_POST["iemo_cover_post"]);
 @$iemo_copyright = stripslashes($_POST["iemo_copyright"]);
 @$iemo_icp = stripslashes($_POST["iemo_icp"]);
@@ -21,9 +24,12 @@ if(@stripslashes($_POST["iemo_option"])){
   update_option("iemo_comments", $iemo_comments);
   update_option("iemo_comments_visitor", $iemo_comments_visitor);
   update_option("iemo_recommend_show", $iemo_recommend_show);
+  update_option("iemo_swiper_shownum", $iemo_swiper_shownum);
   update_option("iemo_code_css", $iemo_code_css);
   update_option("iemo_avatar_author", $iemo_avatar_author);
   update_option("iemo_cover_author", $iemo_cover_author);
+  update_option("iemo_aside_subpage", $iemo_aside_subpage);
+  update_option("iemo_about", $iemo_about);
   update_option("iemo_cover_post", $iemo_cover_post);
   update_option("iemo_copyright", $iemo_copyright);
   update_option("iemo_icp", $iemo_icp);
@@ -154,6 +160,16 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
+          <th scope="row"><label>轮播图显示数量</label></th>
+          <td>
+            <fieldset>
+        	    <label><input type="radio" name="iemo_swiper_shownum" value="" <?php echo get_option("iemo_swiper_shownum") == '' ? 'checked' : ''; ?>>多篇</label><br>
+        	    <label><input type="radio" name="iemo_swiper_shownum" value="single" <?php echo get_option("iemo_swiper_shownum") == 'single' ? 'checked' : ''; ?>>单篇</label><br>
+        	  </fieldset>
+            <p class="description">轮播图一页显示的数量，多篇为3个，单篇为1个</p>
+          </td>
+        </tr>
+        <tr>
           <th scope="row"><label for="iemo_avatar_author">个人头像</label></th>
           <td>
             <textarea name="iemo_avatar_author" rows="3" class="regular-text"><?php echo get_option("iemo_avatar_author"); ?></textarea> <br/>
@@ -168,6 +184,21 @@ if(@stripslashes($_POST["iemo_option"])){
             <textarea name="iemo_cover_author" rows="3" class="regular-text"><?php echo get_option("iemo_cover_author"); ?></textarea> <br/>
             <p class="description">填写图片URL，显示在侧边栏</p>
             <p class="description">默认：<a href="<?php bloginfo('template_url'); ?>/assets/images/cover-author.jpg" target="_blank">主题目录/assets/images/cover-author.jpg</a></p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">侧边栏附页</th>
+          <td>
+            <fieldset>
+              <label><input type='checkbox' name='iemo_aside_subpage' value='true' <?php echo get_option("iemo_aside_subpage") == 'true' ? 'checked' : ""; ?>/>开启</label>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><label for="iemo_about">关于个人</label></th>
+          <td>
+            <textarea name="iemo_about" rows="3" class="regular-text"><?php echo get_option("iemo_about"); ?></textarea> <br/>
+            <p class="description">位于侧边栏附页，填写文本，可用于对博客或自己的介绍等</p>
           </td>
         </tr>
         <tr>
@@ -234,6 +265,7 @@ if(@stripslashes($_POST["iemo_option"])){
           }
           update_option("iemo_recommend_post", $post);
           update_option("iemo_recommend_show", $iemo_recommend_show);
+          update_option("iemo_swiper_shownum", $iemo_swiper_shownum);
         }
       ?>
       <div class="form">
@@ -253,7 +285,6 @@ if(@stripslashes($_POST["iemo_option"])){
             endwhile;
             wp_reset_query(); 
           ?>
-          <!-- <p>已选择：<?php //var_dump(get_option("iemo_recommend_post")); ?></p> -->
         </ul>
         <button class="submit" type="submit" name="iemo_option" onclick="change_success();">保存</button>
         <button class="reset" type="reset">撤销</button>

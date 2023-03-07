@@ -90,6 +90,11 @@
           </div>
           <div class="post-content">
             <?php the_content(); ?>
+            <script>
+              $('.post-content h1, .post-content h2, .post-content h3').each(function() {
+                $(this).html($('<span>').append($(this).text()))
+              })
+            </script>
           </div>
           <?php
             if(get_option("iemo_comments") == 'true') {

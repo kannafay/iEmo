@@ -127,7 +127,7 @@ article {
   white-space: nowrap;
 }
 .comments .comments-body ul li .comment-info .info .user .master-name {
-  max-width: calc(100% - 42px);
+  max-width: calc(100% - 50px);
 }
 .comments .comments-body ul li .comment-info .info .user .comment-user-name {
   max-width: 100%;
@@ -249,7 +249,7 @@ article {
 
 .comments .response .user-info {
   height: auto;
-  max-width: calc(100% - 170px);
+  max-width: calc(100% - 250px);
   display: flex;
   align-items: center;
 }
@@ -294,6 +294,7 @@ article {
 .comments .response .comment-component .comment-btns .submit {
   color: var(--theme-bak);
   background-color: var(--code-bgc);
+  margin-left: 10px;
 }
 .comments .response .comment-component .comment-btns .submit:hover {
   color: #fff;
@@ -424,6 +425,86 @@ article {
 
 
 
+.comments .response .comment-component .comment-btns .emoji-btn:hover {
+  color: var(--theme-bak);
+  background: var(--code-bgc);
+}
+
+.comments .response .emoji {
+
+  position: absolute;
+  top: 65px;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 20px rgba(0 0 0 / .1);
+  padding: 10px;
+  border-radius: 8px;
+  user-select: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+}
+.comments .response .emoji.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.comments .response .emoji .emoji-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  overflow: auto;
+  max-height: 163px;
+  padding-right: 8px;
+}
+.comments .response .emoji .emoji-box::-webkit-scrollbar {
+  width: 6px;
+  height: 0;
+  background: rgba(0 0 0 / .05);
+  border-radius: 6px;
+}
+.comments .response .emoji .emoji-box::-webkit-scrollbar-thumb {
+  background: var(--scroll);
+  border-radius: 6px;
+}
+
+.comments .response .emoji span {
+  display: block;
+  /* padding: 5px; */
+  width: 37px;
+  height: 37px;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.comments .response .emoji span:hover {
+  background-color: var(--code-bgc);
+}
+
+.response form > .emoji-btn {
+  display: none;
+  color: #999;
+  background-color: rgba(0 0 0 / .05);
+  border-radius: 6px;
+  border: 0;
+  outline: 0;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 5px 15px;
+  user-select: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.response form > .emoji-btn:hover {
+  color: var(--theme-bak);
+  background: var(--code-bgc);
+}
+
 
 
 
@@ -442,6 +523,9 @@ article {
   }
   .comments .comments-body ul li .comment-info .info .user {
     height: auto;
+  }
+  .comments .comments-body ul li .comment-info .info .user .master-name {
+    max-width: calc(100% - 45px);
   }
   .comments .comments-body ul li .comment-info .info .user .user-name {
     margin-bottom: 3px;
@@ -487,15 +571,37 @@ article {
     font-size: 14px;
     padding: 4px 12px;
   }
+  .comments .response .comment-component .comment-btns .submit,
   .comments .response .comment-component .comment-btns .cancal {
     margin-left: 8px;
   }
   .comments .response .user-info {
-    max-width: calc(100% - 140px);
+    max-width: calc(100% - 220px);
+  }
+
+  .comments .response .emoji {
+    padding-right: 6px;
+  }
+  .comments .response .emoji .emoji-box {
+    max-height: 123px;
+    padding-right: 6px;
   }
 }
 
 
+@media screen and (max-width: 500px) {
+  .comments .response .user-info {
+    max-width: calc(100% - 150px);
+  }
+  .comment-component .emoji-btn {
+    display: none !important;
+  }
+  .response form > .emoji-btn.active {
+    display: block;
+    font-size: 14px;
+    padding: 4px 12px;
+  }
+}
 
 
 

@@ -2,7 +2,8 @@
   if (get_option("iemo_page_toggle")) { ?>
     <style>
       .comments .response .comment-component .comment-btns button,
-      .comments .response .text .pholder {
+      .comments .response .text .pholder,
+      .response form > .emoji-btn {
         animation: FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards !important;
       }
     </style>
@@ -30,6 +31,7 @@ if (is_user_logged_in()) { ?>
       </div>
       <div class="comment-btns">
         <div class="submit-comment-btn">
+          <button type="button" class="emoji-btn">Emoji</button>
           <button type="submit" name="submit" class="submit">提交</button>
           <button type="button" class="cancal cancal1">取消</button>
           <button type="button" class="cancal cancal2" style="display:none">取消回复</button>
@@ -45,6 +47,11 @@ if (is_user_logged_in()) { ?>
     </div>
     <input type="hidden" name="comment_post_ID" value="" id="comment_post_ID">
     <input type="hidden" name="comment_parent" id="comment_parent" value="">
+
+    <div class="emoji">
+      <div class="emoji-box"></div>
+    </div>
+    <button type="button" class="emoji-btn">Emoji</button>
   </form>
 
 <?php } else { ?>
@@ -82,6 +89,7 @@ if (is_user_logged_in()) { ?>
           </div>
           <div class="comment-btns">
             <div class="submit-comment-btn">
+              <button type="button" class="emoji-btn">Emoji</button>
               <button type="submit" name="submit" class="submit">提交</button>
               <button type="button" class="cancal cancal1">取消</button>
               <button type="button" class="cancal cancal2" style="display:none">取消回复</button>
@@ -104,6 +112,12 @@ if (is_user_logged_in()) { ?>
           <input id="url" name="url" type="text" value="" placeholder="网站" size="30" maxlength="200" autocomplete="url">
           <label for="wp-comment-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="" <?=!empty($comment_author) ? 'checked' : ''?>>保存我的信息方便下次使用。</label>
         </div>
+
+        <div class="emoji">
+          <div class="emoji-box"></div>
+        </div>
+
+        <button type="button" class="emoji-btn">Emoji</button>
       </form>
 
     <?php } else { ?>
@@ -112,12 +126,13 @@ if (is_user_logged_in()) { ?>
         <div class="comment-component">
           <div class="user-info">
             <a href="<?php echo wp_login_url(home_url(add_query_arg(array()))); ?>">
-              <?=get_avatar($comment_author)?>
+              <?=get_avatar(isset($comment_author))?>
               <p><?='点击登录参与讨论'?></p>
             </a>
           </div>
           <div class="comment-btns">
             <div class="submit-comment-btn">
+              <button type="button" class="emoji-btn">Emoji</button>
               <button type="button" class="cancal cancal1">取消</button>
               <button type="button" class="cancal cancal2" style="display:none">取消回复</button>
             </div>
@@ -130,6 +145,12 @@ if (is_user_logged_in()) { ?>
           <div class="pholder"></div>
           <textarea id="comment" name="comment" placeholder="我想说两句..." required="required" rows="6" maxlength="65525"></textarea>
         </div>
+
+        <div class="emoji">
+          <div class="emoji-box"></div>
+        </div>
+
+        <button type="button" class="emoji-btn">Emoji</button>
       </form>
       
     <?php } 

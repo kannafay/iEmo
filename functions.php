@@ -241,15 +241,15 @@ require 'plugins/external-media-without-import/external-media-without-import.php
 
 
 
-
 // 注册菜单
 register_nav_menus( array(        
-  'menu' => '左侧菜单',
-  'aside' => '社交链接'
+  'menu' => '主菜单',
+  'menu_sidebar' => '侧边栏附页菜单',
+  'social' => '侧边栏主页社交链接'
 ) );
 
 // 返回函数
-function menu_fallback(){
+function menu_fallback() {
   if(is_user_logged_in()) {
     if(is_home()) {
       echo '<div class="menu">
@@ -440,6 +440,6 @@ add_filter('get_comment_author', function ($author, $comment_ID, $comment) {
 
 // 修正评论用户IP不准确问题
 if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-  $list = explode(',',$_SERVER['HTTP_X_FORWARDED_FOR']);
+  $list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
   $_SERVER['REMOTE_ADDR'] = $list[0];
 }
