@@ -198,7 +198,7 @@ if(@stripslashes($_POST["iemo_option"])){
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="iemo_about">关于个人</label></th>
+          <th scope="row"><label for="iemo_about">关于</label></th>
           <td>
             <textarea name="iemo_about" rows="3" class="regular-text"><?php echo get_option("iemo_about"); ?></textarea> <br/>
             <p class="description">位于侧边栏附页，填写文本，可用于对博客或自己的介绍等</p>
