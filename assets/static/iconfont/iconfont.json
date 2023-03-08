@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8474193",
+      "name": "chevron-down",
+      "font_class": "chevron-down",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
+    },
+    {
+      "icon_id": "8474192",
+      "name": "chevron-left",
+      "font_class": "chevron-left",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "8474196",
+      "name": "chevron-right",
+      "font_class": "chevron-right",
+      "unicode": "e6a9",
+      "unicode_decimal": 59049
+    },
+    {
       "icon_id": "8474301",
       "name": "message-circle",
       "font_class": "message-circle",
@@ -53,13 +74,6 @@
       "font_class": "file",
       "unicode": "e6b4",
       "unicode_decimal": 59060
-    },
-    {
-      "icon_id": "8474218",
-      "name": "copy",
-      "font_class": "copy",
-      "unicode": "e6ae",
-      "unicode_decimal": 59054
     },
     {
       "icon_id": "8474038",

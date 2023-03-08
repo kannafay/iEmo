@@ -93,6 +93,12 @@
   position: relative;
 }
 
+.single .post-content h1 span,
+.single .post-content h2 span,
+.single .post-content h3 span {
+  box-shadow: inset 0 -0.55em var(--scroll);
+}
+
 
 
 

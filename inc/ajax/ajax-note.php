@@ -37,7 +37,7 @@ jQuery(document).ready(function($) {
               $("#pagination-aside a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
               $("#pagination-aside a").parent().addClass('no-more-post');
               $("#pagination-aside a").off("click");
-              $('.aside-content').off("scroll");
+              $('.aside-content .main-page').off("scroll");
             }
           }
         });
@@ -68,11 +68,11 @@ jQuery(document).ready(function($) {
       // note scroll ajax
       function note_scroll() {
         return throttle(function(){
-          let height = $('.aside-content').height();
-          let scrollTop = $('.aside-content').scrollTop();
-          let scrollHeight = $('.aside-content')[0].scrollHeight;
+          let height = $('.aside-content .main-page').height();
+          let scrollTop = $('.aside-content .main-page').scrollTop();
+          let scrollHeight = $('.aside-content .main-page')[0].scrollHeight;
           if(scrollHeight - (height + scrollTop) <= 50) {
-            $('.aside-content').off('scroll');
+            $('.aside-content .main-page').off('scroll');
             note_scroll_ajax();
           }
         })
@@ -98,14 +98,14 @@ jQuery(document).ready(function($) {
               var newhref = $(data).find("#pagination-aside a").attr("href");
               if (newhref != undefined) {
                 $("#pagination-aside a").attr("href", newhref);
-                $('.aside-content').off('scroll');
-                $('.aside-content').on('scroll', note_scroll());
+                $('.aside-content .main-page').off('scroll');
+                $('.aside-content .main-page').on('scroll', note_scroll());
               } else {
                 $("#pagination-aside a").removeAttr("href");
                 $("#pagination-aside a").html('<i class="iconfont icon-anchor"></i> 好像就这么多');
                 $("#pagination-aside a").parent().addClass('no-more-post');
                 $("#pagination-aside a").off("click");
-                $('.aside-content').off("scroll");
+                $('.aside-content .main-page').off("scroll");
               }
             }
           });
@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
         return false;
       }
 
-      $('.aside-content').on('scroll', note_scroll());
+      $('.aside-content .main-page').on('scroll', note_scroll());
 
     </script>
 

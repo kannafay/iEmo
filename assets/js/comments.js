@@ -42,6 +42,8 @@ $('.write').click(function(e) {
 
   $('#comment_post_ID').attr('value', $('.comments').attr('id'))
   $('#comment_parent').attr('value', '0')
+
+  $('.response form > .emoji-btn').addClass('active');
 })
 
 
@@ -50,12 +52,12 @@ $('.write').click(function(e) {
 // 取消
 function cancal_comment() {
   $('.text').removeClass('active');
-  $('.text textarea').removeClass('active');
-  $('.text textarea').blur();
+  $('.text textarea').removeClass('active').blur();
   $('.text .pholder').text('').hide();
   
   $('#comment_post_ID').attr('value', '');
   $('#comment_parent').attr('value', '');
+
 }
 
 $('.cancal1').click(function(e) {
@@ -63,6 +65,8 @@ $('.cancal1').click(function(e) {
   $('.submit-comment-btn').removeClass('active');
   $('.write-comment-btn').show();
   cancal_comment();
+
+  $('.response form > .emoji-btn').removeClass('active');
 })
 
 
@@ -88,9 +92,6 @@ comment_li.each(function(){
     
     e.preventDefault();
     cancal_comment();
-    
-    // $('article').animate({scrollTop:$('#response-title').offset().top - 25}, 300);
-    // console.log($('#response-title').offset().top);
 
     let reply_username = $(that[0].querySelector('.user-name h4')).text();
 
@@ -100,12 +101,13 @@ comment_li.each(function(){
     $('.cancal2').show();
 
     $('.text').addClass('active');
-    $('.text textarea').focus();
-    $('.text textarea').addClass('active');
+    $('.text textarea').addClass('active').focus();
     $('.text .pholder').text('@' + reply_username).show();
 
     $('#comment_post_ID').attr('value', $('.comments').attr('id'))
     $('#comment_parent').attr('value', $(this).attr('id'))
+
+    $('.response form > .emoji-btn').addClass('active');
   })
 })
 
@@ -147,15 +149,15 @@ const visitor_name_tip = $('.comments .response .user-info p').text();
 if(visitor_btn.length && visitor_write.length) {
   function remove_visitor_write() {
     visitor_write.removeClass('active');
-    $(document).unbind('click',remove_visitor_write);
+    $(document).off('click',remove_visitor_write);
   };
-  visitor_btn.bind('click',(e)=>{
+  visitor_btn.on('click',(e)=>{
     e.stopPropagation();
     if(visitor_write.toggleClass('active')) {
-      $(document).bind('click',remove_visitor_write);
+      $(document).on('click',remove_visitor_write);
     }
   });
-  visitor_write.bind('click',(e)=>e.stopPropagation());
+  visitor_write.on('click',(e)=>e.stopPropagation());
 };
 
 // 实时同步昵称
@@ -192,3 +194,77 @@ if($('.single .shortcuts .to-comment').length) {
     $('article').animate({scrollTop:$('#response').offset().top - 115}, 300);
   })
 }
+
+
+
+// 表情
+const emoji = [
+  '😀','😁','😂','🤣','😃','😄',
+  '😅','😆','😉','😊','😋','😎',
+  '😍','😘','🥰','😗','😙','🥲',
+  '😚','☺️','🙂','🤗','🤩','🤔',
+  '🫡','🤨','😐','😑','😶','🫥',
+  '😶‍🌫️','🙄','😏','😣','😥','😮',
+  '🤐','😯','😪','😫','🥱','😴',
+  '😌','😛','😜','😝','🤤','😒',
+  '😓','😔','😕','🫤','🙃','🫠',
+  '🤑','😲','☹️','🙁','😖','😞',
+  '😟','😤','😢','😭','😦','😧',
+  '😨','😩','🤯','😬','😮‍💨','😰',
+  '😱','🥵','🥶','😳','🤪','😵',
+  '😵‍💫','🥴','😠','😡','🤬','😷',
+  '🤒','🤕','🤢','🤮','🤧','😇',
+  '🥳','🥸','🥺','🥹','🤠','🤡',
+  '🤥','🤫','🤭','🫢','🫣','🧐',
+  '🤓','💀','💩','👻'];
+
+emoji.forEach(function(e) {
+  $('.emoji-box').append('<span>' + e + '</span>');
+})
+
+$('.emoji-btn').on('click', function() {
+  $('.comments .response .emoji').toggleClass('active');
+})
+
+$(document).click((e)=>{
+  if(!$(e.target).is('.emoji-btn, .emoji,.emoji-box, .emoji span') && $('.comments .response .emoji').attr('class').indexOf('active') > -1) {
+    $('.comments .response .emoji').removeClass('active')
+  }
+})
+
+$('.comments .response .emoji span').on('click', function() {
+  $('.text textarea').insertAtCaret($(this).text());
+  
+  if($.trim($('.text textarea').val())) {
+    $('.submit').show();
+  } else {
+    $('.submit').hide();
+  }
+})
+
+$.fn.extend({
+  insertAtCaret: function(myValue){
+    var $t=$(this)[0];
+    if (document.selection) {
+      this.focus();
+      sel = document.selection.createRange();
+      sel.text = myValue;
+      this.focus();
+    }
+    else
+    if ($t.selectionStart || $t.selectionStart == '0') {
+      var startPos = $t.selectionStart;
+      var endPos = $t.selectionEnd;
+      var scrollTop = $t.scrollTop;
+      $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+      this.focus();
+      $t.selectionStart = startPos + myValue.length;
+      $t.selectionEnd = startPos + myValue.length;
+      $t.scrollTop = scrollTop;
+    }
+    else {
+      this.value += myValue;
+      this.focus();
+    }
+  }
+})
