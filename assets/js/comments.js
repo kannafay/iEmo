@@ -198,44 +198,30 @@ if($('.single .shortcuts .to-comment').length) {
 
 
 // 表情
-$('.emoji-box').append(`
-  <span>😀</span>
-  <span>😁</span>
-  <span>😂</span>
-  <span>🤣</span>
-  <span>😃</span>
-  <span>😄</span>
-  <span>😅</span>
-  <span>😆</span>
-  <span>😉</span>
-  <span>😊</span>
-  <span>😋</span>
-  <span>😎</span>
-  <span>😍</span>
-  <span>😘</span>
-  <span>🥰</span>
-  <span>😗</span>
-  <span>😙</span>
-  <span>🥲</span>
-  <span>😚</span>
-  <span>☺️</span>
-  <span>🙂</span>
-  <span>🤗</span>
-  <span>🤩</span>
-  <span>🤔</span>
-  <span>🫡</span>
-  <span>🤨</span>
-  <span>😐</span>
-  <span>😑</span>
-  <span>😶</span>
-  <span>🫥</span>
-  <span>😶‍🌫️</span>
-  <span>🙄</span>
-  <span>😏</span>
-  <span>😣</span>
-  <span>😥</span>
-  <span>😮</span>
-`);
+const emoji = [
+  '😀','😁','😂','🤣','😃','😄',
+  '😅','😆','😉','😊','😋','😎',
+  '😍','😘','🥰','😗','😙','🥲',
+  '😚','☺️','🙂','🤗','🤩','🤔',
+  '🫡','🤨','😐','😑','😶','🫥',
+  '😶‍🌫️','🙄','😏','😣','😥','😮',
+  '🤐','😯','😪','😫','🥱','😴',
+  '😌','😛','😜','😝','🤤','😒',
+  '😓','😔','😕','🫤','🙃','🫠',
+  '🤑','😲','☹️','🙁','😖','😞',
+  '😟','😤','😢','😭','😦','😧',
+  '😨','😩','🤯','😬','😮‍💨','😰',
+  '😱','🥵','🥶','😳','🤪','😵',
+  '😵‍💫','🥴','😠','😡','🤬','😷',
+  '🤒','🤕','🤢','🤮','🤧','😇',
+  '🥳','🥸','🥺','🥹','🤠','🤡',
+  '🤥','🤫','🤭','🫢','🫣','🧐',
+  '🤓','💀','💩','👻'];
+
+emoji.forEach(function(e) {
+  $('.emoji-box').append('<span>' + e + '</span>');
+})
+
 $('.emoji-btn').on('click', function() {
   $('.comments .response .emoji').toggleClass('active');
 })

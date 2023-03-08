@@ -8,7 +8,7 @@ $('body').on('mousedown', 'a', function(e) {
 $('#search-btn').click(function() {
   $('.search-m').toggleClass('active');
   if($('.search-m').attr('class') == 'search-m active') {
-    $('#search-m').focus();
+    // $('#search-m').focus();
     $('.nav').css('border-bottom','1px solid #fff');
   } else {
     $('#search-m').blur();
@@ -194,7 +194,8 @@ $(document).ready(function() {
     menu_parent_hight[i] = $(this).outerHeight();
     menu_parent_a_hight[i] = $(this).children('a').outerHeight();
     $(this).height(menu_parent_a_hight[i]);
-    $(this).children('a').on('click', function() {
+    $(this).children('a').on('click', function(e) {
+      e.preventDefault();
       if(!$(this).hasClass('active')) {
         $(this).parent().height(menu_parent_hight[i]);
         $(this).children('span').addClass('active');

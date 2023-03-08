@@ -986,7 +986,7 @@ main .content aside .author .author-info img {
 
 main .content aside .author .author-info .name {
   text-align: center;
-  font-size: 16px;
+  font-size: 16px !important;
   font-weight: 700;
   color: #333;
   margin-bottom: 5px;
@@ -1932,9 +1932,9 @@ footer .copyright p {
 
 /* page h2 */
 .home main .content article > h2,
-.category main .content article h2,
-.tag main .content article h2,
-.archive main .content article h2,
+.category main .content article .categories > h2,
+.tag main .content article > h2,
+.archive main .content article > h2,
 .search main .content article h2,
 .note main .content article > h2,
 .link main .content article > h2 {
@@ -1944,9 +1944,9 @@ footer .copyright p {
 }
 
 .home main .content article > h2 span,
-.category main .content article h2 span,
-.tag main .content article h2 span,
-.archive main .content article h2 span,
+.category main .content article .categories > h2 span,
+.tag main .content article > h2 span,
+.archive main .content article > h2 span,
 .search main .content article h2 span,
 .note main .content article > h2 span,
 .link main .content article > h2 span {
@@ -2270,9 +2270,6 @@ main .content aside .notes-box ul li .view-detail a,
 .pagination a,
 .home main .content article .bottom .post-part ul li .right .post-info .read-more a::before,
 header .menu ul li a,
-.category main .content article .categories ul li a,
-.tag main .content article .tag-bar ul li a,
-.home main .content article .bottom .recommend-bar ul li a,
 main .content aside .toc ul li a,
 .comments .response .emoji span,
 .comments .response .comment-component .comment-btns button {
@@ -2292,9 +2289,6 @@ main .content aside .notes-box ul li .view-detail a:active,
 .pagination a:active,
 .home main .content article .bottom .post-part ul li .right .post-info .read-more a:active:before,
 header .menu ul li a:active,
-.category main .content article .categories ul li a:active,
-.tag main .content article .tag-bar ul li a:active,
-.home main .content article .bottom .recommend-bar ul li a:active,
 main .content aside .toc ul li a:active,
 .comments .response .emoji span:active,
 .comments .response .comment-component .comment-btns button:active {
@@ -2307,7 +2301,7 @@ main .content aside .toc ul li a:active,
 }
 
 .comments .response .comment-component .comment-btns .cancal:active {
-  border: 1px solid #dd242480 !important;
+  border: 1px solid #dd24243a !important;
 }
 
 
@@ -2745,18 +2739,18 @@ main .content aside .toc ul li a:active,
 
   /* page h2 */
   .home main .content article > h2,
-  .category main .content article h2,
-  .tag main .content article h2,
-  .archive main .content article h2,
+  .category main .content article .categories > h2,
+  .tag main .content article > h2,
+  .archive main .content article > h2,
   .search main .content article h2,
   .note main .content article > h2,
   .link main .content article > h2 {
     font-size: 24px;
   }
   .home main .content article > h2 span,
-  .category main .content article h2 span,
-  .tag main .content article h2 span,
-  .archive main .content article h2 span,
+  .category main .content article .categories > h2 span,
+  .tag main .content article > h2 span,
+  .archive main .content article > h2 span,
   .search main .content article h2 span,
   .note main .content article > h2 span,
   .link main .content article > h2 span {
@@ -2816,11 +2810,11 @@ main .content aside .toc ul li a:active,
   main .content aside {
     width: calc(100% - 99px);
   }
-  main .content aside .toc h2,
-  main .content aside .social h2,
-  main .content aside .notes-box h2,
-  main .content aside .menu_sidebar_box h2,
-  main .content aside .about h2 {
+  main .content aside .toc > h2,
+  main .content aside .social > h2,
+  main .content aside .notes-box > h2,
+  main .content aside .menu_sidebar_box > h2,
+  main .content aside .about > h2 {
     font-size: 16px !important;
   }
   main .content aside .social .social-content ul li a {
@@ -2844,16 +2838,9 @@ main .content aside .toc ul li a:active,
     margin-bottom: 20px;
   }
   
-
-
-
-
-
   .home article .top {
     padding-bottom: 10px;
   }
-
-
   .home article .top .swiper {
     height: 260px;
     padding-top: 0;
