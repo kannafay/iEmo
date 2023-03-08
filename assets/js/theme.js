@@ -222,17 +222,10 @@ $(document).ready(function() {
 
 // toc
 const post_title = $(`
-  .post-content h1,
-  .post-content h2,
-  .post-content h3
+.post-content h1,
+.post-content h2,
+.post-content h3
 `);
-
-if(post_title.length >= 3) {
-  $('aside .toc').show();
-  add_toc();
-} else {
-  $('aside .toc').hide();
-}
 
 function add_toc() {
   let title_i = 1;
@@ -241,4 +234,11 @@ function add_toc() {
     $('aside .toc ul').append('<li id="' + $(this).prop('tagName') + '"><a href="#title-' + title_i+'">' + $(this).text() + '</a></li>');
     title_i ++;
   })
+}
+
+if($('.toc').length > 0 && post_title.length >= 2) {
+  $('aside .toc').show();
+  add_toc();
+} else {
+  $('aside .toc').hide();
 }
