@@ -12,6 +12,7 @@
 @$iemo_aside_subpage = stripslashes($_POST["iemo_aside_subpage"]);
 @$iemo_about = stripslashes($_POST["iemo_about"]);
 @$iemo_cover_post = stripslashes($_POST["iemo_cover_post"]);
+@$iemo_toc = stripslashes($_POST["iemo_toc"]);
 @$iemo_copyright = stripslashes($_POST["iemo_copyright"]);
 @$iemo_icp = stripslashes($_POST["iemo_icp"]);
 @$iemo_icp_gov = stripslashes($_POST["iemo_icp_gov"]);
@@ -31,6 +32,7 @@ if(@stripslashes($_POST["iemo_option"])){
   update_option("iemo_aside_subpage", $iemo_aside_subpage);
   update_option("iemo_about", $iemo_about);
   update_option("iemo_cover_post", $iemo_cover_post);
+  update_option("iemo_toc", $iemo_toc);
   update_option("iemo_copyright", $iemo_copyright);
   update_option("iemo_icp", $iemo_icp);
   update_option("iemo_icp_gov", $iemo_icp_gov);
@@ -192,6 +194,7 @@ if(@stripslashes($_POST["iemo_option"])){
             <fieldset>
               <label><input type='checkbox' name='iemo_aside_subpage' value='true' <?php echo get_option("iemo_aside_subpage") == 'true' ? 'checked' : ""; ?>/>开启</label>
             </fieldset>
+            <p class="description">可添加菜单导航</p>
           </td>
         </tr>
         <tr>
@@ -207,6 +210,15 @@ if(@stripslashes($_POST["iemo_option"])){
             <textarea name="iemo_cover_post" rows="3" class="regular-text"><?php echo get_option("iemo_cover_post"); ?></textarea> <br/>
             <p class="description">填写图片URL，文章无封面时顶替（支持随机图）</p>
             <p class="description">默认：主题目录/assets/images/random/cover-post-x.jpg（随机）</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">文章目录Toc</th>
+          <td>
+            <fieldset>
+              <label><input type='checkbox' name='iemo_toc' value='true' <?php echo get_option("iemo_toc") == 'true' ? 'checked' : ""; ?>/>开启</label>
+            </fieldset>
+            <p class="description">开启后在侧边栏显示</p>
           </td>
         </tr>
         <tr>

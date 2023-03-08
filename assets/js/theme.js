@@ -16,6 +16,7 @@ $('#search-btn').click(function() {
   }
 })
 function close_search_m() {
+  $('#search-m').blur();
   $('.search-m').removeClass('active');
   if($('.search-m').attr('class') != 'search-m active') {
     $('.nav').css('border-bottom','1px solid #e2e2e2');
@@ -70,23 +71,14 @@ if(user_set_btn) {
 
 
 
-// Scrolling with hide menu and search
-$('article, aside .aside-content').scroll(function() {
+// Click with hide menu and search
+$('article, aside .aside-content').on('click', function() {
   $(user_set_menu).removeClass('active');
   close_search_m();
 })
 
-$(document).scroll(function() {
-  $(user_set_menu).removeClass('active');
-  close_search_m();
-})
 
-$('article').scroll(function() {
-  $('header').removeClass('active');
-  $('aside').removeClass('active');
-})
-
-$('article').click(function() {
+$('article').on('click', function() {
   $('header').removeClass('active');
   $('aside').removeClass('active');
   close_search_m();
@@ -226,3 +218,27 @@ $(document).ready(function() {
   })
 })
 
+
+
+// toc
+const post_title = $(`
+  .post-content h1,
+  .post-content h2,
+  .post-content h3
+`);
+
+if(post_title.length >= 3) {
+  $('aside .toc').show();
+  add_toc();
+} else {
+  $('aside .toc').hide();
+}
+
+function add_toc() {
+  let title_i = 1;
+  post_title.each(function() {
+    $(this).attr('id', 'title-' + title_i);
+    $('aside .toc ul').append('<li id="' + $(this).prop('tagName') + '"><a href="#title-' + title_i+'">' + $(this).text() + '</a></li>');
+    title_i ++;
+  })
+}

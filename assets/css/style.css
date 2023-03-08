@@ -251,11 +251,11 @@ main .nav .search-box input {
   width: 100%;
   height: 100%;
   border-radius: 30px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid transparent;
   padding: 0 20px 0 40px;
   font-size: 14px;
   color: #333;
-    
+  background-color: var(--code-bgc);
 }
 
 .search-m {
@@ -264,7 +264,7 @@ main .nav .search-box input {
   top: 70px;
   transform: translateY(-80px);
   z-index: 999;
-  background-color: rgba(255 255 255 / 1);
+  background-color: #fff;
   width: 100%;
   height: auto;
   border-bottom: 1px solid #e2e2e2;
@@ -286,17 +286,19 @@ main .nav .search-box input {
   font-size: 13px;
   padding: 0 15px;
   color: #333;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  border: 1px solid #00000000;
+  background-color: var(--code-bgc);
+  border-radius: 50px;
+  border: 1px solid transparent;
 }
 
 main .nav .search-box input:hover,
-main .nav .search-box input:focus {
+main .nav .search-box input:focus,
+.search-m form input:hover,
+.search-m form input:focus {
   border: 1px solid var(--scroll);
-  background-color: #fff;
 }
-main .nav .search-box input:focus{
+main .nav .search-box input:focus,
+.search-m form input:focus {
   box-shadow: 0 10px 20px 1px var(--menu-hover);
 }
 
@@ -1025,6 +1027,55 @@ main .content aside .author .post-info span {
 
 
 
+/* aside toc */
+main .content aside .toc {
+  padding: 0 25px;
+  margin-bottom: 25px;
+}
+main .content aside .toc h2 {
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 15px;
+}
+main .content aside .toc h2 span {
+  font-weight: 400;
+  font-size: 12px;
+  color: #999;
+}
+
+main .content aside .toc ul {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 8px;
+}
+main .content aside .toc ul li {
+  margin-bottom: 4px;
+}
+main .content aside .toc ul li:last-child {
+  margin-bottom: 0;
+}
+main .content aside .toc ul li a {
+  display: block;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+main .content aside .toc ul li a:hover {
+  color: var(--theme-bak);
+  background-color: var(--code-bgc);
+  
+}
+
+main .content aside .toc ul li[id='H3'] a {
+  padding-left: 15px;
+  font-size: 13px;
+}
+
+
+
+
+
 
 
 
@@ -1199,7 +1250,7 @@ main .content aside .sub-page .menu_sidebar > ul > li.menu-item-has-children > u
 }
 main .content aside .sub-page .menu_sidebar ul li a {
   display: block;
-  padding: 8px 10px;
+  padding: 6px 10px;
   border-radius: 5px;
   /* background-color: yellowgreen; */
 }
@@ -2206,6 +2257,69 @@ footer .copyright p {
 
 
 
+/* click effect */
+main .content aside .social .social-content ul li a,
+main .content aside .sub-page .menu_sidebar ul li a,
+main .content aside .notes-box ul li .view-detail a,
+.single main .content article .post-cover .post-info .more .cate a,
+.single main .content article .post-cover .post-info .more .tag a,
+.comments .comments-body ul li .user-avatar .change-comment a,
+.comments .comments-body ul li .comment-info .info .reply-btn a,
+.link main .content article .link-box ul li a,
+.note main .content article .note-page li .bottom a,
+.pagination a,
+.home main .content article .bottom .post-part ul li .right .post-info .read-more a::before,
+header .menu ul li a,
+.category main .content article .categories ul li a,
+.tag main .content article .tag-bar ul li a,
+.home main .content article .bottom .recommend-bar ul li a,
+main .content aside .toc ul li a,
+.comments .response .emoji span,
+.comments .response .comment-component .comment-btns button {
+  border: 1px solid transparent !important;
+}
+
+
+main .content aside .social .social-content ul li a:active,
+main .content aside .sub-page .menu_sidebar ul li a:active,
+main .content aside .notes-box ul li .view-detail a:active,
+.single main .content article .post-cover .post-info .more .cate a:active,
+.single main .content article .post-cover .post-info .more .tag a:active,
+.comments .comments-body ul li .user-avatar .change-comment a:active,
+.comments .comments-body ul li .comment-info .info .reply-btn a:active,
+.link main .content article .link-box ul li a:active,
+.note main .content article .note-page li .bottom a:active,
+.pagination a:active,
+.home main .content article .bottom .post-part ul li .right .post-info .read-more a:active:before,
+header .menu ul li a:active,
+.category main .content article .categories ul li a:active,
+.tag main .content article .tag-bar ul li a:active,
+.home main .content article .bottom .recommend-bar ul li a:active,
+main .content aside .toc ul li a:active,
+.comments .response .emoji span:active,
+.comments .response .comment-component .comment-btns button:active {
+  border: 1px solid var(--scroll) !important;
+  transition: all 0s;
+}
+
+.pagination.no-more-post a:active {
+  border: 1px solid transparent !important;
+}
+
+.comments .response .comment-component .comment-btns .cancal:active {
+  border: 1px solid #dd242480 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 1400px) {
   .container {
@@ -2702,9 +2816,12 @@ footer .copyright p {
   main .content aside {
     width: calc(100% - 99px);
   }
+  main .content aside .toc h2,
   main .content aside .social h2,
-  main .content aside .notes-box h2 {
-    font-size: 16px;
+  main .content aside .notes-box h2,
+  main .content aside .menu_sidebar_box h2,
+  main .content aside .about h2 {
+    font-size: 16px !important;
   }
   main .content aside .social .social-content ul li a {
     margin-right: 4px;

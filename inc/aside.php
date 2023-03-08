@@ -45,6 +45,16 @@
       </div>
 
       <?php
+        if(is_single() && get_option("iemo_toc") == 'true') { ?>
+          <div class="toc">
+            <h2>目录 <span>Toc.</span></h2>
+            <ul></ul>
+          </div>
+        <?php }
+      ?>
+      
+
+      <?php
         if(has_nav_menu('social')) { ?>
           <div class="social">
             <h2>社交 <span>Social.</span></h2>
