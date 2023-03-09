@@ -1091,7 +1091,7 @@ main .content aside .aside-content.active {
   transform: translateX(-50%);
 }
 main .content aside .aside-content .aside-page {
-  opacity: 0;
+  /* opacity: 0; */
   width: 100%;
 }
 main .content aside .aside-content .aside-page.active {
