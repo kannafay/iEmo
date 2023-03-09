@@ -15,6 +15,7 @@
   box-sizing: border-box;
   font-family: sans-serif;
   -webkit-tap-highlight-color: rgba(0 0 0 / 0);
+  -webkit-text-size-adjust: none;
 }
 html {
   background-color: #fff;
@@ -868,7 +869,7 @@ main .content aside .aside-content {
 
 
 
-/* home ajax */
+/* ajax */
 .pagination,
 .no-more-post {
   padding-top: 25px;
@@ -936,7 +937,6 @@ main .content aside {
   border-left: 1px solid #e2e2e2;
   background-color: #fff;
   position: relative;
-  /* overflow: auto; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1083,7 +1083,7 @@ main .content aside .toc ul li[id='H3'] a {
 /* aside sub page */
 main .content aside .aside-content {
   width: 200%;
-  /* transform: translateX(-50%); */
+  transform: translateX(0);
   display: flex;
   position: relative;
 }
@@ -2536,18 +2536,18 @@ main .content aside .toc ul li a:active,
 @media screen and (max-width: 700px) {
   /* page h2 */
   .home main .content article > h2,
-  .category main .content article h2,
-  .tag main .content article h2,
-  .archive main .content article h2,
+  .category main .content article .categories > h2,
+  .tag main .content article > h2,
+  .archive main .content article > h2,
   .search main .content article h2,
   .note main .content article > h2,
   .link main .content article > h2 {
     font-size: 26px;
   }
   .home main .content article > h2 span,
-  .category main .content article h2 span,
-  .tag main .content article h2 span,
-  .archive main .content article h2 span,
+  .category main .content article .categories > h2 span,
+  .tag main .content article > h2 span,
+  .archive main .content article > h2 span,
   .search main .content article h2 span,
   .note main .content article > h2 span,
   .link main .content article > h2 span {
@@ -2810,13 +2810,13 @@ main .content aside .toc ul li a:active,
   main .content aside {
     width: calc(100% - 99px);
   }
-  main .content aside .toc > h2,
+  /* main .content aside .toc > h2,
   main .content aside .social > h2,
   main .content aside .notes-box > h2,
   main .content aside .menu_sidebar_box > h2,
   main .content aside .about > h2 {
     font-size: 16px !important;
-  }
+  } */
   main .content aside .social .social-content ul li a {
     margin-right: 4px;
   }
