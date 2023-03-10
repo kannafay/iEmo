@@ -209,7 +209,7 @@ $(document).ready(function() {
 
     $(document).click((e)=>{
       if($(this).children('a').hasClass('active')) {
-        if(!$(e.target).is($(this).children('a, ul')) && !$(e.target).is(this.querySelector('ul li ul li a'))) {
+        if(!$(e.target).is($(this).children('a, ul')) && !$(e.target).is(this.querySelectorAll('ul li ul li a'))) {
           $(this).height(menu_parent_a_hight[i]);
           $(this).children('a').removeClass('active');
           $(this.querySelector('span')).removeClass('active');
