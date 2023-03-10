@@ -2878,6 +2878,11 @@ main .content aside .toc ul li a:active,
   .home article .top .regular .regular-box p {
     font-size: 14px;
   }
+
+  .single main .content article .post-cover .post-info .title,
+  .single main .content article .post-cover .post-info .title h2 {
+    font-size: 18px;
+  }
 }
 
 
