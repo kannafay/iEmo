@@ -1091,7 +1091,7 @@ main .content aside .aside-content.active {
   transform: translateX(-50%);
 }
 main .content aside .aside-content .aside-page {
-  opacity: 0;
+  /* opacity: 0; */
   width: 100%;
 }
 main .content aside .aside-content .aside-page.active {
@@ -2877,6 +2877,11 @@ main .content aside .toc ul li a:active,
   }
   .home article .top .regular .regular-box p {
     font-size: 14px;
+  }
+
+  .single main .content article .post-cover .post-info .title,
+  .single main .content article .post-cover .post-info .title h2 {
+    font-size: 18px;
   }
 }
 
