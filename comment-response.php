@@ -1,10 +1,10 @@
 <?php
-  if (get_option("iemo_page_toggle")) { ?>
+  if (get_option("iemo_page_animation")) { ?>
     <style>
       .comments .response .comment-component .comment-btns button,
       .comments .response .text .pholder,
       .response form > .emoji-btn {
-        animation: FadeIn-<?php echo get_option("iemo_page_toggle"); ?> .5s forwards !important;
+        animation: FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards !important;
       }
     </style>
   <?php }
