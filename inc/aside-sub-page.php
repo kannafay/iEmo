@@ -36,7 +36,7 @@
         ?>
       </div>
       <script>
-        $('.menu_sidebar > ul > li.menu-item-has-children > a').append('<span class="iconfont icon-chevron-down"></span>');
+        $('.menu_sidebar > ul > li.menu-item-has-children > a').append('<span class="iconfont icon-chevron-down arrow"></span>');
       </script>
     <?php }
   ?>
