@@ -1229,7 +1229,7 @@ main .content aside .sub-page .menu_sidebar > ul > li.menu-item-has-children > a
   align-items: center;
   justify-content: space-between;
 }
-main .content aside .sub-page .menu_sidebar > ul > li.menu-item-has-children > a > span.active {
+main .content aside .sub-page .menu_sidebar > ul > li.menu-item-has-children > a > .arrow.active {
   transform: rotate(-90deg);
 }
 
