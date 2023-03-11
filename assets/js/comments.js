@@ -227,7 +227,7 @@ $('.emoji-btn').on('click', function() {
 })
 
 $(document).click((e)=>{
-  if(!$(e.target).is('.emoji-btn, .emoji,.emoji-box, .emoji span') && $('.comments .response .emoji').attr('class').indexOf('active') > -1) {
+  if(!$(e.target).is('.emoji-btn, .emoji, .emoji-box, .emoji span') && $('.comments .response .emoji').attr('class').indexOf('active') > -1) {
     $('.comments .response .emoji').removeClass('active')
   }
 })
