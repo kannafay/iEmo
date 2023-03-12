@@ -987,7 +987,7 @@ main .content aside .author .author-info img {
 
 main .content aside .author .author-info .name {
   text-align: center;
-  font-size: 16px !important;
+  font-size: 16px;
   font-weight: 700;
   color: #333;
   margin-bottom: 5px;
@@ -2815,13 +2815,13 @@ main .content aside .toc ul li a:active,
   main .content aside {
     width: calc(100% - 99px);
   }
-  /* main .content aside .toc > h2,
+  main .content aside .toc > h2,
   main .content aside .social > h2,
   main .content aside .notes-box > h2,
   main .content aside .menu_sidebar_box > h2,
   main .content aside .about > h2 {
-    font-size: 16px !important;
-  } */
+    font-size: 16px;
+  }
   main .content aside .social .social-content ul li a {
     margin-right: 4px;
   }
