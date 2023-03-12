@@ -30,7 +30,7 @@ $('.comments .user-ip').each(function (){
 
 
 
-// 添加
+// 发言
 $('.write').click(function(e) {
   e.preventDefault;
 
