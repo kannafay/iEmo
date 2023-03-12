@@ -2828,6 +2828,7 @@ main .content aside .toc ul li a:active,
 
   .link main .content article .link-box ul {
     grid-template-columns: 1fr;
+    grid-gap: 15px;
   }
 
   footer .copyright a, footer .copyright {
