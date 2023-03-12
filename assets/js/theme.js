@@ -34,7 +34,6 @@ $('#menu-btn').click(function() {
   } else if($('header').attr('class') != 'active' && $('aside').attr('class') == 'active') {
     $('header').addClass('active');
   }
-
   close_search_m();
 })
 
@@ -84,6 +83,9 @@ $('article').on('click', function() {
   close_search_m();
 })
 
+$('header').on('click', function() {
+  close_search_m();
+})
 
 
 

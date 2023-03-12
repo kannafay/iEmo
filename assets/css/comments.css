@@ -323,6 +323,8 @@ article {
 .comments .response .text.active {
   height: 202px;
   padding: 12px 12px 12px 15px;
+}
+.comments .response .text.focus {
   border: 1px solid var(--scroll);
 }
 

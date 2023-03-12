@@ -29,6 +29,15 @@ $('.comments .user-ip').each(function (){
 
 
 
+// 文本框聚焦
+$('.text textarea').on('focus', ()=>{
+  $('.text').addClass('focus');
+})
+$('.text textarea').on('blur', ()=>{
+  $('.text').removeClass('focus');
+})
+
+
 
 // 发言
 $('.write').click(function(e) {
@@ -84,6 +93,8 @@ $('.cancal2').click(function(e) {
 })
 
 
+
+
 // 回复
 const comment_li = $('.comments .comments-body ul li .comment-card');
 comment_li.each(function(){
@@ -115,8 +126,6 @@ comment_li.each(function(){
 
 
 
-
-
 // 判断text
 let text = $('.comments .response textarea').val();
 if($.trim(text)) {
@@ -132,7 +141,6 @@ $('.comments .response textarea').on('input', function(){
     $('.submit').hide();
   }
 })
-
 
 
 
