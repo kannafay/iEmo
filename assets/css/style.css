@@ -2196,7 +2196,7 @@ footer .copyright p {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 25px;
+  grid-gap: 20px;
 }
 .link main .content article .link-box ul li {
   width: 100%;
@@ -2516,10 +2516,6 @@ main .content aside .toc ul li a:active,
   .pagination-aside a:active i {
     background-color: #f5f5f5;
     color: #333;
-  }
-
-  .link main .content article .link-box ul {
-    grid-gap: 20px;
   }
 }
 
