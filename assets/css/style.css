@@ -1251,7 +1251,7 @@ main .content aside .sub-page .menu_sidebar > ul > li.menu-item-has-children > u
 }
 main .content aside .sub-page .menu_sidebar ul li a {
   display: block;
-  padding: 6px 10px;
+  padding: 5px 10px;
   border-radius: 5px;
   /* background-color: yellowgreen; */
 }
@@ -1414,7 +1414,7 @@ main .content aside .notes-box ul li .view-detail a {
   font-size: 12px;
   color: #999;
   background-color: rgba(0 0 0 / .05);
-  padding: 5px 0;
+  padding: 4px 0;
   border-radius: 6px;
   margin-top: 10px;
 }
@@ -1890,13 +1890,14 @@ footer .copyright p {
   content: '\e6b6';
   font-family: 'iconfont';
   margin-right: 5px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .single main .content article .post-cover .post-info .more .tag {
   cursor: default;
 }
 .single main .content article .post-cover .post-info .more .tag a {
+  display: block;
   color: #fff;
   padding: 4px 10px;
   margin-right: 5px;
@@ -1913,7 +1914,7 @@ footer .copyright p {
 }
 .single main .content article .post-cover .post-info .more .tag a::before {
   content: '#';
-  font-size: 15px;
+  font-size: 14px;
 }
 
 /* single content */
@@ -2003,8 +2004,7 @@ footer .copyright p {
 
 .category main .content article .categories ul li a,
 .tag main .content article .tag-bar ul li a {
-  display: flex;
-  align-items: center;
+  display: block;
   color: #333;
   padding: 6px 15px;
   border-radius: 6px;
@@ -2259,6 +2259,7 @@ footer .copyright p {
 
 
 /* click effect */
+.response form > .emoji-btn,
 main .content aside .social .social-content ul li a,
 main .content aside .sub-page .menu_sidebar ul li a,
 main .content aside .notes-box ul li .view-detail a,
@@ -2278,6 +2279,7 @@ main .content aside .toc ul li a,
 }
 
 
+.response form > .emoji-btn:active,
 main .content aside .social .social-content ul li a:active,
 main .content aside .sub-page .menu_sidebar ul li a:active,
 main .content aside .notes-box ul li .view-detail a:active,
