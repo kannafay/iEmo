@@ -1,6 +1,6 @@
 // IP地址
 function getIp(ip) {
-  if(ip != 'null') {
+  if(ip != null){
     ip_arr = ip.split(',');
     let new_ip = [];
     $(ip_arr).each((i)=>{
@@ -13,25 +13,32 @@ function getIp(ip) {
   
 }
 
-$('.comments .user-ip').each(function (){
+$('.comments .user-ip').each(function(){
   const that = $(this);
-  const url = 'https://ip.useragentinfo.com/json?ip=' + getIp(that.attr('ip'));
-  that.attr('ip','');
+  const url = 'https://api.vore.top/api/IPdata?ip=' + getIp(that.attr('ip'));
+  // that.attr('ip','');
   $.get(url, function(res){
-    if(res.country || res.province) 
-      that.html('<i class="iconfont icon-map-pin"></i>' + $.trim(res.country + ' ' + res.province));
+    if(res.code == 200 && res.adcode.p)
+      that.html('<i class="iconfont icon-map-pin"></i>' + $.trim(res.adcode.p));
     else
       that.html('<i class="iconfont icon-map-pin"></i>未知');
-  },'json').fail(function (){
+  },'json').fail(function(){
     that.html('<i class="iconfont icon-map-pin"></i>未知');
   });
 });
 
 
+// 文本框聚焦
+$('.text textarea').on('focus', ()=>{
+  $('.text').addClass('focus');
+})
+$('.text textarea').on('blur', ()=>{
+  $('.text').removeClass('focus');
+})
 
 
-// 添加
-$('.write').click(function(e) {
+// 发言
+$('.write').click(function(e){
   e.preventDefault;
 
   $(this).parent().hide();
@@ -47,10 +54,8 @@ $('.write').click(function(e) {
 })
 
 
-
-
 // 取消
-function cancal_comment() {
+function cancal_comment(){
   $('.text').removeClass('active');
   $('.text textarea').removeClass('active').blur();
   $('.text .pholder').text('').hide();
@@ -60,7 +65,7 @@ function cancal_comment() {
 
 }
 
-$('.cancal1').click(function(e) {
+$('.cancal1').click(function(e){
   e.preventDefault;
   $('.submit-comment-btn').removeClass('active');
   $('.write-comment-btn').show();
@@ -70,10 +75,8 @@ $('.cancal1').click(function(e) {
 })
 
 
-
-
 // 取消回复
-$('.cancal2').click(function(e) {
+$('.cancal2').click(function(e){
   e.preventDefault;
   $('.text .pholder').text('').hide();
   $('.text textarea').removeClass('active');
@@ -112,14 +115,9 @@ comment_li.each(function(){
 })
 
 
-
-
-
-
-
 // 判断text
 let text = $('.comments .response textarea').val();
-if($.trim(text)) {
+if($.trim(text)){
   $('.submit').show();
 } else {
   $('.submit').hide();
@@ -134,10 +132,6 @@ $('.comments .response textarea').on('input', function(){
 })
 
 
-
-
-
-
 // visitor
 const visitor_btn = $('.comments .response .user-info a');
 const visitor_write = $('.comments .response .visitor');
@@ -146,7 +140,7 @@ const visitor_email = $('.comments .response .visitor #email');
 const visitor_name_tip = $('.comments .response .user-info p').text();
 
 // 点击弹出信息框
-if(visitor_btn.length && visitor_write.length) {
+if(visitor_btn.length && visitor_write.length){
   function remove_visitor_write() {
     visitor_write.removeClass('active');
     $(document).off('click',remove_visitor_write);
@@ -161,40 +155,37 @@ if(visitor_btn.length && visitor_write.length) {
 };
 
 // 实时同步昵称
-if(visitor_name == '') {
+if(visitor_name == ''){
   $('.comments .response .user-info p').text(visitor_name_tip);
 }
 visitor_name.on('input', function(){
   $('.comments .response .user-info p').text($(this).val());
-  if($(this).val() == '') {
+  if($(this).val() == ''){
     $('.comments .response .user-info p').text(visitor_name_tip);
   }
 })
 
 // 判断是否填写信息
-if(visitor_name.length && visitor_email.length) {
+if(visitor_name.length && visitor_email.length){
   $('.submit').click(()=>{
-    if($(visitor_name).val() == '' || $(visitor_email).val() == '') {
+    if($(visitor_name).val() == '' || $(visitor_email).val() == ''){
       $(visitor_write).addClass('active');
     }
   })
   $(document).click((e)=>{
-    if(!$(e.target).is('.submit') && $(visitor_write).attr('class').indexOf('active') > -1) {
+    if(!$(e.target).is('.submit') && $(visitor_write).attr('class').indexOf('active') > -1){
       $(visitor_write).removeClass('active');
     }
   })
 }
 
 
-
-
 // 顶部参与讨论按钮
-if($('.single .shortcuts .to-comment').length) {
-  $('.single .shortcuts .to-comment').on('click', function() {
+if($('.single .shortcuts .to-comment').length){
+  $('.single .shortcuts .to-comment').on('click', function(){
     $('article').animate({scrollTop:$('#response').offset().top - 115}, 300);
   })
 }
-
 
 
 // 表情
@@ -218,11 +209,11 @@ const emoji = [
   '🤥','🤫','🤭','🫢','🫣','🧐',
   '🤓','💀','💩','👻'];
 
-emoji.forEach(function(e) {
+emoji.forEach(function(e){
   $('.emoji-box').append('<span>' + e + '</span>');
 })
 
-$('.emoji-btn').on('click', function() {
+$('.emoji-btn').on('click', function(){
   $('.comments .response .emoji').toggleClass('active');
 })
 
@@ -232,10 +223,10 @@ $(document).click((e)=>{
   }
 })
 
-$('.comments .response .emoji span').on('click', function() {
+$('.comments .response .emoji span').on('click', function(){
   $('.text textarea').insertAtCaret($(this).text());
   
-  if($.trim($('.text textarea').val())) {
+  if($.trim($('.text textarea').val())){
     $('.submit').show();
   } else {
     $('.submit').hide();
@@ -252,7 +243,7 @@ $.fn.extend({
       this.focus();
     }
     else
-    if ($t.selectionStart || $t.selectionStart == '0') {
+    if ($t.selectionStart || $t.selectionStart == '0'){
       var startPos = $t.selectionStart;
       var endPos = $t.selectionEnd;
       var scrollTop = $t.scrollTop;

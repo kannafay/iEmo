@@ -8,7 +8,6 @@ $('body').on('mousedown', 'a', function(e) {
 $('#search-btn').click(function() {
   $('.search-m').toggleClass('active');
   if($('.search-m').attr('class') == 'search-m active') {
-    // $('#search-m').focus();
     $('.nav').css('border-bottom','1px solid #fff');
   } else {
     $('#search-m').blur();
@@ -34,7 +33,6 @@ $('#menu-btn').click(function() {
   } else if($('header').attr('class') != 'active' && $('aside').attr('class') == 'active') {
     $('header').addClass('active');
   }
-
   close_search_m();
 })
 
@@ -42,12 +40,6 @@ $('#aside-btn').click(function() {
   $('aside').toggleClass('active');
   close_search_m();
 })
-
-
-
-
-
-
 
 
 // Nav user menu
@@ -70,13 +62,11 @@ if(user_set_btn) {
 }
 
 
-
 // Click with hide menu and search
 $('article, aside .aside-content').on('click', function() {
   $(user_set_menu).removeClass('active');
   close_search_m();
 })
-
 
 $('article').on('click', function() {
   $('header').removeClass('active');
@@ -84,9 +74,9 @@ $('article').on('click', function() {
   close_search_m();
 })
 
-
-
-
+$('header').on('click', function() {
+  close_search_m();
+})
 
 
 // Horizontal scrolling
@@ -107,8 +97,6 @@ if(cateTagContainer) {
 }
 
 
-
-
 // Menu tooltip
 const menuItemA = document.querySelectorAll('header .menu > li > a');
 
@@ -124,9 +112,6 @@ if(menuItemA) {
     }
   })
 }
-
-
-
 
 
 // Home new or sticky
@@ -184,7 +169,6 @@ aside_btn_close.on('click', function() {
 })
 
 
-
 // aside sub page menu
 const menu_parent = $('.sub-page .menu_sidebar > ul > li.menu-item-has-children');
 let menu_parent_hight = [];
@@ -218,7 +202,6 @@ $(document).ready(function() {
     })
   })
 })
-
 
 
 // toc

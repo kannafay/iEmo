@@ -3,7 +3,7 @@
   $('<div class="slider"></div>').appendTo($('.tag-bar ul'));
 
   let tagA = $('.tag .tag-bar ul li a');
-  let firstTagA = $('.tag .tag-bar ul li a:first');
+  let firstTagA = $('.tag .tag-bar ul li:first a');
   let url = firstTagA.attr('href');
   let title = firstTagA.text();
 
@@ -179,7 +179,7 @@
 
     <script>
 
-      // 封装节流
+      // throttle
       function throttle(fn) {
         return function() {
           if(fn.timer) return;

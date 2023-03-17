@@ -84,7 +84,7 @@ article {
   color: #999;
   background-color: rgba(0 0 0 / .05);
   font-size: 12px;
-  padding: 3px 0;
+  padding: 2px 0;
   border-radius: 4px;
   text-align: center;
   user-select: none;
@@ -166,7 +166,7 @@ article {
   background-color: rgba(0 0 0 / .05);
   border-radius: 4px;
   font-size: 12px;
-  padding: 4px 12px;
+  padding: 3px 12px;
   user-select: none;
 }
 .comments .comments-body ul li .comment-info .info .reply-btn a:hover {
@@ -279,7 +279,7 @@ article {
   outline: 0;
   font-size: 15px;
   font-weight: 400;
-  padding: 5px 15px;
+  padding: 4px 15px;
   user-select: none;
   cursor: pointer;
 }
@@ -323,6 +323,8 @@ article {
 .comments .response .text.active {
   height: 202px;
   padding: 12px 12px 12px 15px;
+}
+.comments .response .text.focus {
   border: 1px solid var(--scroll);
 }
 
@@ -445,6 +447,7 @@ article {
   visibility: hidden;
   opacity: 0;
   transform: translateY(10px);
+  z-index: 1;
 }
 .comments .response .emoji.active {
   visibility: visible;

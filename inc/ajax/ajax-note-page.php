@@ -50,7 +50,7 @@
 
     <script>
 
-      // 封装节流
+      // throttle
       function throttle(fn) {
         return function() {
           if(fn.timer) return;

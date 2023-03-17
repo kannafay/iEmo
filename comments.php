@@ -27,7 +27,7 @@
             }
             return join(',', array_reverse($new_ip_arr));
           } else {
-            return 'null';
+            return false;
           }
         }
       ?>
