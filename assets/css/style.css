@@ -69,7 +69,7 @@ img {
 .link *,
 .note *,
 .single * {
-  -webkit-transition: all var(--tr3);
+  -webkit-transition: all var(--tr3), height 0s;
   transition: all var(--tr3), height 0s;
 }
 
