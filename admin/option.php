@@ -4,6 +4,8 @@
 @$iemo_login_hidden = stripslashes($_POST["iemo_login_hidden"]);
 @$iemo_comments = stripslashes($_POST["iemo_comments"]);
 @$iemo_comments_visitor = stripslashes($_POST["iemo_comments_visitor"]);
+@$iemo_aside_comments = stripslashes($_POST["iemo_aside_comments"]);
+@$iemo_aside_comments_num = stripslashes($_POST["iemo_aside_comments_num"]);
 @$iemo_recommend_show = stripslashes($_POST["iemo_recommend_show"]);
 @$iemo_swiper_shownum = stripslashes($_POST["iemo_swiper_shownum"]);
 @$iemo_code_css = stripslashes($_POST["iemo_code_css"]);
@@ -24,6 +26,8 @@ if(@stripslashes($_POST["iemo_option"])){
   update_option("iemo_login_hidden", $iemo_login_hidden);
   update_option("iemo_comments", $iemo_comments);
   update_option("iemo_comments_visitor", $iemo_comments_visitor);
+  update_option("iemo_aside_comments", $iemo_aside_comments);
+  update_option("iemo_aside_comments_num", $iemo_aside_comments_num);
   update_option("iemo_recommend_show", $iemo_recommend_show);
   update_option("iemo_swiper_shownum", $iemo_swiper_shownum);
   update_option("iemo_code_css", $iemo_code_css);
@@ -67,7 +71,7 @@ if(@stripslashes($_POST["iemo_option"])){
             <p class="description"><span class="iconfont icon-message-square"></span> 说说：&lt;span class="iconfont icon-message-square"&gt;&lt;/span&gt;</p>
             <p class="description"><span class="iconfont icon-link"></span> 链接：&lt;span class="iconfont icon-link"&gt;&lt;/span&gt;</p>
             <br>
-            <p class="description">使用方法：</p>
+            <p><b>使用方法：</b></p>
             <p class="description">外观->菜单->显示选项（右上角）->勾选〔title属性〕和〔CSS类〕</p>
             <p class="description">导航标签请填写以上对应的标签代码（非必填）</p>
             <p class="description">title属性用于文本提示（鼠标移到菜单显示本文内容）</p>
@@ -87,7 +91,7 @@ if(@stripslashes($_POST["iemo_option"])){
             <p class="description"><span class="iconfont icon-tuitetwitter43"></span> Twitter：&lt;span class="iconfont icon-tuitetwitter43"&gt;&lt;/span&gt;</p>
             <p class="description"><span class="iconfont icon-telegram"></span> Telegram：&lt;span class="iconfont icon-telegram"&gt;&lt;/span&gt;</p>
             <br>
-            <p class="description">使用方法：</p>
+            <p><b>使用方法：</b></p>
             <p class="description">外观->菜单->自定义链接->链接文字</p>
             <p class="description">请填写以上对应的标签代码（非必填）</p>
           </td>
@@ -138,7 +142,7 @@ if(@stripslashes($_POST["iemo_option"])){
           <td>
             <fieldset>
               <label><input type='checkbox' name='iemo_comments' value='true' <?php echo get_option("iemo_comments") == 'true' ? 'checked' : ''; ?>/>开启评论</label><br>
-              <label><input type='checkbox' name='iemo_comments_visitor' value='true' <?php echo get_option("iemo_comments_visitor") == 'true' ? 'checked' : ''; ?>/>允许游客评论</label>
+              <label><input type='checkbox' name='iemo_comments_visitor' value='true' <?php echo get_option("iemo_comments_visitor") == 'true' ? 'checked' : ''; ?>/>允许游客评论</label><br>
             </fieldset>
           </td>
         </tr>
@@ -146,6 +150,7 @@ if(@stripslashes($_POST["iemo_option"])){
           <th scope="row"><label for="">为你推荐</label></th>
           <td>
             <p class="description">将文章设为〔置顶〕即可在首页〔为你推荐〕中显示，最多10篇</p>
+            <p class="description">默认显示最新的10篇文章</p>
           </td>
         </tr>
         <tr>
@@ -194,11 +199,21 @@ if(@stripslashes($_POST["iemo_option"])){
             <fieldset>
               <label><input type='checkbox' name='iemo_aside_subpage' value='true' <?php echo get_option("iemo_aside_subpage") == 'true' ? 'checked' : ""; ?>/>开启</label>
             </fieldset>
-            <p class="description">可添加菜单导航</p>
+            <p class="description">可添加内容：菜单、评论、关于</p>
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="iemo_about">关于</label></th>
+          <th scope="row">侧边栏附页-评论</th>
+          <td>
+            <fieldset>
+              <label><input type='checkbox' name='iemo_aside_comments' value='true' <?php echo get_option("iemo_aside_comments") == 'true' ? 'checked' : ''; ?>/>开启附页最新评论</label><br>
+              <input type='number' name='iemo_aside_comments_num' value='<?php echo get_option("iemo_aside_comments_num"); ?>'/>
+              <p class="description">显示最新评论数量（1~100），默认6条</p>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><label for="iemo_about">侧边栏附页-关于</label></th>
           <td>
             <textarea name="iemo_about" rows="3" class="regular-text"><?php echo get_option("iemo_about"); ?></textarea> <br/>
             <p class="description">位于侧边栏附页，填写文本，可用于对博客或自己的介绍等</p>
@@ -226,7 +241,7 @@ if(@stripslashes($_POST["iemo_option"])){
           <td>
             <input name="iemo_copyright" type="number" value="<?php echo get_option("iemo_copyright"); ?>" class="regular-text">
             <p class="description">填写年份（数字）即可</p>
-            <p class="description">默认：Copyright © <?php echo date("Y"); ?> <a href="<?php bloginfo('url') ?>"><?php bloginfo('name'); ?></a></p>
+            <p class="description">默认：Copyright © <?php echo date("Y"); ?> <a href="<?php bloginfo('url') ?>" target="_blank"><?php bloginfo('name'); ?></a></p>
           </td>
         </tr>
         <tr>

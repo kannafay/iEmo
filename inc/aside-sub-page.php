@@ -40,6 +40,16 @@
       </script>
     <?php }
   ?>
+
+  <?php
+    if(get_option("iemo_aside_comments") == 'true') { ?>
+      <div class="new-comments">
+        <h2>评论 <span>Comments.</span></h2>
+        <?php require 'aside-comments.php';?>
+      </div>
+    <?php }
+  ?>
+  
   <?php
     if(get_option("iemo_about")) { ?>
       <div class="about">

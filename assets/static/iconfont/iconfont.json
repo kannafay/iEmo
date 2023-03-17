@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8474110",
+      "name": "arrow-up",
+      "font_class": "arrow-up",
+      "unicode": "e69b",
+      "unicode_decimal": 59035
+    },
+    {
+      "icon_id": "8474199",
+      "name": "chevrons-up",
+      "font_class": "chevrons-up",
+      "unicode": "e6ac",
+      "unicode_decimal": 59052
+    },
+    {
       "icon_id": "8474193",
       "name": "chevron-down",
       "font_class": "chevron-down",

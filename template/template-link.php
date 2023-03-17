@@ -20,11 +20,10 @@
         <article>
           <h2>友人帐 <span>Friends.</span></h2>
           <div class="single">
-          <div class="post-content">
-            <?php the_content(); ?>
+            <div class="post-content">
+              <?php the_content(); ?>
+            </div>
           </div>
-          </div>
-          
           <div class="link-box">
             <ul>
               <?php

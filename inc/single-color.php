@@ -15,6 +15,7 @@
             --theme-op-3: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
             --post-cover: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
             --scroll: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .5);
+            --title-color: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .2);
             --menu-hover: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .1);
             --social-hover: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .1);
             --theme-bak: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
@@ -30,6 +31,7 @@
           :root {
             --theme-bak: #333;
             --code-bgc: rgba(0 0 0 / .05);
+            --title-color: rgba(0 0 0 / .1);
           }
         </style>
       `).appendTo('head');
