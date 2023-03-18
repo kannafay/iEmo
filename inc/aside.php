@@ -45,7 +45,7 @@
       </div>
 
       <?php
-        if(is_single() && get_option("iemo_toc") == 'true') { ?>
+        if((is_single() || is_page()) && get_option("iemo_toc") == 'true') { ?>
           <div class="toc">
             <h2>目录 <span>Toc.</span></h2>
             <ul></ul>

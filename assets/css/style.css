@@ -73,6 +73,11 @@ img {
   transition: all var(--tr3), height 0s;
 }
 
+.single article {
+  scroll-padding-top: 20px;
+  /* scroll-behavior: smooth; */
+}
+
 
 
 
