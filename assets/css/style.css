@@ -69,8 +69,13 @@ img {
 .link *,
 .note *,
 .single * {
-  -webkit-transition: all var(--tr3);
+  -webkit-transition: all var(--tr3), height 0s;
   transition: all var(--tr3), height 0s;
+}
+
+.single article {
+  scroll-padding-top: 20px;
+  /* scroll-behavior: smooth; */
 }
 
 
@@ -2953,8 +2958,9 @@ main .content aside .toc ul li a:active,
   main .content aside .social > h2,
   main .content aside .notes-box > h2,
   main .content aside .menu_sidebar_box > h2,
+  main .content aside .new-comments > h2,
   main .content aside .about > h2 {
-    font-size: 16px;
+    font-size: 16px !important;
   }
   main .content aside .social .social-content ul li a {
     margin-right: 4px;

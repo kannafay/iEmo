@@ -1,11 +1,10 @@
 article {
-  scroll-padding-top: 25px;
+  scroll-padding-top: 20px;
   /* scroll-behavior: smooth; */
 }
-
 .comments {
   padding: 0 25px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 .link .comments {
   padding: 0;

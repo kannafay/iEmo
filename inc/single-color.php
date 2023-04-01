@@ -8,18 +8,19 @@
     let colors = colorThief.getColor(img);
     // console.log(`rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`);
     function changeColor() {
+      const themeColor = `${colors[0]}, ${colors[1]}, ${colors[2]}`;
       $(`
         <style>
           :root {
-            --theme: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
-            --theme-op-3: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
-            --post-cover: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
-            --scroll: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .5);
-            --title-color: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .2);
-            --menu-hover: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .1);
-            --social-hover: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .1);
-            --theme-bak: rgb(${colors[0]}, ${colors[1]}, ${colors[2]});
-            --code-bgc: rgba(${colors[0]}, ${colors[1]}, ${colors[2]}, .1);
+            --theme: rgb(${themeColor});
+            --theme-op-3: rgb(${themeColor});
+            --post-cover: rgb(${themeColor});
+            --scroll: rgba(${themeColor}, .5);
+            --title-color: rgba(${themeColor}, .2);
+            --menu-hover: rgba(${themeColor}, .1);
+            --social-hover: rgba(${themeColor}, .1);
+            --theme-bak: rgb(${themeColor});
+            --code-bgc: rgba(${themeColor}, .1);
           }
         </style>
       `).appendTo('head');
@@ -32,6 +33,7 @@
             --theme-bak: #333;
             --code-bgc: rgba(0 0 0 / .05);
             --title-color: rgba(0 0 0 / .1);
+            --scroll: rgba(0 0 0 / .2);
           }
         </style>
       `).appendTo('head');
