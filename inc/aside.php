@@ -45,7 +45,7 @@
       </div>
 
       <?php
-        if((is_single() || is_page()) && get_option("iemo_toc") == 'true') { ?>
+        if(is_single() && get_option("iemo_toc") == 'true') { ?>
           <div class="toc">
             <h2>目录 <span>Toc.</span></h2>
             <ul></ul>
@@ -72,9 +72,9 @@
         <h2>说说 <span>Notes.</span></h2>
         <ul>
           <?php 
-            $limit = get_option('posts_per_page');$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
+            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
             query_posts('post_type=note&post_status=publish&paged=' . $paged);
-            if (have_posts()) : while (have_posts()) : the_post(); 
+            if(have_posts()) : while(have_posts()) : the_post(); 
           ?>
             <li>
               <div class="notes-content">
