@@ -445,5 +445,5 @@ if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 
 
 
-//禁止引号半角\全角切换
+//禁止引号半角/全角切换
 add_filter('run_wptexturize', '__return_false');
