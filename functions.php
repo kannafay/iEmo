@@ -399,7 +399,7 @@ function ashu_add_pages() {
 		ashu_add_page('标签','tag','template/template-tag.php');
 		ashu_add_page('归档','archive','template/template-archive.php');
     ashu_add_page('说说','note','archive-note.php');
-    ashu_add_page('链接','link','template/template-link.php');
+    ashu_add_page('友人帐','link','template/template-link.php');
 	}   
 }   
 
