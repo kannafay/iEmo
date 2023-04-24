@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Author: kannafay
- * Email: me@onll.cn
+ * Author: 神秘布偶猫
+ * E-mail: me@onll.cn
  */
 
 // 后台设置
