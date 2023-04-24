@@ -442,3 +442,8 @@ if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
   $list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
   $_SERVER['REMOTE_ADDR'] = $list[0];
 }
+
+
+
+//禁止引号半角/全角切换
+add_filter('run_wptexturize', '__return_false');
