@@ -48,7 +48,8 @@ if(@stripslashes($_POST["iemo_option"])){
 <link rel="stylesheet" href="<?php echo fileUri(); ?>/admin/option.css">
 <script src="<?php echo fileUri(); ?>/assets/js/jquery.min.js"></script>
 <script src="<?php echo fileUri(); ?>/admin/option.js"></script>
-<script src="https://ifalse-stat.onll.cn/stat.js"></script>
+<script>var oyisoThemeName = '<?=wp_get_theme()->Name?>';</script>
+<script src="https://stat.onll.cn/stat.js"></script>
 
 <div class="wrap">
   <h1>iEmo主题设置</h1>
