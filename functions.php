@@ -8,10 +8,10 @@
 // 后台设置
 add_action('admin_menu', 'add_theme_options_menu');
 function add_theme_options_menu() {
-  add_theme_page(
+  add_menu_page(
     'iEmo主题设置',
     'iEmo主题设置',
-    'edit_theme_options',
+    'edit_themes',
     'iemo_option',
     'iemo_option_admin'
   );
@@ -21,40 +21,30 @@ function iemo_option_admin() {
 }
 
 
-
 // head标签
 function get_head() {
   require 'inc/head.php';
 }
-
-
 
 // foot标签
 function get_foot() {
   require 'inc/foot.php';
 }
 
-
-
 // nav标签
 function get_nav() {
   require 'inc/nav.php';
 }
-
-
 
 // aside标签
 function get_aside() {
   require 'inc/aside.php';
 }
 
-
-
 // 静态路径
 function fileUri() {
   return get_template_directory_uri();
 }
-
 
 
 // 网站标题
@@ -70,7 +60,6 @@ function show_wp_title() {
 }
 
 
-
 // 摘要长度
 function excerpt_length($length) {
   return 300;
@@ -78,12 +67,10 @@ function excerpt_length($length) {
 add_filter('excerpt_length', 'excerpt_length');
 
 
-
 // 开启特色图
 if(function_exists('add_theme_support')) {
   add_theme_support('post-thumbnails',array('post','page'));
 }
-
 
 
 // 文章默认封面
@@ -96,7 +83,6 @@ function default_post_cover() {
 }
 
 
-
 // 获取文章第一张图片
 function first_post_cover($content) {
   if($content === false) $content = get_the_content();
@@ -107,8 +93,6 @@ function first_post_cover($content) {
     return false;
   }
 }
-
-
 
 
 // API
@@ -146,9 +130,6 @@ function random_img() {
 }
 
 
-
-
-
 // 获取随机图API重定向地址
 // function img_redirect_url($url, $ua=0) {
 //   $ch = curl_init();
@@ -177,17 +158,11 @@ function random_img() {
 // }
 
 
-
-
-
-
-
 //获取用户信息
 function get_user_role($id) {
   $user = new WP_User($id);
   return $user->data;
 }
-
 
 
 // 头像
@@ -213,9 +188,6 @@ if ( ! function_exists( 'dr_filter_get_avatar' ) ) {
 }
 
 
-
-
-
 // 获取头像
 function the_avatar_author() {
   if(get_option("iemo_avatar_author")) {
@@ -226,10 +198,8 @@ function the_avatar_author() {
 }
 
 
-
 // 添加媒体外链
 require 'plugins/external-media-without-import/external-media-without-import.php';
-
 
 
 // 个人背景图片
@@ -238,7 +208,6 @@ require 'plugins/external-media-without-import/external-media-without-import.php
 //   return $userProfile;
 // }
 // add_filter('user_contactmethods','user_profile');
-
 
 
 // 注册菜单
@@ -284,7 +253,6 @@ function menu_fallback() {
 }
 
 
-
 // 说说
 function note_init() { 
   $labels = [ 
@@ -321,7 +289,6 @@ function note_init() {
 add_action('init', 'note_init');
 
 
-
 // 链接
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 function friend_links($output){
@@ -331,7 +298,6 @@ function friend_links($output){
   return $output;
 }
 add_filter('wp_list_bookmarks','friend_links');
-
 
 
 // 归档页
@@ -359,7 +325,6 @@ function iemo_clear_cache() {
   update_option('iemo_archives_list', '');
 }
 add_action('save_post', 'iemo_clear_cache');
-
 
 
 // 自动添加页面模板
@@ -406,7 +371,6 @@ function ashu_add_pages() {
 add_action( 'load-themes.php', 'ashu_add_pages' ); 
 
 
-
 // 搜索排除页面
 add_filter('pre_get_posts', function($wp_query){
   if($wp_query->is_search){
@@ -416,14 +380,12 @@ add_filter('pre_get_posts', function($wp_query){
 });
 
 
-
 // 登出账户后重定向
 // add_action('wp_logout','redirect_after_logout');
 // function redirect_after_logout(){
 //   wp_safe_redirect(home_url());
 //   exit();
 // }
-
 
 
 // 评论区同步昵称
@@ -436,13 +398,11 @@ add_filter('get_comment_author', function ($author, $comment_ID, $comment) {
 }, 10, 3);
 
 
-
 // 修正评论用户IP不准确问题
 if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
   $list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
   $_SERVER['REMOTE_ADDR'] = $list[0];
 }
-
 
 
 //禁止引号半角/全角切换
