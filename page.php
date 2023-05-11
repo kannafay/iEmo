@@ -16,30 +16,19 @@
                 <img class="thumbnail_loading" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
                 <?php the_post_thumbnail('large'); ?>
                 <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
+
                 <script>
                   const imgELem1 = $('.single .post-cover .cover img:eq(1)');
-                  imgELem1.css('opacity','0');
-                  imgELem1.on('load',function (){
+                  if (imgELem1[0].complete) {
                     $('.single .post-cover .cover img:first').remove();
                     <?php
                       if(get_option("iemo_page_animation")) { ?>
-                        $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
+                        imgELem1.css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
                       <?php }
                     ?>
-                    $(this).css('opacity','1');
-                  });
-                  $('.single .post-cover .cover .color-thief').attr('src',imgELem1.attr('src'));
-                </script>
-              <?php } else {
-                $imgUrl = first_post_cover(get_the_content());
-                if($imgUrl){ ?>
-                  <img class="thumbnail_loading" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
-                  <img src="<?=$imgUrl?>" alt="">
-                  <img class="color-thief" src="<?=$imgUrl?>" alt="" crossorigin="anonymous" style="display:none">
-                  <script>
-                    const imgELem2 = $('.single .post-cover .cover img:eq(1)');
-                    imgELem2.css('opacity','0');
-                    imgELem2.on('load',function (){
+                  } else {
+                    imgELem1.css('opacity','0');
+                    imgELem1.on('load',function (){
                       $('.single .post-cover .cover img:first').remove();
                       <?php
                         if(get_option("iemo_page_animation")) { ?>
@@ -48,7 +37,40 @@
                       ?>
                       $(this).css('opacity','1');
                     });
+                  }
+                  $('.single .post-cover .cover .color-thief').attr('src',imgELem1.attr('src'));
+                </script>
+
+              <?php } else {
+                $imgUrl = first_post_cover(get_the_content());
+                if($imgUrl){ ?>
+                  <img class="thumbnail_loading" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
+                  <img src="<?=$imgUrl?>" alt="">
+                  <img class="color-thief" src="<?=$imgUrl?>" alt="" crossorigin="anonymous" style="display:none">
+
+                  <script>
+                    const imgELem2 = $('.single .post-cover .cover img:eq(1)');
+                    if (imgELem2[0].complete) {
+                      $('.single .post-cover .cover img:first').remove();
+                      <?php
+                        if(get_option("iemo_page_animation")) { ?>
+                          imgELem2.css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
+                        <?php }
+                      ?>
+                    } else {
+                      imgELem2.css('opacity','0');   
+                        imgELem2.on('load',function (){
+                        $('.single .post-cover .cover img:first').remove();
+                        <?php
+                          if(get_option("iemo_page_animation")) { ?>
+                            $(this).css('animation','FadeIn-<?php echo get_option("iemo_page_animation"); ?> .5s forwards');
+                          <?php }
+                        ?>
+                        $(this).css('opacity','1');
+                      });
+                    }
                   </script>
+                  
                 <?php }else{ ?>  
                   <img class="get_img_url" src="<?php echo fileUri() ?>/assets/images/loading.gif" alt="">
                   <img class="color-thief" src="" alt="" crossorigin="anonymous" style="display:none">
