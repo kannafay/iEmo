@@ -26,7 +26,7 @@
               ?>
             </div>
             <div class="user">
-              <div class="name"><?=$name?></div>
+              <div class="name"><?=$new -> comment_author_url ? '<a href="'.$new -> comment_author_url.'">'.$name.'</a>' : $name ?></div>
               <div class="rdate"><i class="iconfont icon-clock"></i><?=date('Y年m月d日', strtotime($new -> comment_date)); ?></div>
             </div>
           </div>
