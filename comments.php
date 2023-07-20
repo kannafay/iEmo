@@ -82,7 +82,7 @@
                                 //var_dump(ip_encryption($value -> comment_author_IP));
                               ?>
                               <div class="user-name">
-                                <?=$value -> user_id == 1 ? '<h4 class="master-name">'.$user_name.'</h4>' : '<h4 class="comment-user-name">'.$user_name.'</h4>'?>
+                                <h4 class="<?=$value -> user_id ? 'master-name' : 'comment-user-name' ?>"><?=$value -> comment_author_url ? '<a href="'.$value -> comment_author_url.'">'.$user_name.'</a>' : $user_name ?></h4>
                                 <?=$value -> user_id == 1 ? '<span class="master">博主</span>' : ''?>
                               </div>
                               <p><i class="iconfont icon-clock"></i><?=date('Y年m月d日 H:i', strtotime($value -> comment_date)); ?><span class="user-ip" ip="<?=ip_encryption($value -> comment_author_IP)?>"><i class="iconfont icon-map-pin"></i>获取中...</span></p>
@@ -90,7 +90,7 @@
                             <div class="reply-btn"><a href="?replytocom=<?=$value -> comment_ID; ?>#respond" id="<?=$value -> comment_ID; ?>">回复</a></div>
                           </div>
                           <div class="comment-content">
-                            <p><?=$value->comment_content?></p>
+                            <p><?=$value -> comment_content?></p>
                           </div>
                         </div>
                       </div>

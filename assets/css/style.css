@@ -993,13 +993,17 @@ main .content aside .author .author-info .avatar {
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 10px auto;
+  box-shadow: 0 0 8px rgb(28 31 35 / 4%), 0 0 24px 8px rgb(28 31 35 / 6%);
 }
 main .content aside .author .author-info img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   vertical-align: middle;
   object-fit: cover;
   pointer-events: none;
+  border: 2px solid #fff;
+  
 }
 
 main .content aside .author .author-info .name {
@@ -1172,6 +1176,7 @@ main .content aside .author .author-info-sub .avatar {
   height: 60px;
   border-radius: 50%;
   margin-right: 15px;
+  border: 2px solid #fff;
   overflow: hidden;
 }
 main .content aside .author .author-info-sub img {
@@ -1341,6 +1346,7 @@ main .content aside .sub-page .new-comments ul li .avatar {
   width: 40px;
   height: 40px;
   margin-right: 10px;
+  overflow: hidden;
 }
 main .content aside .sub-page .new-comments ul li .avatar img {
   width: 100%;
@@ -1360,6 +1366,13 @@ main .content aside .sub-page .new-comments ul li .user .name {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+main .content aside .sub-page .new-comments ul li .user .name a {
+  color: #333;
+  transition: all var(--tr3);
+}
+main .content aside .sub-page .new-comments ul li .user .name a:hover {
+  color: var(--theme);
 }
 
 main .content aside .sub-page .new-comments ul li .user .rdate,

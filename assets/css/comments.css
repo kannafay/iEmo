@@ -65,6 +65,7 @@ article {
 .comments .comments-body ul li .user-avatar .avatar {
   width: 50px;
   height: 50px;
+  overflow: hidden;
 }
 .comments .comments-body ul li .user-avatar .avatar img {
   width: 100%;
@@ -125,6 +126,14 @@ article {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.comments .comments-body ul li .comment-info .info .user h4 a {
+  color: #333;
+  transition: all var(--tr3);
+}
+.comments .comments-body ul li .comment-info .info .user h4 a:hover {
+  color: var(--theme);
+}
+
 .comments .comments-body ul li .comment-info .info .user .master-name {
   max-width: calc(100% - 50px);
 }
