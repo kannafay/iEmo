@@ -171,7 +171,7 @@ require 'plugins/simple-local-avatars/simple-local-avatars.php';
 if ( ! function_exists( 'dr_filter_get_avatar' ) ) {
   function dr_filter_get_avatar( $avatar ) {
       // 新 Gravatar 头像源，可自行修改
-      $new_gravatar_sever = 'cravatar.cn';
+      $new_gravatar_sever = 'cravatar.cn'; // sdn.geekzu.org
 
       $sources = array(
           'www.gravatar.com/avatar/',
