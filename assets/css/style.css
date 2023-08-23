@@ -2640,6 +2640,9 @@ main .content aside .toc ul li a:active,
   .home main .content article .bottom .post-part ul li .right {
     width: calc(100% - 250px);
   }
+  .home main .content article .bottom .post-part ul li .right .text p {
+    -webkit-line-clamp: 2;
+  }
   .home main .content article .bottom .post-part ul li .left .cate-view {
     transform: translateY(10px);
     opacity: 1;
@@ -2723,7 +2726,6 @@ main .content aside .toc ul li a:active,
   }
   .home main .content article .bottom .post-part ul li .right .text p {
     font-size: 13px;
-    -webkit-line-clamp: 2;
   }
   .home main .content article .bottom .post-part ul li .right .post-info .time i,
   #pagination-home a i,
